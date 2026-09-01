@@ -1,18 +1,22 @@
 syntax = "proto3";
 package E2E;
 
-import "../Protocol/Protocol.proto";
+import "../SignalLocalStorageProtocol/SignalLocalStorageProtocol.proto";
 import "../AICommonDeprecated/AICommonDeprecated.proto";
 import "../AICommon/AICommon.proto";
 import "../Adv/Adv.proto";
+import "../Protocol/Protocol.proto";
+import "../Aea/Aea.proto";
 import "../StatusAttributions/StatusAttributions.proto";
 import "../CompanionReg/CompanionReg.proto";
 import "../MmsRetry/MmsRetry.proto";
+import "../ServerSync/ServerSync.proto";
 
 message GroupRootKeyShareEntry {
     optional bytes groupRootKey = 1;
     optional string keyId = 2;
     optional int64 expiryTimestampMs = 3;
+    optional int64 createdTimestampMs = 4;
 }
 
 message GroupRootKeyShare {
@@ -20,7 +24,7 @@ message GroupRootKeyShare {
 }
 
 message AIQueryFanout {
-    optional Protocol.MessageKey messageKey = 1;
+    optional SignalLocalStorageProtocol.MessageKey messageKey = 1;
     optional Message message = 2;
     optional int64 timestamp = 3;
 }
@@ -30,6 +34,7 @@ message AIRichResponseMessage {
     repeated AICommonDeprecated.AIRichResponseSubMessage submessages = 2;
     optional AICommon.AIRichResponseUnifiedResponse unifiedResponse = 3;
     optional ContextInfo contextInfo = 4;
+    optional AICommon.AIRichResponseUnifiedResponse originalRecipientMetadata = 5;
 }
 
 message MemberLabel {
@@ -284,6 +289,9 @@ message MessageContextInfo {
     repeated ThreadID threadId = 15;
     optional WebLinkRenderConfig weblinkRenderConfig = 16;
     optional bytes teeBotMetadata = 17;
+    optional Aea.NonE2EEAttestation accountEncryptionAttestation = 18;
+    optional bytes associatedPrimaryIdentityKey = 19;
+    optional string teeContextAnchorMessageId = 20;
     enum MessageAddonExpiryType {
         STATIC = 1;
         DEPENDENT_ON_PARENT = 2;
@@ -292,7 +300,7 @@ message MessageContextInfo {
 
 message ThreadID {
     optional ThreadType threadType = 1;
-    optional Protocol.MessageKey threadKey = 2;
+    optional SignalLocalStorageProtocol.MessageKey threadKey = 2;
     enum ThreadType {
         UNKNOWN = 0;
         VIEW_REPLIES = 1;
@@ -302,7 +310,7 @@ message ThreadID {
 
 message MessageAssociation {
     optional AssociationType associationType = 1;
-    optional Protocol.MessageKey parentMessageKey = 2;
+    optional SignalLocalStorageProtocol.MessageKey parentMessageKey = 2;
     optional int32 messageIndex = 3;
     enum AssociationType {
         UNKNOWN = 0;
@@ -341,7 +349,7 @@ message ContextInfo {
     optional uint32 forwardingScore = 21;
     optional bool isForwarded = 22;
     optional AdReplyInfo quotedAd = 23;
-    optional Protocol.MessageKey placeholderKey = 24;
+    optional SignalLocalStorageProtocol.MessageKey placeholderKey = 24;
     optional uint32 expiration = 25;
     optional int64 ephemeralSettingTimestamp = 26;
     optional bytes ephemeralSharedSecret = 27;
@@ -392,6 +400,9 @@ message ContextInfo {
     optional CrossAppSource crossAppSource = 77;
     optional BusinessInteractionPills businessInteractionPills = 78;
     optional string posterStatusId = 79;
+    optional InstagramThreadLink instagramThreadLink = 80;
+    optional AICommon.AIProvenance aiProvenance = 81;
+    repeated uint32 experienceIds = 82 [packed=true];
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -407,6 +418,9 @@ message ContextInfo {
         optional string businessJid = 1;
         repeated Pill pills = 2;
         optional EntryPoint entryPoint = 3;
+        optional bytes signedPayload = 4;
+        optional AICommon.BotSignatureVerificationMetadata signatureEnvelope = 5;
+        optional UnauthenticatedBusinessMetadata unauthenticatedBusinessMetadata = 6;
         enum EntryPoint {
             ENTRY_POINT_UNKNOWN = 0;
             P2P_LINK_SHARE = 1;
@@ -431,6 +445,18 @@ message ContextInfo {
             BESTSELLERS = 8;
             MENU = 9;
             ABOUT = 10;
+            SHOP = 11;
+            ORDER = 12;
+        }
+        message SignedPayload {
+            optional string verifiedName = 1;
+            repeated ContextInfo.BusinessInteractionPills.Pill pills = 2;
+        }
+        message UnauthenticatedBusinessMetadata {
+            optional string businessName = 1;
+            optional string businessCategory = 2;
+            optional bool businessIsOpen = 3;
+            optional int64 businessIsOpenSnapshotMs = 4;
         }
     }
     message BusinessMessageForwardInfo {
@@ -528,6 +554,9 @@ message ContextInfo {
             UPDATE_CARD = 2;
             LINK_CARD = 3;
         }
+    }
+    message InstagramThreadLink {
+        optional string url = 1;
     }
     enum PairedMediaType {
         NOT_PAIRED_MEDIA = 0;
@@ -684,15 +713,21 @@ message Message {
     optional NewsletterFollowerInviteMessage newsletterFollowerInviteMessageV2 = 113;
     optional PollResultSnapshotMessage pollResultSnapshotMessageV3 = 115;
     optional FutureProofMessage newsletterAdminProfileMessage = 116;
-    optional FutureProofMessage newsletterAdminProfileMessageV2 = 117;
     optional FutureProofMessage spoilerMessage = 118;
     optional PollCreationMessage pollCreationMessageV6 = 119;
     optional ConditionalRevealMessage conditionalRevealMessage = 120;
     optional PollAddOptionMessage pollAddOptionMessage = 121;
     optional EventInviteMessage eventInviteMessage = 122;
     optional GroupRootKeyShare groupRootKeyShare = 123;
-    optional P2PPaymentReminderNotification p2PPaymentReminderNotification = 124;
+    optional PaymentReminderMessage paymentReminderMessage = 124;
     optional SplitPaymentMessage splitPaymentMessage = 125;
+    optional FutureProofMessage newsletterAdminProfileStatusMessage = 126;
+    optional RootSecretDistributeMessage rootSecretDistributeMessage = 127;
+    optional SplitPaymentUpdateMessage splitPaymentUpdateMessage = 128;
+    optional MusicMessage musicMessage = 129;
+    optional StatusLinkPreviewMetadata statusLinkPreviewMetadata = 130;
+    optional FutureProofMessage botPlatformRegistrationSuccessMessage = 131;
+    optional FutureProofMessage newsletterScheduledMessage = 132;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -753,6 +788,11 @@ message Message {
             AUDIO = 1;
             VIDEO = 2;
         }
+    }
+    message BotHistoryShareSyncMetadata {
+        optional string botJid = 1;
+        optional int64 historyShareCutoffTimestamp = 2;
+        repeated Message.HistoryShareMessageEntry historyShareMessages = 3;
     }
     message ButtonsMessage {
         optional string contentText = 6;
@@ -819,6 +859,7 @@ message Message {
         optional string deeplinkPayload = 9;
         optional MessageContextInfo messageContextInfo = 10;
         optional uint32 callEntryPoint = 11;
+        optional string callReason = 12;
     }
     message CallLogMessage {
         optional bool isVideo = 1;
@@ -847,7 +888,7 @@ message Message {
         }
     }
     message CancelPaymentRequestMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
     }
     message Chat {
         optional string displayName = 1;
@@ -903,7 +944,7 @@ message Message {
     }
     message CommentMessage {
         optional Message message = 1;
-        optional Protocol.MessageKey targetMessageKey = 2;
+        optional SignalLocalStorageProtocol.MessageKey targetMessageKey = 2;
     }
     message ConditionalRevealMessage {
         optional bytes encPayload = 1;
@@ -927,7 +968,7 @@ message Message {
         optional ContextInfo contextInfo = 17;
     }
     message DeclinePaymentRequestMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
     }
     message DeviceSentMessage {
         optional string destinationJid = 1;
@@ -958,17 +999,17 @@ message Message {
         optional string accessibilityLabel = 21;
     }
     message EncCommentMessage {
-        optional Protocol.MessageKey targetMessageKey = 1;
+        optional SignalLocalStorageProtocol.MessageKey targetMessageKey = 1;
         optional bytes encPayload = 2;
         optional bytes encIv = 3;
     }
     message EncEventResponseMessage {
-        optional Protocol.MessageKey eventCreationMessageKey = 1;
+        optional SignalLocalStorageProtocol.MessageKey eventCreationMessageKey = 1;
         optional bytes encPayload = 2;
         optional bytes encIv = 3;
     }
     message EncReactionMessage {
-        optional Protocol.MessageKey targetMessageKey = 1;
+        optional SignalLocalStorageProtocol.MessageKey targetMessageKey = 1;
         optional bytes encPayload = 2;
         optional bytes encIv = 3;
     }
@@ -981,6 +1022,7 @@ message Message {
         optional string caption = 6;
         optional bool isCanceled = 7;
         optional int64 endTime = 8;
+        optional string callLink = 9;
     }
     message EventMessage {
         optional ContextInfo contextInfo = 1;
@@ -1033,7 +1075,7 @@ message Message {
         optional bool viewOnce = 30;
         optional uint32 videoHeight = 31;
         optional uint32 videoWidth = 32;
-        optional Message.MMSThumbnailMetadata faviconMMSMetadata = 33;
+        optional Message.MMSThumbnailMetadata faviconMmsMetadata = 33;
         optional Message.LinkPreviewMetadata linkPreviewMetadata = 34;
         optional Message.PaymentLinkMetadata paymentLinkMetadata = 35;
         repeated Message.VideoEndCard endCardTiles = 36;
@@ -1144,6 +1186,10 @@ message Message {
             }
         }
     }
+    message HistoryShareMessageEntry {
+        optional string stanzaId = 1;
+        optional bytes messageSecretProof = 2;
+    }
     message HistorySyncMessageAccessStatus {
         optional bool completeAccessGranted = 1;
     }
@@ -1240,6 +1286,7 @@ message Message {
             optional string uuid = 1;
             optional string data = 2;
             optional string type = 3;
+            optional string fallback = 4;
         }
         message Body {
             optional string text = 1;
@@ -1338,7 +1385,7 @@ message Message {
         }
     }
     message KeepInChatMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional KeepType keepType = 2;
         optional int64 timestampMs = 3;
     }
@@ -1450,6 +1497,12 @@ message Message {
         optional uint32 thumbnailHeight = 6;
         optional uint32 thumbnailWidth = 7;
     }
+    message MarkAsVerifiedAction {
+        optional string userJidString = 1;
+        optional bool verified = 2;
+        optional bytes verifiedIdentityKey = 3;
+        optional uint64 actionSeq = 4;
+    }
     message MessageHistoryBundle {
         optional string mimetype = 1;
         optional bytes fileSha256 = 2;
@@ -1470,6 +1523,18 @@ message Message {
     message MessageHistoryNotice {
         optional ContextInfo contextInfo = 1;
         optional Message.MessageHistoryMetadata messageHistoryMetadata = 2;
+        optional Message.BotHistoryShareSyncMetadata botHistoryShareSyncMetadata = 3;
+    }
+    message MusicMessage {
+        optional EmbeddedMusic embeddedMusic = 1;
+        optional string songUri = 2;
+        optional string artworkUri = 3;
+        optional int32 style = 4;
+        optional ContextInfo contextInfo = 5;
+        enum MusicMessageStyle {
+            UNKNOWN = 0;
+            VINYL = 1;
+        }
     }
     message NewsletterAdminInviteMessage {
         optional string newsletterJid = 1;
@@ -1500,7 +1565,7 @@ message Message {
         optional string totalCurrencyCode = 11;
         optional ContextInfo contextInfo = 17;
         optional int32 messageVersion = 12;
-        optional Protocol.MessageKey orderRequestMessageId = 13;
+        optional SignalLocalStorageProtocol.MessageKey orderRequestMessageId = 13;
         optional string catalogType = 15;
         enum OrderStatus {
             INQUIRY = 1;
@@ -1511,37 +1576,10 @@ message Message {
             CATALOG = 1;
         }
     }
-    message P2PPaymentReminderNotification {
-        optional string reminderId = 1;
-        optional Money amount = 2;
-        optional ReminderFrequency frequency = 3;
-        optional int64 nextReminderTimestamp = 4;
-        optional int64 expiryTimestamp = 5;
-        optional ReminderState state = 6;
-        optional string description = 7;
-        optional string creatorJid = 8;
-        optional string receiverJid = 9;
-        optional string upiId = 10;
-        optional int64 createdTimestamp = 11;
-        enum ReminderFrequency {
-            UNKNOWN_FREQUENCY = 0;
-            WEEKLY = 1;
-            BIWEEKLY = 2;
-            MONTHLY = 3;
-            CUSTOM = 4;
-        }
-        enum ReminderState {
-            UNKNOWN_STATE = 0;
-            ACTIVE = 1;
-            PAUSED = 2;
-            STOPPED = 3;
-            EXPIRED = 4;
-            CANCELLED = 5;
-        }
-    }
     message PaymentExtendedMetadata {
         optional uint32 type = 1;
         optional string platform = 2;
+        optional string messageParamsJson = 3;
     }
     message PaymentInviteMessage {
         optional ServiceType serviceType = 1;
@@ -1558,6 +1596,7 @@ message Message {
             FBPAY = 1;
             NOVI = 2;
             UPI = 3;
+            PIX = 4;
         }
     }
     message PaymentLinkMetadata {
@@ -1576,6 +1615,32 @@ message Message {
         }
         message PaymentLinkProvider {
             optional string paramsJson = 1;
+        }
+    }
+    message PaymentReminderMessage {
+        optional string reminderId = 1;
+        optional string instanceId = 2;
+        optional string description = 3;
+        optional ReminderFrequency frequency = 4;
+        optional ReminderStatus status = 5;
+        optional string payeeVpa = 6;
+        optional string payeeJid = 7;
+        optional string payerJid = 8;
+        optional Money amount = 9;
+        enum ReminderFrequency {
+            REMINDER_FREQUENCY_UNKNOWN = 0;
+            WEEKLY = 1;
+            BI_WEEKLY = 2;
+            MONTHLY = 3;
+            QUARTERLY = 4;
+        }
+        enum ReminderStatus {
+            REMINDER_STATUS_UNKNOWN = 0;
+            ACTIVE = 1;
+            CANCELLED_BY_CREATOR = 2;
+            STOPPED_BY_RECEIVER = 3;
+            EXPIRED = 4;
+            PAID = 5;
         }
     }
     message PeerDataOperationRequestMessage {
@@ -1632,7 +1697,7 @@ message Message {
             optional bool supportInlineResponse = 7;
         }
         message PlaceholderMessageResendRequest {
-            optional Protocol.MessageKey messageKey = 1;
+            optional SignalLocalStorageProtocol.MessageKey messageKey = 1;
         }
         message RequestStickerReupload {
             optional string fileSha256 = 1;
@@ -1663,6 +1728,7 @@ message Message {
             optional HistorySyncChunkRetryResponse historySyncChunkRetryResponse = 10;
             optional FlowResponsesCsvBundle flowResponsesCsvBundle = 11;
             optional BizBroadcastInsightsContactListResponse bizBroadcastInsightsContactListResponse = 12;
+            optional ContactRefreshResponse contactRefreshResponse = 13;
             message BizBroadcastInsightsContactListResponse {
                 optional string campaignId = 1;
                 optional int64 timestampMs = 2;
@@ -1679,6 +1745,12 @@ message Message {
             }
             message CompanionMetaNonceFetchResponse {
                 optional string nonce = 1;
+            }
+            message ContactRefreshResponse {
+                repeated string coveredRequestIds = 1;
+                optional uint64 collectionVersion = 2;
+                optional int64 primaryDurationMs = 3;
+                optional uint32 uniqueContactCount = 4;
             }
             message FlowResponsesCsvBundle {
                 optional string flowId = 1;
@@ -1775,9 +1847,10 @@ message Message {
         GALAXY_FLOW_ACTION = 11;
         BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO = 12;
         BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13;
+        CONTACT_REFRESH_REQUEST = 14;
     }
     message PinInChatMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional Type type = 2;
         optional int64 senderTimestampMs = 3;
         enum Type {
@@ -1793,8 +1866,9 @@ message Message {
         }
     }
     message PollAddOptionMessage {
-        optional Protocol.MessageKey pollCreationMessageKey = 1;
+        optional SignalLocalStorageProtocol.MessageKey pollCreationMessageKey = 1;
         optional Message.PollCreationMessage.Option addOption = 2;
+        optional Message.PollUpdateMessageMetadata metadata = 3;
     }
     enum PollContentType {
         UNKNOWN = 0;
@@ -1837,12 +1911,14 @@ message Message {
         QUIZ = 1;
     }
     message PollUpdateMessage {
-        optional Protocol.MessageKey pollCreationMessageKey = 1;
+        optional SignalLocalStorageProtocol.MessageKey pollCreationMessageKey = 1;
         optional Message.PollEncValue vote = 2;
         optional Message.PollUpdateMessageMetadata metadata = 3;
         optional int64 senderTimestampMs = 4;
     }
     message PollUpdateMessageMetadata {
+        optional bytes pollNameHash = 1;
+        optional string lastEditStanzaId = 2;
     }
     message PollVoteMessage {
         repeated bytes selectedOptions = 1;
@@ -1875,7 +1951,7 @@ message Message {
         }
     }
     message ProtocolMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional Type type = 2;
         optional uint32 ephemeralExpiration = 4;
         optional int64 ephemeralSettingTimestamp = 5;
@@ -1902,6 +1978,9 @@ message Message {
         optional AICommon.AIMediaCollectionMessage aiMediaCollectionMessage = 28;
         optional uint32 afterReadDuration = 29;
         optional Message.ChatThemeSetting chatThemeSetting = 30;
+        optional AICommon.AIMetadataOperation aiMetadataOperation = 31;
+        optional Message.MarkAsVerifiedAction markAsVerifiedAction = 32;
+        optional ServerSync.CoexStateSync coexStateSync = 33;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -1932,14 +2011,17 @@ message Message {
             AI_MEDIA_COLLECTION_MESSAGE = 31;
             MESSAGE_UNSCHEDULE = 32;
             CHAT_THEME_SETTING = 34;
+            AI_METADATA_OPERATION = 35;
+            MARK_AS_VERIFIED_ACTION = 36;
+            COEX_STATE_SYNC = 37;
         }
     }
     message QuestionResponseMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional string text = 2;
     }
     message ReactionMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional string text = 2;
         optional string groupingKey = 3;
         optional int64 senderTimestampMs = 4;
@@ -1969,6 +2051,9 @@ message Message {
             COMPANION_PAIRING = 1;
         }
     }
+    message RootSecretDistributeMessage {
+        optional string chatJid = 1;
+    }
     message ScheduledCallCreationMessage {
         optional int64 scheduledTimestampMs = 1;
         optional CallType callType = 2;
@@ -1980,7 +2065,7 @@ message Message {
         }
     }
     message ScheduledCallEditMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional EditType editType = 2;
         enum EditType {
             UNKNOWN = 0;
@@ -1988,7 +2073,7 @@ message Message {
         }
     }
     message SecretEncryptedMessage {
-        optional Protocol.MessageKey targetMessageKey = 1;
+        optional SignalLocalStorageProtocol.MessageKey targetMessageKey = 1;
         optional bytes encPayload = 2;
         optional bytes encIv = 3;
         optional SecretEncType secretEncType = 4;
@@ -2004,7 +2089,7 @@ message Message {
     }
     message SendPaymentMessage {
         optional Message noteMessage = 2;
-        optional Protocol.MessageKey requestMessageKey = 3;
+        optional SignalLocalStorageProtocol.MessageKey requestMessageKey = 3;
         optional PaymentBackground background = 4;
         optional string transactionData = 5;
     }
@@ -2030,32 +2115,46 @@ message Message {
             PAID = 1;
         }
     }
+    message SplitPaymentUpdateMessage {
+        optional string splitId = 1;
+        optional string participantJid = 2;
+    }
+    message StatusLinkPreviewMetadata {
+        optional Style style = 1;
+        enum Style {
+            AUTO = 0;
+            COMPACT = 1;
+            FULL = 2;
+            IMMERSIVE = 3;
+        }
+    }
     message StatusNotificationMessage {
-        optional Protocol.MessageKey responseMessageKey = 1;
-        optional Protocol.MessageKey originalMessageKey = 2;
+        optional SignalLocalStorageProtocol.MessageKey responseMessageKey = 1;
+        optional SignalLocalStorageProtocol.MessageKey originalMessageKey = 2;
         optional StatusNotificationType type = 3;
         enum StatusNotificationType {
             UNKNOWN = 0;
             STATUS_ADD_YOURS = 1;
             STATUS_RESHARE = 2;
             STATUS_QUESTION_ANSWER_RESHARE = 3;
+            STATUS_GROUP_STATUS_REPLY = 4;
         }
     }
     message StatusQuestionAnswerMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional string text = 2;
     }
     message StatusQuotedMessage {
         optional StatusQuotedMessageType type = 1;
         optional string text = 2;
         optional bytes thumbnail = 3;
-        optional Protocol.MessageKey originalStatusId = 4;
+        optional SignalLocalStorageProtocol.MessageKey originalStatusId = 4;
         enum StatusQuotedMessageType {
             QUESTION_ANSWER = 1;
         }
     }
     message StatusStickerInteractionMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional string stickerKey = 2;
         optional StatusStickerType type = 3;
         enum StatusStickerType {
@@ -2213,6 +2312,7 @@ message Message {
         optional uint64 motionPhotoPresentationOffsetMs = 29;
         optional string metadataUrl = 30;
         optional VideoSourceType videoSourceType = 31;
+        optional string dashManifestUrl = 33;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;

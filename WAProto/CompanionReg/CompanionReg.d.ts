@@ -20,6 +20,9 @@ export namespace CompanionReg {
 
         /** ClientPairingProps subscriptionSyncPayload */
         subscriptionSyncPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isBotJidDbMigrated */
+        isBotJidDbMigrated?: (boolean|null);
     }
 
     /** Represents a ClientPairingProps. */
@@ -45,6 +48,9 @@ export namespace CompanionReg {
 
         /** ClientPairingProps subscriptionSyncPayload. */
         public subscriptionSyncPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isBotJidDbMigrated. */
+        public isBotJidDbMigrated?: (boolean|null);
 
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
@@ -1066,6 +1072,9 @@ export namespace CompanionReg {
 
             /** HistorySyncConfig supportInlineContacts */
             supportInlineContacts?: (boolean|null);
+
+            /** HistorySyncConfig supportNewsletter */
+            supportNewsletter?: (boolean|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -1148,6 +1157,9 @@ export namespace CompanionReg {
 
             /** HistorySyncConfig supportInlineContacts. */
             public supportInlineContacts?: (boolean|null);
+
+            /** HistorySyncConfig supportNewsletter. */
+            public supportNewsletter?: (boolean|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
@@ -1253,7 +1265,8 @@ export namespace CompanionReg {
             UWP = 21,
             VR = 22,
             CLOUD_API = 23,
-            SMARTGLASSES = 24
+            SMARTGLASSES = 24,
+            WAIL = 25
         }
     }
 }

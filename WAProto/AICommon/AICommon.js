@@ -18,6 +18,1268 @@ $root.AICommon = (function() {
      */
     var AICommon = {};
 
+    AICommon.BizAIMetadataSync = (function() {
+
+        /**
+         * Properties of a BizAIMetadataSync.
+         * @memberof AICommon
+         * @interface IBizAIMetadataSync
+         * @property {AICommon.BizAIMetadataSync.IServerEvent|null} [serverEvent] BizAIMetadataSync serverEvent
+         */
+
+        /**
+         * Constructs a new BizAIMetadataSync.
+         * @memberof AICommon
+         * @classdesc Represents a BizAIMetadataSync.
+         * @implements IBizAIMetadataSync
+         * @constructor
+         * @param {AICommon.IBizAIMetadataSync=} [properties] Properties to set
+         */
+        function BizAIMetadataSync(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BizAIMetadataSync serverEvent.
+         * @member {AICommon.BizAIMetadataSync.IServerEvent|null|undefined} serverEvent
+         * @memberof AICommon.BizAIMetadataSync
+         * @instance
+         */
+        BizAIMetadataSync.prototype.serverEvent = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        /**
+         * BizAIMetadataSync operation.
+         * @member {"serverEvent"|undefined} operation
+         * @memberof AICommon.BizAIMetadataSync
+         * @instance
+         */
+        Object.defineProperty(BizAIMetadataSync.prototype, "operation", {
+            get: $util.oneOfGetter($oneOfFields = ["serverEvent"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new BizAIMetadataSync instance using the specified properties.
+         * @function create
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {AICommon.IBizAIMetadataSync=} [properties] Properties to set
+         * @returns {AICommon.BizAIMetadataSync} BizAIMetadataSync instance
+         */
+        BizAIMetadataSync.create = function create(properties) {
+            return new BizAIMetadataSync(properties);
+        };
+
+        /**
+         * Encodes the specified BizAIMetadataSync message. Does not implicitly {@link AICommon.BizAIMetadataSync.verify|verify} messages.
+         * @function encode
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {AICommon.IBizAIMetadataSync} message BizAIMetadataSync message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BizAIMetadataSync.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.serverEvent != null && Object.hasOwnProperty.call(message, "serverEvent"))
+                $root.AICommon.BizAIMetadataSync.ServerEvent.encode(message.serverEvent, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BizAIMetadataSync message, length delimited. Does not implicitly {@link AICommon.BizAIMetadataSync.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {AICommon.IBizAIMetadataSync} message BizAIMetadataSync message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BizAIMetadataSync.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer.
+         * @function decode
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {AICommon.BizAIMetadataSync} BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BizAIMetadataSync.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.BizAIMetadataSync();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {AICommon.BizAIMetadataSync} BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BizAIMetadataSync.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BizAIMetadataSync message.
+         * @function verify
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BizAIMetadataSync.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.serverEvent != null && message.hasOwnProperty("serverEvent")) {
+                properties.operation = 1;
+                {
+                    var error = $root.AICommon.BizAIMetadataSync.ServerEvent.verify(message.serverEvent);
+                    if (error)
+                        return "serverEvent." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BizAIMetadataSync message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {AICommon.BizAIMetadataSync} BizAIMetadataSync
+         */
+        BizAIMetadataSync.fromObject = function fromObject(object) {
+            if (object instanceof $root.AICommon.BizAIMetadataSync)
+                return object;
+            var message = new $root.AICommon.BizAIMetadataSync();
+            if (object.serverEvent != null) {
+                if (typeof object.serverEvent !== "object")
+                    throw TypeError(".AICommon.BizAIMetadataSync.serverEvent: object expected");
+                message.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.fromObject(object.serverEvent);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BizAIMetadataSync message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {AICommon.BizAIMetadataSync} message BizAIMetadataSync
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BizAIMetadataSync.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (message.serverEvent != null && message.hasOwnProperty("serverEvent")) {
+                object.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.toObject(message.serverEvent, options);
+                if (options.oneofs)
+                    object.operation = "serverEvent";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this BizAIMetadataSync to JSON.
+         * @function toJSON
+         * @memberof AICommon.BizAIMetadataSync
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BizAIMetadataSync.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BizAIMetadataSync
+         * @function getTypeUrl
+         * @memberof AICommon.BizAIMetadataSync
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BizAIMetadataSync.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/AICommon.BizAIMetadataSync";
+        };
+
+        BizAIMetadataSync.ServerEvent = (function() {
+
+            /**
+             * Properties of a ServerEvent.
+             * @memberof AICommon.BizAIMetadataSync
+             * @interface IServerEvent
+             * @property {AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent|null} [protocolEvent] ServerEvent protocolEvent
+             * @property {AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted|null} [agentOnboardingStarted] ServerEvent agentOnboardingStarted
+             */
+
+            /**
+             * Constructs a new ServerEvent.
+             * @memberof AICommon.BizAIMetadataSync
+             * @classdesc Represents a ServerEvent.
+             * @implements IServerEvent
+             * @constructor
+             * @param {AICommon.BizAIMetadataSync.IServerEvent=} [properties] Properties to set
+             */
+            function ServerEvent(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * ServerEvent protocolEvent.
+             * @member {AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent|null|undefined} protocolEvent
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @instance
+             */
+            ServerEvent.prototype.protocolEvent = null;
+
+            /**
+             * ServerEvent agentOnboardingStarted.
+             * @member {AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted|null|undefined} agentOnboardingStarted
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @instance
+             */
+            ServerEvent.prototype.agentOnboardingStarted = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            /**
+             * ServerEvent event.
+             * @member {"protocolEvent"|"agentOnboardingStarted"|undefined} event
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @instance
+             */
+            Object.defineProperty(ServerEvent.prototype, "event", {
+                get: $util.oneOfGetter($oneOfFields = ["protocolEvent", "agentOnboardingStarted"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new ServerEvent instance using the specified properties.
+             * @function create
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {AICommon.BizAIMetadataSync.IServerEvent=} [properties] Properties to set
+             * @returns {AICommon.BizAIMetadataSync.ServerEvent} ServerEvent instance
+             */
+            ServerEvent.create = function create(properties) {
+                return new ServerEvent(properties);
+            };
+
+            /**
+             * Encodes the specified ServerEvent message. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @function encode
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {AICommon.BizAIMetadataSync.IServerEvent} message ServerEvent message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ServerEvent.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.protocolEvent != null && Object.hasOwnProperty.call(message, "protocolEvent"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.protocolEvent);
+                if (message.agentOnboardingStarted != null && Object.hasOwnProperty.call(message, "agentOnboardingStarted"))
+                    $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.encode(message.agentOnboardingStarted, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ServerEvent message, length delimited. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {AICommon.BizAIMetadataSync.IServerEvent} message ServerEvent message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ServerEvent.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer.
+             * @function decode
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {AICommon.BizAIMetadataSync.ServerEvent} ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ServerEvent.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.BizAIMetadataSync.ServerEvent();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.protocolEvent = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(reader, reader.uint32());
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {AICommon.BizAIMetadataSync.ServerEvent} ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ServerEvent.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ServerEvent message.
+             * @function verify
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ServerEvent.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.protocolEvent != null && message.hasOwnProperty("protocolEvent")) {
+                    properties.event = 1;
+                    switch (message.protocolEvent) {
+                    default:
+                        return "protocolEvent: enum value expected";
+                    case 0:
+                    case 1:
+                        break;
+                    }
+                }
+                if (message.agentOnboardingStarted != null && message.hasOwnProperty("agentOnboardingStarted")) {
+                    if (properties.event === 1)
+                        return "event: multiple values";
+                    properties.event = 1;
+                    {
+                        var error = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify(message.agentOnboardingStarted);
+                        if (error)
+                            return "agentOnboardingStarted." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a ServerEvent message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {AICommon.BizAIMetadataSync.ServerEvent} ServerEvent
+             */
+            ServerEvent.fromObject = function fromObject(object) {
+                if (object instanceof $root.AICommon.BizAIMetadataSync.ServerEvent)
+                    return object;
+                var message = new $root.AICommon.BizAIMetadataSync.ServerEvent();
+                switch (object.protocolEvent) {
+                default:
+                    if (typeof object.protocolEvent === "number") {
+                        message.protocolEvent = object.protocolEvent;
+                        break;
+                    }
+                    break;
+                case "UNSPECIFIED":
+                case 0:
+                    message.protocolEvent = 0;
+                    break;
+                case "AGENT_CHAT_READY":
+                case 1:
+                    message.protocolEvent = 1;
+                    break;
+                }
+                if (object.agentOnboardingStarted != null) {
+                    if (typeof object.agentOnboardingStarted !== "object")
+                        throw TypeError(".AICommon.BizAIMetadataSync.ServerEvent.agentOnboardingStarted: object expected");
+                    message.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.fromObject(object.agentOnboardingStarted);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a ServerEvent message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {AICommon.BizAIMetadataSync.ServerEvent} message ServerEvent
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ServerEvent.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.protocolEvent != null && message.hasOwnProperty("protocolEvent")) {
+                    object.protocolEvent = options.enums === String ? $root.AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent[message.protocolEvent] === undefined ? message.protocolEvent : $root.AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent[message.protocolEvent] : message.protocolEvent;
+                    if (options.oneofs)
+                        object.event = "protocolEvent";
+                }
+                if (message.agentOnboardingStarted != null && message.hasOwnProperty("agentOnboardingStarted")) {
+                    object.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.toObject(message.agentOnboardingStarted, options);
+                    if (options.oneofs)
+                        object.event = "agentOnboardingStarted";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this ServerEvent to JSON.
+             * @function toJSON
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ServerEvent.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for ServerEvent
+             * @function getTypeUrl
+             * @memberof AICommon.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ServerEvent.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/AICommon.BizAIMetadataSync.ServerEvent";
+            };
+
+            ServerEvent.AgentOnboardingStarted = (function() {
+
+                /**
+                 * Properties of an AgentOnboardingStarted.
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent
+                 * @interface IAgentOnboardingStarted
+                 * @property {number|Long|null} [composerBlockDurationSecs] AgentOnboardingStarted composerBlockDurationSecs
+                 */
+
+                /**
+                 * Constructs a new AgentOnboardingStarted.
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent
+                 * @classdesc Represents an AgentOnboardingStarted.
+                 * @implements IAgentOnboardingStarted
+                 * @constructor
+                 * @param {AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted=} [properties] Properties to set
+                 */
+                function AgentOnboardingStarted(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * AgentOnboardingStarted composerBlockDurationSecs.
+                 * @member {number|Long|null|undefined} composerBlockDurationSecs
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @instance
+                 */
+                AgentOnboardingStarted.prototype.composerBlockDurationSecs = null;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(AgentOnboardingStarted.prototype, "_composerBlockDurationSecs", {
+                    get: $util.oneOfGetter($oneOfFields = ["composerBlockDurationSecs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new AgentOnboardingStarted instance using the specified properties.
+                 * @function create
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted=} [properties] Properties to set
+                 * @returns {AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} AgentOnboardingStarted instance
+                 */
+                AgentOnboardingStarted.create = function create(properties) {
+                    return new AgentOnboardingStarted(properties);
+                };
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @function encode
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted} message AgentOnboardingStarted message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                AgentOnboardingStarted.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.composerBlockDurationSecs != null && Object.hasOwnProperty.call(message, "composerBlockDurationSecs"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).int64(message.composerBlockDurationSecs);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message, length delimited. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted} message AgentOnboardingStarted message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                AgentOnboardingStarted.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                AgentOnboardingStarted.decode = function decode(reader, length, error) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        if (tag === error)
+                            break;
+                        switch (tag >>> 3) {
+                        case 1: {
+                                message.composerBlockDurationSecs = reader.int64();
+                                break;
+                            }
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                AgentOnboardingStarted.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies an AgentOnboardingStarted message.
+                 * @function verify
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                AgentOnboardingStarted.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    var properties = {};
+                    if (message.composerBlockDurationSecs != null && message.hasOwnProperty("composerBlockDurationSecs")) {
+                        properties._composerBlockDurationSecs = 1;
+                        if (!$util.isInteger(message.composerBlockDurationSecs) && !(message.composerBlockDurationSecs && $util.isInteger(message.composerBlockDurationSecs.low) && $util.isInteger(message.composerBlockDurationSecs.high)))
+                            return "composerBlockDurationSecs: integer|Long expected";
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates an AgentOnboardingStarted message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} AgentOnboardingStarted
+                 */
+                AgentOnboardingStarted.fromObject = function fromObject(object) {
+                    if (object instanceof $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted)
+                        return object;
+                    var message = new $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted();
+                    if (object.composerBlockDurationSecs != null)
+                        if ($util.Long)
+                            (message.composerBlockDurationSecs = $util.Long.fromValue(object.composerBlockDurationSecs)).unsigned = false;
+                        else if (typeof object.composerBlockDurationSecs === "string")
+                            message.composerBlockDurationSecs = parseInt(object.composerBlockDurationSecs, 10);
+                        else if (typeof object.composerBlockDurationSecs === "number")
+                            message.composerBlockDurationSecs = object.composerBlockDurationSecs;
+                        else if (typeof object.composerBlockDurationSecs === "object")
+                            message.composerBlockDurationSecs = new $util.LongBits(object.composerBlockDurationSecs.low >>> 0, object.composerBlockDurationSecs.high >>> 0).toNumber();
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from an AgentOnboardingStarted message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} message AgentOnboardingStarted
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                AgentOnboardingStarted.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (message.composerBlockDurationSecs != null && message.hasOwnProperty("composerBlockDurationSecs")) {
+                        if (typeof message.composerBlockDurationSecs === "number")
+                            object.composerBlockDurationSecs = options.longs === String ? String(message.composerBlockDurationSecs) : message.composerBlockDurationSecs;
+                        else
+                            object.composerBlockDurationSecs = options.longs === String ? $util.Long.prototype.toString.call(message.composerBlockDurationSecs) : options.longs === Number ? new $util.LongBits(message.composerBlockDurationSecs.low >>> 0, message.composerBlockDurationSecs.high >>> 0).toNumber() : message.composerBlockDurationSecs;
+                        if (options.oneofs)
+                            object._composerBlockDurationSecs = "composerBlockDurationSecs";
+                    }
+                    return object;
+                };
+
+                /**
+                 * Converts this AgentOnboardingStarted to JSON.
+                 * @function toJSON
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                AgentOnboardingStarted.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the default type url for AgentOnboardingStarted
+                 * @function getTypeUrl
+                 * @memberof AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                AgentOnboardingStarted.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted";
+                };
+
+                return AgentOnboardingStarted;
+            })();
+
+            /**
+             * ProtocolEvent enum.
+             * @name AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent
+             * @enum {number}
+             * @property {number} UNSPECIFIED=0 UNSPECIFIED value
+             * @property {number} AGENT_CHAT_READY=1 AGENT_CHAT_READY value
+             */
+            ServerEvent.ProtocolEvent = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNSPECIFIED"] = 0;
+                values[valuesById[1] = "AGENT_CHAT_READY"] = 1;
+                return values;
+            })();
+
+            return ServerEvent;
+        })();
+
+        return BizAIMetadataSync;
+    })();
+
+    AICommon.AIProvenance = (function() {
+
+        /**
+         * Properties of a AIProvenance.
+         * @memberof AICommon
+         * @interface IAIProvenance
+         * @property {AICommon.AIProvenance.IMetadata|null} [c2PaMetadata] AIProvenance c2PaMetadata
+         * @property {AICommon.AIProvenance.IMetadata|null} [iptcMetadata] AIProvenance iptcMetadata
+         */
+
+        /**
+         * Constructs a new AIProvenance.
+         * @memberof AICommon
+         * @classdesc Represents a AIProvenance.
+         * @implements IAIProvenance
+         * @constructor
+         * @param {AICommon.IAIProvenance=} [properties] Properties to set
+         */
+        function AIProvenance(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * AIProvenance c2PaMetadata.
+         * @member {AICommon.AIProvenance.IMetadata|null|undefined} c2PaMetadata
+         * @memberof AICommon.AIProvenance
+         * @instance
+         */
+        AIProvenance.prototype.c2PaMetadata = null;
+
+        /**
+         * AIProvenance iptcMetadata.
+         * @member {AICommon.AIProvenance.IMetadata|null|undefined} iptcMetadata
+         * @memberof AICommon.AIProvenance
+         * @instance
+         */
+        AIProvenance.prototype.iptcMetadata = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(AIProvenance.prototype, "_c2PaMetadata", {
+            get: $util.oneOfGetter($oneOfFields = ["c2PaMetadata"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(AIProvenance.prototype, "_iptcMetadata", {
+            get: $util.oneOfGetter($oneOfFields = ["iptcMetadata"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new AIProvenance instance using the specified properties.
+         * @function create
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {AICommon.IAIProvenance=} [properties] Properties to set
+         * @returns {AICommon.AIProvenance} AIProvenance instance
+         */
+        AIProvenance.create = function create(properties) {
+            return new AIProvenance(properties);
+        };
+
+        /**
+         * Encodes the specified AIProvenance message. Does not implicitly {@link AICommon.AIProvenance.verify|verify} messages.
+         * @function encode
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {AICommon.IAIProvenance} message AIProvenance message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AIProvenance.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.c2PaMetadata != null && Object.hasOwnProperty.call(message, "c2PaMetadata"))
+                $root.AICommon.AIProvenance.Metadata.encode(message.c2PaMetadata, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.iptcMetadata != null && Object.hasOwnProperty.call(message, "iptcMetadata"))
+                $root.AICommon.AIProvenance.Metadata.encode(message.iptcMetadata, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AIProvenance message, length delimited. Does not implicitly {@link AICommon.AIProvenance.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {AICommon.IAIProvenance} message AIProvenance message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AIProvenance.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a AIProvenance message from the specified reader or buffer.
+         * @function decode
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {AICommon.AIProvenance} AIProvenance
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AIProvenance.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.AIProvenance();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.c2PaMetadata = $root.AICommon.AIProvenance.Metadata.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.iptcMetadata = $root.AICommon.AIProvenance.Metadata.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a AIProvenance message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {AICommon.AIProvenance} AIProvenance
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AIProvenance.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a AIProvenance message.
+         * @function verify
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AIProvenance.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.c2PaMetadata != null && message.hasOwnProperty("c2PaMetadata")) {
+                properties._c2PaMetadata = 1;
+                {
+                    var error = $root.AICommon.AIProvenance.Metadata.verify(message.c2PaMetadata);
+                    if (error)
+                        return "c2PaMetadata." + error;
+                }
+            }
+            if (message.iptcMetadata != null && message.hasOwnProperty("iptcMetadata")) {
+                properties._iptcMetadata = 1;
+                {
+                    var error = $root.AICommon.AIProvenance.Metadata.verify(message.iptcMetadata);
+                    if (error)
+                        return "iptcMetadata." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a AIProvenance message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {AICommon.AIProvenance} AIProvenance
+         */
+        AIProvenance.fromObject = function fromObject(object) {
+            if (object instanceof $root.AICommon.AIProvenance)
+                return object;
+            var message = new $root.AICommon.AIProvenance();
+            if (object.c2PaMetadata != null) {
+                if (typeof object.c2PaMetadata !== "object")
+                    throw TypeError(".AICommon.AIProvenance.c2PaMetadata: object expected");
+                message.c2PaMetadata = $root.AICommon.AIProvenance.Metadata.fromObject(object.c2PaMetadata);
+            }
+            if (object.iptcMetadata != null) {
+                if (typeof object.iptcMetadata !== "object")
+                    throw TypeError(".AICommon.AIProvenance.iptcMetadata: object expected");
+                message.iptcMetadata = $root.AICommon.AIProvenance.Metadata.fromObject(object.iptcMetadata);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a AIProvenance message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {AICommon.AIProvenance} message AIProvenance
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AIProvenance.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (message.c2PaMetadata != null && message.hasOwnProperty("c2PaMetadata")) {
+                object.c2PaMetadata = $root.AICommon.AIProvenance.Metadata.toObject(message.c2PaMetadata, options);
+                if (options.oneofs)
+                    object._c2PaMetadata = "c2PaMetadata";
+            }
+            if (message.iptcMetadata != null && message.hasOwnProperty("iptcMetadata")) {
+                object.iptcMetadata = $root.AICommon.AIProvenance.Metadata.toObject(message.iptcMetadata, options);
+                if (options.oneofs)
+                    object._iptcMetadata = "iptcMetadata";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this AIProvenance to JSON.
+         * @function toJSON
+         * @memberof AICommon.AIProvenance
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AIProvenance.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AIProvenance
+         * @function getTypeUrl
+         * @memberof AICommon.AIProvenance
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AIProvenance.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/AICommon.AIProvenance";
+        };
+
+        AIProvenance.Metadata = (function() {
+
+            /**
+             * Properties of a Metadata.
+             * @memberof AICommon.AIProvenance
+             * @interface IMetadata
+             * @property {boolean|null} [createdWithGenAi] Metadata createdWithGenAi
+             * @property {boolean|null} [editedWithGenAi] Metadata editedWithGenAi
+             */
+
+            /**
+             * Constructs a new Metadata.
+             * @memberof AICommon.AIProvenance
+             * @classdesc Represents a Metadata.
+             * @implements IMetadata
+             * @constructor
+             * @param {AICommon.AIProvenance.IMetadata=} [properties] Properties to set
+             */
+            function Metadata(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Metadata createdWithGenAi.
+             * @member {boolean|null|undefined} createdWithGenAi
+             * @memberof AICommon.AIProvenance.Metadata
+             * @instance
+             */
+            Metadata.prototype.createdWithGenAi = null;
+
+            /**
+             * Metadata editedWithGenAi.
+             * @member {boolean|null|undefined} editedWithGenAi
+             * @memberof AICommon.AIProvenance.Metadata
+             * @instance
+             */
+            Metadata.prototype.editedWithGenAi = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(Metadata.prototype, "_createdWithGenAi", {
+                get: $util.oneOfGetter($oneOfFields = ["createdWithGenAi"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(Metadata.prototype, "_editedWithGenAi", {
+                get: $util.oneOfGetter($oneOfFields = ["editedWithGenAi"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new Metadata instance using the specified properties.
+             * @function create
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {AICommon.AIProvenance.IMetadata=} [properties] Properties to set
+             * @returns {AICommon.AIProvenance.Metadata} Metadata instance
+             */
+            Metadata.create = function create(properties) {
+                return new Metadata(properties);
+            };
+
+            /**
+             * Encodes the specified Metadata message. Does not implicitly {@link AICommon.AIProvenance.Metadata.verify|verify} messages.
+             * @function encode
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {AICommon.AIProvenance.IMetadata} message Metadata message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Metadata.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.createdWithGenAi != null && Object.hasOwnProperty.call(message, "createdWithGenAi"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.createdWithGenAi);
+                if (message.editedWithGenAi != null && Object.hasOwnProperty.call(message, "editedWithGenAi"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.editedWithGenAi);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Metadata message, length delimited. Does not implicitly {@link AICommon.AIProvenance.Metadata.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {AICommon.AIProvenance.IMetadata} message Metadata message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Metadata.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a Metadata message from the specified reader or buffer.
+             * @function decode
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {AICommon.AIProvenance.Metadata} Metadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Metadata.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.AIProvenance.Metadata();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.createdWithGenAi = reader.bool();
+                            break;
+                        }
+                    case 2: {
+                            message.editedWithGenAi = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a Metadata message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {AICommon.AIProvenance.Metadata} Metadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Metadata.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a Metadata message.
+             * @function verify
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Metadata.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.createdWithGenAi != null && message.hasOwnProperty("createdWithGenAi")) {
+                    properties._createdWithGenAi = 1;
+                    if (typeof message.createdWithGenAi !== "boolean")
+                        return "createdWithGenAi: boolean expected";
+                }
+                if (message.editedWithGenAi != null && message.hasOwnProperty("editedWithGenAi")) {
+                    properties._editedWithGenAi = 1;
+                    if (typeof message.editedWithGenAi !== "boolean")
+                        return "editedWithGenAi: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a Metadata message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {AICommon.AIProvenance.Metadata} Metadata
+             */
+            Metadata.fromObject = function fromObject(object) {
+                if (object instanceof $root.AICommon.AIProvenance.Metadata)
+                    return object;
+                var message = new $root.AICommon.AIProvenance.Metadata();
+                if (object.createdWithGenAi != null)
+                    message.createdWithGenAi = Boolean(object.createdWithGenAi);
+                if (object.editedWithGenAi != null)
+                    message.editedWithGenAi = Boolean(object.editedWithGenAi);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a Metadata message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {AICommon.AIProvenance.Metadata} message Metadata
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Metadata.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.createdWithGenAi != null && message.hasOwnProperty("createdWithGenAi")) {
+                    object.createdWithGenAi = message.createdWithGenAi;
+                    if (options.oneofs)
+                        object._createdWithGenAi = "createdWithGenAi";
+                }
+                if (message.editedWithGenAi != null && message.hasOwnProperty("editedWithGenAi")) {
+                    object.editedWithGenAi = message.editedWithGenAi;
+                    if (options.oneofs)
+                        object._editedWithGenAi = "editedWithGenAi";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this Metadata to JSON.
+             * @function toJSON
+             * @memberof AICommon.AIProvenance.Metadata
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Metadata.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for Metadata
+             * @function getTypeUrl
+             * @memberof AICommon.AIProvenance.Metadata
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Metadata.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/AICommon.AIProvenance.Metadata";
+            };
+
+            return Metadata;
+        })();
+
+        return AIProvenance;
+    })();
+
     AICommon.BotAgentDeepLinkMetadata = (function() {
 
         /**
@@ -25,6 +1287,7 @@ $root.AICommon = (function() {
          * @memberof AICommon
          * @interface IBotAgentDeepLinkMetadata
          * @property {string|null} [token] BotAgentDeepLinkMetadata token
+         * @property {Uint8Array|null} [clientPublicKey] BotAgentDeepLinkMetadata clientPublicKey
          */
 
         /**
@@ -50,12 +1313,26 @@ $root.AICommon = (function() {
          */
         BotAgentDeepLinkMetadata.prototype.token = null;
 
+        /**
+         * BotAgentDeepLinkMetadata clientPublicKey.
+         * @member {Uint8Array|null|undefined} clientPublicKey
+         * @memberof AICommon.BotAgentDeepLinkMetadata
+         * @instance
+         */
+        BotAgentDeepLinkMetadata.prototype.clientPublicKey = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         Object.defineProperty(BotAgentDeepLinkMetadata.prototype, "_token", {
             get: $util.oneOfGetter($oneOfFields = ["token"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(BotAgentDeepLinkMetadata.prototype, "_clientPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["clientPublicKey"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -85,6 +1362,8 @@ $root.AICommon = (function() {
                 writer = $Writer.create();
             if (message.token != null && Object.hasOwnProperty.call(message, "token"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.token);
+            if (message.clientPublicKey != null && Object.hasOwnProperty.call(message, "clientPublicKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.clientPublicKey);
             return writer;
         };
 
@@ -123,6 +1402,10 @@ $root.AICommon = (function() {
                 switch (tag >>> 3) {
                 case 1: {
                         message.token = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.clientPublicKey = reader.bytes();
                         break;
                     }
                 default:
@@ -166,6 +1449,11 @@ $root.AICommon = (function() {
                 if (!$util.isString(message.token))
                     return "token: string expected";
             }
+            if (message.clientPublicKey != null && message.hasOwnProperty("clientPublicKey")) {
+                properties._clientPublicKey = 1;
+                if (!(message.clientPublicKey && typeof message.clientPublicKey.length === "number" || $util.isString(message.clientPublicKey)))
+                    return "clientPublicKey: buffer expected";
+            }
             return null;
         };
 
@@ -183,6 +1471,11 @@ $root.AICommon = (function() {
             var message = new $root.AICommon.BotAgentDeepLinkMetadata();
             if (object.token != null)
                 message.token = String(object.token);
+            if (object.clientPublicKey != null)
+                if (typeof object.clientPublicKey === "string")
+                    $util.base64.decode(object.clientPublicKey, message.clientPublicKey = $util.newBuffer($util.base64.length(object.clientPublicKey)), 0);
+                else if (object.clientPublicKey.length >= 0)
+                    message.clientPublicKey = object.clientPublicKey;
             return message;
         };
 
@@ -203,6 +1496,11 @@ $root.AICommon = (function() {
                 object.token = message.token;
                 if (options.oneofs)
                     object._token = "token";
+            }
+            if (message.clientPublicKey != null && message.hasOwnProperty("clientPublicKey")) {
+                object.clientPublicKey = options.bytes === String ? $util.base64.encode(message.clientPublicKey, 0, message.clientPublicKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.clientPublicKey) : message.clientPublicKey;
+                if (options.oneofs)
+                    object._clientPublicKey = "clientPublicKey";
             }
             return object;
         };
@@ -2172,7 +3470,7 @@ $root.AICommon = (function() {
          * Properties of a AIRegenerateMetadata.
          * @memberof AICommon
          * @interface IAIRegenerateMetadata
-         * @property {Protocol.IMessageKey|null} [messageKey] AIRegenerateMetadata messageKey
+         * @property {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null} [messageKey] AIRegenerateMetadata messageKey
          * @property {number|Long|null} [responseTimestampMs] AIRegenerateMetadata responseTimestampMs
          */
 
@@ -2193,7 +3491,7 @@ $root.AICommon = (function() {
 
         /**
          * AIRegenerateMetadata messageKey.
-         * @member {Protocol.IMessageKey|null|undefined} messageKey
+         * @member {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null|undefined} messageKey
          * @memberof AICommon.AIRegenerateMetadata
          * @instance
          */
@@ -2247,7 +3545,7 @@ $root.AICommon = (function() {
             if (!writer)
                 writer = $Writer.create();
             if (message.messageKey != null && Object.hasOwnProperty.call(message, "messageKey"))
-                $root.Protocol.MessageKey.encode(message.messageKey, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.encode(message.messageKey, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.responseTimestampMs != null && Object.hasOwnProperty.call(message, "responseTimestampMs"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int64(message.responseTimestampMs);
             return writer;
@@ -2287,7 +3585,7 @@ $root.AICommon = (function() {
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.messageKey = $root.Protocol.MessageKey.decode(reader, reader.uint32());
+                        message.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(reader, reader.uint32());
                         break;
                     }
                 case 2: {
@@ -2333,7 +3631,7 @@ $root.AICommon = (function() {
             if (message.messageKey != null && message.hasOwnProperty("messageKey")) {
                 properties._messageKey = 1;
                 {
-                    var error = $root.Protocol.MessageKey.verify(message.messageKey);
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify(message.messageKey);
                     if (error)
                         return "messageKey." + error;
                 }
@@ -2361,7 +3659,7 @@ $root.AICommon = (function() {
             if (object.messageKey != null) {
                 if (typeof object.messageKey !== "object")
                     throw TypeError(".AICommon.AIRegenerateMetadata.messageKey: object expected");
-                message.messageKey = $root.Protocol.MessageKey.fromObject(object.messageKey);
+                message.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.fromObject(object.messageKey);
             }
             if (object.responseTimestampMs != null)
                 if ($util.Long)
@@ -2389,7 +3687,7 @@ $root.AICommon = (function() {
                 options = {};
             var object = {};
             if (message.messageKey != null && message.hasOwnProperty("messageKey")) {
-                object.messageKey = $root.Protocol.MessageKey.toObject(message.messageKey, options);
+                object.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(message.messageKey, options);
                 if (options.oneofs)
                     object._messageKey = "messageKey";
             }
@@ -2871,6 +4169,8 @@ $root.AICommon = (function() {
                 case 54:
                 case 55:
                 case 56:
+                case 57:
+                case 58:
                     break;
                 }
             }
@@ -3092,6 +4392,14 @@ $root.AICommon = (function() {
             case "NEW_CHAT_LIST":
             case 56:
                 message.botEntryPointOrigin = 56;
+                break;
+            case "CONTACTS_TAB":
+            case 57:
+                message.botEntryPointOrigin = 57;
+                break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                message.botEntryPointOrigin = 58;
                 break;
             }
             if (object.forwardScore != null)
@@ -3444,7 +4752,7 @@ $root.AICommon = (function() {
          * Properties of a BotFeedbackMessage.
          * @memberof AICommon
          * @interface IBotFeedbackMessage
-         * @property {Protocol.IMessageKey|null} [messageKey] BotFeedbackMessage messageKey
+         * @property {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null} [messageKey] BotFeedbackMessage messageKey
          * @property {AICommon.BotFeedbackMessage.BotFeedbackKind|null} [kind] BotFeedbackMessage kind
          * @property {string|null} [text] BotFeedbackMessage text
          * @property {number|Long|null} [kindNegative] BotFeedbackMessage kindNegative
@@ -3470,7 +4778,7 @@ $root.AICommon = (function() {
 
         /**
          * BotFeedbackMessage messageKey.
-         * @member {Protocol.IMessageKey|null|undefined} messageKey
+         * @member {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null|undefined} messageKey
          * @memberof AICommon.BotFeedbackMessage
          * @instance
          */
@@ -3594,7 +4902,7 @@ $root.AICommon = (function() {
             if (!writer)
                 writer = $Writer.create();
             if (message.messageKey != null && Object.hasOwnProperty.call(message, "messageKey"))
-                $root.Protocol.MessageKey.encode(message.messageKey, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.encode(message.messageKey, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.kind != null && Object.hasOwnProperty.call(message, "kind"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.kind);
             if (message.text != null && Object.hasOwnProperty.call(message, "text"))
@@ -3644,7 +4952,7 @@ $root.AICommon = (function() {
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.messageKey = $root.Protocol.MessageKey.decode(reader, reader.uint32());
+                        message.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(reader, reader.uint32());
                         break;
                     }
                 case 2: {
@@ -3710,7 +5018,7 @@ $root.AICommon = (function() {
             if (message.messageKey != null && message.hasOwnProperty("messageKey")) {
                 properties._messageKey = 1;
                 {
-                    var error = $root.Protocol.MessageKey.verify(message.messageKey);
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify(message.messageKey);
                     if (error)
                         return "messageKey." + error;
                 }
@@ -3789,7 +5097,7 @@ $root.AICommon = (function() {
             if (object.messageKey != null) {
                 if (typeof object.messageKey !== "object")
                     throw TypeError(".AICommon.BotFeedbackMessage.messageKey: object expected");
-                message.messageKey = $root.Protocol.MessageKey.fromObject(object.messageKey);
+                message.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.fromObject(object.messageKey);
             }
             switch (object.kind) {
             default:
@@ -3917,7 +5225,7 @@ $root.AICommon = (function() {
                 options = {};
             var object = {};
             if (message.messageKey != null && message.hasOwnProperty("messageKey")) {
-                object.messageKey = $root.Protocol.MessageKey.toObject(message.messageKey, options);
+                object.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(message.messageKey, options);
                 if (options.oneofs)
                     object._messageKey = "messageKey";
             }
@@ -6957,6 +8265,232 @@ $root.AICommon = (function() {
         return BotRenderingConfigMetadata;
     })();
 
+    AICommon.BotHistoryShareMetadata = (function() {
+
+        /**
+         * Properties of a BotHistoryShareMetadata.
+         * @memberof AICommon
+         * @interface IBotHistoryShareMetadata
+         * @property {Array.<AICommon.IBotGroupParticipantMetadata>|null} [participantsMetadata] BotHistoryShareMetadata participantsMetadata
+         */
+
+        /**
+         * Constructs a new BotHistoryShareMetadata.
+         * @memberof AICommon
+         * @classdesc Represents a BotHistoryShareMetadata.
+         * @implements IBotHistoryShareMetadata
+         * @constructor
+         * @param {AICommon.IBotHistoryShareMetadata=} [properties] Properties to set
+         */
+        function BotHistoryShareMetadata(properties) {
+            this.participantsMetadata = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BotHistoryShareMetadata participantsMetadata.
+         * @member {Array.<AICommon.IBotGroupParticipantMetadata>} participantsMetadata
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @instance
+         */
+        BotHistoryShareMetadata.prototype.participantsMetadata = $util.emptyArray;
+
+        /**
+         * Creates a new BotHistoryShareMetadata instance using the specified properties.
+         * @function create
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {AICommon.IBotHistoryShareMetadata=} [properties] Properties to set
+         * @returns {AICommon.BotHistoryShareMetadata} BotHistoryShareMetadata instance
+         */
+        BotHistoryShareMetadata.create = function create(properties) {
+            return new BotHistoryShareMetadata(properties);
+        };
+
+        /**
+         * Encodes the specified BotHistoryShareMetadata message. Does not implicitly {@link AICommon.BotHistoryShareMetadata.verify|verify} messages.
+         * @function encode
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {AICommon.IBotHistoryShareMetadata} message BotHistoryShareMetadata message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotHistoryShareMetadata.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.participantsMetadata != null && message.participantsMetadata.length)
+                for (var i = 0; i < message.participantsMetadata.length; ++i)
+                    $root.AICommon.BotGroupParticipantMetadata.encode(message.participantsMetadata[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BotHistoryShareMetadata message, length delimited. Does not implicitly {@link AICommon.BotHistoryShareMetadata.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {AICommon.IBotHistoryShareMetadata} message BotHistoryShareMetadata message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotHistoryShareMetadata.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BotHistoryShareMetadata message from the specified reader or buffer.
+         * @function decode
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {AICommon.BotHistoryShareMetadata} BotHistoryShareMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotHistoryShareMetadata.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.BotHistoryShareMetadata();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.participantsMetadata && message.participantsMetadata.length))
+                            message.participantsMetadata = [];
+                        message.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BotHistoryShareMetadata message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {AICommon.BotHistoryShareMetadata} BotHistoryShareMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotHistoryShareMetadata.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BotHistoryShareMetadata message.
+         * @function verify
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BotHistoryShareMetadata.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.participantsMetadata != null && message.hasOwnProperty("participantsMetadata")) {
+                if (!Array.isArray(message.participantsMetadata))
+                    return "participantsMetadata: array expected";
+                for (var i = 0; i < message.participantsMetadata.length; ++i) {
+                    var error = $root.AICommon.BotGroupParticipantMetadata.verify(message.participantsMetadata[i]);
+                    if (error)
+                        return "participantsMetadata." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BotHistoryShareMetadata message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {AICommon.BotHistoryShareMetadata} BotHistoryShareMetadata
+         */
+        BotHistoryShareMetadata.fromObject = function fromObject(object) {
+            if (object instanceof $root.AICommon.BotHistoryShareMetadata)
+                return object;
+            var message = new $root.AICommon.BotHistoryShareMetadata();
+            if (object.participantsMetadata) {
+                if (!Array.isArray(object.participantsMetadata))
+                    throw TypeError(".AICommon.BotHistoryShareMetadata.participantsMetadata: array expected");
+                message.participantsMetadata = [];
+                for (var i = 0; i < object.participantsMetadata.length; ++i) {
+                    if (typeof object.participantsMetadata[i] !== "object")
+                        throw TypeError(".AICommon.BotHistoryShareMetadata.participantsMetadata: object expected");
+                    message.participantsMetadata[i] = $root.AICommon.BotGroupParticipantMetadata.fromObject(object.participantsMetadata[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BotHistoryShareMetadata message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {AICommon.BotHistoryShareMetadata} message BotHistoryShareMetadata
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BotHistoryShareMetadata.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.participantsMetadata = [];
+            if (message.participantsMetadata && message.participantsMetadata.length) {
+                object.participantsMetadata = [];
+                for (var j = 0; j < message.participantsMetadata.length; ++j)
+                    object.participantsMetadata[j] = $root.AICommon.BotGroupParticipantMetadata.toObject(message.participantsMetadata[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this BotHistoryShareMetadata to JSON.
+         * @function toJSON
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BotHistoryShareMetadata.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BotHistoryShareMetadata
+         * @function getTypeUrl
+         * @memberof AICommon.BotHistoryShareMetadata
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BotHistoryShareMetadata.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/AICommon.BotHistoryShareMetadata";
+        };
+
+        return BotHistoryShareMetadata;
+    })();
+
     AICommon.BotGroupMetadata = (function() {
 
         /**
@@ -7476,6 +9010,9 @@ $root.AICommon = (function() {
          * @property {AICommon.IBotCommandMetadata|null} [commandMetadata] BotMetadata commandMetadata
          * @property {AICommon.IBotResolvedToolCallMetadata|null} [resolvedToolCallMetadata] BotMetadata resolvedToolCallMetadata
          * @property {AICommon.IAISubscriptionUpsellMetadata|null} [subscriptionUpsellMetadata] BotMetadata subscriptionUpsellMetadata
+         * @property {AICommon.IBotPttPromptMetadata|null} [pttPromptMetadata] BotMetadata pttPromptMetadata
+         * @property {AICommon.IBotHistoryShareMetadata|null} [botHistoryShareMetadata] BotMetadata botHistoryShareMetadata
+         * @property {boolean|null} [responseStoppedByUser] BotMetadata responseStoppedByUser
          * @property {Uint8Array|null} [internalMetadata] BotMetadata internalMetadata
          */
 
@@ -7815,6 +9352,30 @@ $root.AICommon = (function() {
         BotMetadata.prototype.subscriptionUpsellMetadata = null;
 
         /**
+         * BotMetadata pttPromptMetadata.
+         * @member {AICommon.IBotPttPromptMetadata|null|undefined} pttPromptMetadata
+         * @memberof AICommon.BotMetadata
+         * @instance
+         */
+        BotMetadata.prototype.pttPromptMetadata = null;
+
+        /**
+         * BotMetadata botHistoryShareMetadata.
+         * @member {AICommon.IBotHistoryShareMetadata|null|undefined} botHistoryShareMetadata
+         * @memberof AICommon.BotMetadata
+         * @instance
+         */
+        BotMetadata.prototype.botHistoryShareMetadata = null;
+
+        /**
+         * BotMetadata responseStoppedByUser.
+         * @member {boolean|null|undefined} responseStoppedByUser
+         * @memberof AICommon.BotMetadata
+         * @instance
+         */
+        BotMetadata.prototype.responseStoppedByUser = null;
+
+        /**
          * BotMetadata internalMetadata.
          * @member {Uint8Array|null|undefined} internalMetadata
          * @memberof AICommon.BotMetadata
@@ -8066,6 +9627,24 @@ $root.AICommon = (function() {
         });
 
         // Virtual OneOf for proto3 optional field
+        Object.defineProperty(BotMetadata.prototype, "_pttPromptMetadata", {
+            get: $util.oneOfGetter($oneOfFields = ["pttPromptMetadata"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(BotMetadata.prototype, "_botHistoryShareMetadata", {
+            get: $util.oneOfGetter($oneOfFields = ["botHistoryShareMetadata"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(BotMetadata.prototype, "_responseStoppedByUser", {
+            get: $util.oneOfGetter($oneOfFields = ["responseStoppedByUser"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
         Object.defineProperty(BotMetadata.prototype, "_internalMetadata", {
             get: $util.oneOfGetter($oneOfFields = ["internalMetadata"]),
             set: $util.oneOfSetter($oneOfFields)
@@ -8175,6 +9754,12 @@ $root.AICommon = (function() {
                 $root.AICommon.BotResolvedToolCallMetadata.encode(message.resolvedToolCallMetadata, writer.uint32(/* id 40, wireType 2 =*/322).fork()).ldelim();
             if (message.subscriptionUpsellMetadata != null && Object.hasOwnProperty.call(message, "subscriptionUpsellMetadata"))
                 $root.AICommon.AISubscriptionUpsellMetadata.encode(message.subscriptionUpsellMetadata, writer.uint32(/* id 41, wireType 2 =*/330).fork()).ldelim();
+            if (message.pttPromptMetadata != null && Object.hasOwnProperty.call(message, "pttPromptMetadata"))
+                $root.AICommon.BotPttPromptMetadata.encode(message.pttPromptMetadata, writer.uint32(/* id 42, wireType 2 =*/338).fork()).ldelim();
+            if (message.botHistoryShareMetadata != null && Object.hasOwnProperty.call(message, "botHistoryShareMetadata"))
+                $root.AICommon.BotHistoryShareMetadata.encode(message.botHistoryShareMetadata, writer.uint32(/* id 43, wireType 2 =*/346).fork()).ldelim();
+            if (message.responseStoppedByUser != null && Object.hasOwnProperty.call(message, "responseStoppedByUser"))
+                writer.uint32(/* id 44, wireType 0 =*/352).bool(message.responseStoppedByUser);
             if (message.internalMetadata != null && Object.hasOwnProperty.call(message, "internalMetadata"))
                 writer.uint32(/* id 999, wireType 2 =*/7994).bytes(message.internalMetadata);
             return writer;
@@ -8371,6 +9956,18 @@ $root.AICommon = (function() {
                     }
                 case 41: {
                         message.subscriptionUpsellMetadata = $root.AICommon.AISubscriptionUpsellMetadata.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 42: {
+                        message.pttPromptMetadata = $root.AICommon.BotPttPromptMetadata.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 43: {
+                        message.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 44: {
+                        message.responseStoppedByUser = reader.bool();
                         break;
                     }
                 case 999: {
@@ -8712,6 +10309,27 @@ $root.AICommon = (function() {
                         return "subscriptionUpsellMetadata." + error;
                 }
             }
+            if (message.pttPromptMetadata != null && message.hasOwnProperty("pttPromptMetadata")) {
+                properties._pttPromptMetadata = 1;
+                {
+                    var error = $root.AICommon.BotPttPromptMetadata.verify(message.pttPromptMetadata);
+                    if (error)
+                        return "pttPromptMetadata." + error;
+                }
+            }
+            if (message.botHistoryShareMetadata != null && message.hasOwnProperty("botHistoryShareMetadata")) {
+                properties._botHistoryShareMetadata = 1;
+                {
+                    var error = $root.AICommon.BotHistoryShareMetadata.verify(message.botHistoryShareMetadata);
+                    if (error)
+                        return "botHistoryShareMetadata." + error;
+                }
+            }
+            if (message.responseStoppedByUser != null && message.hasOwnProperty("responseStoppedByUser")) {
+                properties._responseStoppedByUser = 1;
+                if (typeof message.responseStoppedByUser !== "boolean")
+                    return "responseStoppedByUser: boolean expected";
+            }
             if (message.internalMetadata != null && message.hasOwnProperty("internalMetadata")) {
                 properties._internalMetadata = 1;
                 if (!(message.internalMetadata && typeof message.internalMetadata.length === "number" || $util.isString(message.internalMetadata)))
@@ -8914,6 +10532,18 @@ $root.AICommon = (function() {
                     throw TypeError(".AICommon.BotMetadata.subscriptionUpsellMetadata: object expected");
                 message.subscriptionUpsellMetadata = $root.AICommon.AISubscriptionUpsellMetadata.fromObject(object.subscriptionUpsellMetadata);
             }
+            if (object.pttPromptMetadata != null) {
+                if (typeof object.pttPromptMetadata !== "object")
+                    throw TypeError(".AICommon.BotMetadata.pttPromptMetadata: object expected");
+                message.pttPromptMetadata = $root.AICommon.BotPttPromptMetadata.fromObject(object.pttPromptMetadata);
+            }
+            if (object.botHistoryShareMetadata != null) {
+                if (typeof object.botHistoryShareMetadata !== "object")
+                    throw TypeError(".AICommon.BotMetadata.botHistoryShareMetadata: object expected");
+                message.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.fromObject(object.botHistoryShareMetadata);
+            }
+            if (object.responseStoppedByUser != null)
+                message.responseStoppedByUser = Boolean(object.responseStoppedByUser);
             if (object.internalMetadata != null)
                 if (typeof object.internalMetadata === "string")
                     $util.base64.decode(object.internalMetadata, message.internalMetadata = $util.newBuffer($util.base64.length(object.internalMetadata)), 0);
@@ -9135,6 +10765,21 @@ $root.AICommon = (function() {
                 if (options.oneofs)
                     object._subscriptionUpsellMetadata = "subscriptionUpsellMetadata";
             }
+            if (message.pttPromptMetadata != null && message.hasOwnProperty("pttPromptMetadata")) {
+                object.pttPromptMetadata = $root.AICommon.BotPttPromptMetadata.toObject(message.pttPromptMetadata, options);
+                if (options.oneofs)
+                    object._pttPromptMetadata = "pttPromptMetadata";
+            }
+            if (message.botHistoryShareMetadata != null && message.hasOwnProperty("botHistoryShareMetadata")) {
+                object.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.toObject(message.botHistoryShareMetadata, options);
+                if (options.oneofs)
+                    object._botHistoryShareMetadata = "botHistoryShareMetadata";
+            }
+            if (message.responseStoppedByUser != null && message.hasOwnProperty("responseStoppedByUser")) {
+                object.responseStoppedByUser = message.responseStoppedByUser;
+                if (options.oneofs)
+                    object._responseStoppedByUser = "responseStoppedByUser";
+            }
             if (message.internalMetadata != null && message.hasOwnProperty("internalMetadata")) {
                 object.internalMetadata = options.bytes === String ? $util.base64.encode(message.internalMetadata, 0, message.internalMetadata.length) : options.bytes === Array ? Array.prototype.slice.call(message.internalMetadata) : message.internalMetadata;
                 if (options.oneofs)
@@ -9170,6 +10815,224 @@ $root.AICommon = (function() {
         };
 
         return BotMetadata;
+    })();
+
+    AICommon.BotPttPromptMetadata = (function() {
+
+        /**
+         * Properties of a BotPttPromptMetadata.
+         * @memberof AICommon
+         * @interface IBotPttPromptMetadata
+         * @property {string|null} [transcript] BotPttPromptMetadata transcript
+         */
+
+        /**
+         * Constructs a new BotPttPromptMetadata.
+         * @memberof AICommon
+         * @classdesc Represents a BotPttPromptMetadata.
+         * @implements IBotPttPromptMetadata
+         * @constructor
+         * @param {AICommon.IBotPttPromptMetadata=} [properties] Properties to set
+         */
+        function BotPttPromptMetadata(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BotPttPromptMetadata transcript.
+         * @member {string|null|undefined} transcript
+         * @memberof AICommon.BotPttPromptMetadata
+         * @instance
+         */
+        BotPttPromptMetadata.prototype.transcript = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(BotPttPromptMetadata.prototype, "_transcript", {
+            get: $util.oneOfGetter($oneOfFields = ["transcript"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new BotPttPromptMetadata instance using the specified properties.
+         * @function create
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {AICommon.IBotPttPromptMetadata=} [properties] Properties to set
+         * @returns {AICommon.BotPttPromptMetadata} BotPttPromptMetadata instance
+         */
+        BotPttPromptMetadata.create = function create(properties) {
+            return new BotPttPromptMetadata(properties);
+        };
+
+        /**
+         * Encodes the specified BotPttPromptMetadata message. Does not implicitly {@link AICommon.BotPttPromptMetadata.verify|verify} messages.
+         * @function encode
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {AICommon.IBotPttPromptMetadata} message BotPttPromptMetadata message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotPttPromptMetadata.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.transcript != null && Object.hasOwnProperty.call(message, "transcript"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.transcript);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BotPttPromptMetadata message, length delimited. Does not implicitly {@link AICommon.BotPttPromptMetadata.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {AICommon.IBotPttPromptMetadata} message BotPttPromptMetadata message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotPttPromptMetadata.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BotPttPromptMetadata message from the specified reader or buffer.
+         * @function decode
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {AICommon.BotPttPromptMetadata} BotPttPromptMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotPttPromptMetadata.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.BotPttPromptMetadata();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.transcript = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BotPttPromptMetadata message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {AICommon.BotPttPromptMetadata} BotPttPromptMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotPttPromptMetadata.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BotPttPromptMetadata message.
+         * @function verify
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BotPttPromptMetadata.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.transcript != null && message.hasOwnProperty("transcript")) {
+                properties._transcript = 1;
+                if (!$util.isString(message.transcript))
+                    return "transcript: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BotPttPromptMetadata message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {AICommon.BotPttPromptMetadata} BotPttPromptMetadata
+         */
+        BotPttPromptMetadata.fromObject = function fromObject(object) {
+            if (object instanceof $root.AICommon.BotPttPromptMetadata)
+                return object;
+            var message = new $root.AICommon.BotPttPromptMetadata();
+            if (object.transcript != null)
+                message.transcript = String(object.transcript);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BotPttPromptMetadata message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {AICommon.BotPttPromptMetadata} message BotPttPromptMetadata
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BotPttPromptMetadata.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (message.transcript != null && message.hasOwnProperty("transcript")) {
+                object.transcript = message.transcript;
+                if (options.oneofs)
+                    object._transcript = "transcript";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this BotPttPromptMetadata to JSON.
+         * @function toJSON
+         * @memberof AICommon.BotPttPromptMetadata
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BotPttPromptMetadata.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BotPttPromptMetadata
+         * @function getTypeUrl
+         * @memberof AICommon.BotPttPromptMetadata
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BotPttPromptMetadata.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/AICommon.BotPttPromptMetadata";
+        };
+
+        return BotPttPromptMetadata;
     })();
 
     AICommon.BotResolvedToolCallMetadata = (function() {
@@ -9705,6 +11568,566 @@ $root.AICommon = (function() {
         };
 
         return BotCommandMetadata;
+    })();
+
+    AICommon.AIMetadataOperation = (function() {
+
+        /**
+         * Properties of a AIMetadataOperation.
+         * @memberof AICommon
+         * @interface IAIMetadataOperation
+         * @property {AICommon.IHatchMetadataSync|null} [hatchMetadataSync] AIMetadataOperation hatchMetadataSync
+         * @property {AICommon.IBizAIMetadataSync|null} [bizAiMetadataSync] AIMetadataOperation bizAiMetadataSync
+         */
+
+        /**
+         * Constructs a new AIMetadataOperation.
+         * @memberof AICommon
+         * @classdesc Represents a AIMetadataOperation.
+         * @implements IAIMetadataOperation
+         * @constructor
+         * @param {AICommon.IAIMetadataOperation=} [properties] Properties to set
+         */
+        function AIMetadataOperation(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * AIMetadataOperation hatchMetadataSync.
+         * @member {AICommon.IHatchMetadataSync|null|undefined} hatchMetadataSync
+         * @memberof AICommon.AIMetadataOperation
+         * @instance
+         */
+        AIMetadataOperation.prototype.hatchMetadataSync = null;
+
+        /**
+         * AIMetadataOperation bizAiMetadataSync.
+         * @member {AICommon.IBizAIMetadataSync|null|undefined} bizAiMetadataSync
+         * @memberof AICommon.AIMetadataOperation
+         * @instance
+         */
+        AIMetadataOperation.prototype.bizAiMetadataSync = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(AIMetadataOperation.prototype, "_hatchMetadataSync", {
+            get: $util.oneOfGetter($oneOfFields = ["hatchMetadataSync"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(AIMetadataOperation.prototype, "_bizAiMetadataSync", {
+            get: $util.oneOfGetter($oneOfFields = ["bizAiMetadataSync"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new AIMetadataOperation instance using the specified properties.
+         * @function create
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {AICommon.IAIMetadataOperation=} [properties] Properties to set
+         * @returns {AICommon.AIMetadataOperation} AIMetadataOperation instance
+         */
+        AIMetadataOperation.create = function create(properties) {
+            return new AIMetadataOperation(properties);
+        };
+
+        /**
+         * Encodes the specified AIMetadataOperation message. Does not implicitly {@link AICommon.AIMetadataOperation.verify|verify} messages.
+         * @function encode
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {AICommon.IAIMetadataOperation} message AIMetadataOperation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AIMetadataOperation.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.hatchMetadataSync != null && Object.hasOwnProperty.call(message, "hatchMetadataSync"))
+                $root.AICommon.HatchMetadataSync.encode(message.hatchMetadataSync, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.bizAiMetadataSync != null && Object.hasOwnProperty.call(message, "bizAiMetadataSync"))
+                $root.AICommon.BizAIMetadataSync.encode(message.bizAiMetadataSync, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AIMetadataOperation message, length delimited. Does not implicitly {@link AICommon.AIMetadataOperation.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {AICommon.IAIMetadataOperation} message AIMetadataOperation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AIMetadataOperation.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a AIMetadataOperation message from the specified reader or buffer.
+         * @function decode
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {AICommon.AIMetadataOperation} AIMetadataOperation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AIMetadataOperation.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.AIMetadataOperation();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.hatchMetadataSync = $root.AICommon.HatchMetadataSync.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a AIMetadataOperation message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {AICommon.AIMetadataOperation} AIMetadataOperation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AIMetadataOperation.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a AIMetadataOperation message.
+         * @function verify
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AIMetadataOperation.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.hatchMetadataSync != null && message.hasOwnProperty("hatchMetadataSync")) {
+                properties._hatchMetadataSync = 1;
+                {
+                    var error = $root.AICommon.HatchMetadataSync.verify(message.hatchMetadataSync);
+                    if (error)
+                        return "hatchMetadataSync." + error;
+                }
+            }
+            if (message.bizAiMetadataSync != null && message.hasOwnProperty("bizAiMetadataSync")) {
+                properties._bizAiMetadataSync = 1;
+                {
+                    var error = $root.AICommon.BizAIMetadataSync.verify(message.bizAiMetadataSync);
+                    if (error)
+                        return "bizAiMetadataSync." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a AIMetadataOperation message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {AICommon.AIMetadataOperation} AIMetadataOperation
+         */
+        AIMetadataOperation.fromObject = function fromObject(object) {
+            if (object instanceof $root.AICommon.AIMetadataOperation)
+                return object;
+            var message = new $root.AICommon.AIMetadataOperation();
+            if (object.hatchMetadataSync != null) {
+                if (typeof object.hatchMetadataSync !== "object")
+                    throw TypeError(".AICommon.AIMetadataOperation.hatchMetadataSync: object expected");
+                message.hatchMetadataSync = $root.AICommon.HatchMetadataSync.fromObject(object.hatchMetadataSync);
+            }
+            if (object.bizAiMetadataSync != null) {
+                if (typeof object.bizAiMetadataSync !== "object")
+                    throw TypeError(".AICommon.AIMetadataOperation.bizAiMetadataSync: object expected");
+                message.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.fromObject(object.bizAiMetadataSync);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a AIMetadataOperation message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {AICommon.AIMetadataOperation} message AIMetadataOperation
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AIMetadataOperation.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (message.hatchMetadataSync != null && message.hasOwnProperty("hatchMetadataSync")) {
+                object.hatchMetadataSync = $root.AICommon.HatchMetadataSync.toObject(message.hatchMetadataSync, options);
+                if (options.oneofs)
+                    object._hatchMetadataSync = "hatchMetadataSync";
+            }
+            if (message.bizAiMetadataSync != null && message.hasOwnProperty("bizAiMetadataSync")) {
+                object.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.toObject(message.bizAiMetadataSync, options);
+                if (options.oneofs)
+                    object._bizAiMetadataSync = "bizAiMetadataSync";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this AIMetadataOperation to JSON.
+         * @function toJSON
+         * @memberof AICommon.AIMetadataOperation
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AIMetadataOperation.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AIMetadataOperation
+         * @function getTypeUrl
+         * @memberof AICommon.AIMetadataOperation
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AIMetadataOperation.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/AICommon.AIMetadataOperation";
+        };
+
+        return AIMetadataOperation;
+    })();
+
+    AICommon.HatchMetadataSync = (function() {
+
+        /**
+         * Properties of a HatchMetadataSync.
+         * @memberof AICommon
+         * @interface IHatchMetadataSync
+         * @property {Uint8Array|null} [data] HatchMetadataSync data
+         * @property {number|Long|null} [timestampMs] HatchMetadataSync timestampMs
+         * @property {string|null} [requestId] HatchMetadataSync requestId
+         */
+
+        /**
+         * Constructs a new HatchMetadataSync.
+         * @memberof AICommon
+         * @classdesc Represents a HatchMetadataSync.
+         * @implements IHatchMetadataSync
+         * @constructor
+         * @param {AICommon.IHatchMetadataSync=} [properties] Properties to set
+         */
+        function HatchMetadataSync(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * HatchMetadataSync data.
+         * @member {Uint8Array|null|undefined} data
+         * @memberof AICommon.HatchMetadataSync
+         * @instance
+         */
+        HatchMetadataSync.prototype.data = null;
+
+        /**
+         * HatchMetadataSync timestampMs.
+         * @member {number|Long|null|undefined} timestampMs
+         * @memberof AICommon.HatchMetadataSync
+         * @instance
+         */
+        HatchMetadataSync.prototype.timestampMs = null;
+
+        /**
+         * HatchMetadataSync requestId.
+         * @member {string|null|undefined} requestId
+         * @memberof AICommon.HatchMetadataSync
+         * @instance
+         */
+        HatchMetadataSync.prototype.requestId = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(HatchMetadataSync.prototype, "_data", {
+            get: $util.oneOfGetter($oneOfFields = ["data"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(HatchMetadataSync.prototype, "_timestampMs", {
+            get: $util.oneOfGetter($oneOfFields = ["timestampMs"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(HatchMetadataSync.prototype, "_requestId", {
+            get: $util.oneOfGetter($oneOfFields = ["requestId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new HatchMetadataSync instance using the specified properties.
+         * @function create
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {AICommon.IHatchMetadataSync=} [properties] Properties to set
+         * @returns {AICommon.HatchMetadataSync} HatchMetadataSync instance
+         */
+        HatchMetadataSync.create = function create(properties) {
+            return new HatchMetadataSync(properties);
+        };
+
+        /**
+         * Encodes the specified HatchMetadataSync message. Does not implicitly {@link AICommon.HatchMetadataSync.verify|verify} messages.
+         * @function encode
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {AICommon.IHatchMetadataSync} message HatchMetadataSync message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        HatchMetadataSync.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.data != null && Object.hasOwnProperty.call(message, "data"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.data);
+            if (message.timestampMs != null && Object.hasOwnProperty.call(message, "timestampMs"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int64(message.timestampMs);
+            if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.requestId);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified HatchMetadataSync message, length delimited. Does not implicitly {@link AICommon.HatchMetadataSync.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {AICommon.IHatchMetadataSync} message HatchMetadataSync message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        HatchMetadataSync.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a HatchMetadataSync message from the specified reader or buffer.
+         * @function decode
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {AICommon.HatchMetadataSync} HatchMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        HatchMetadataSync.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.HatchMetadataSync();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.data = reader.bytes();
+                        break;
+                    }
+                case 2: {
+                        message.timestampMs = reader.int64();
+                        break;
+                    }
+                case 3: {
+                        message.requestId = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a HatchMetadataSync message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {AICommon.HatchMetadataSync} HatchMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        HatchMetadataSync.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a HatchMetadataSync message.
+         * @function verify
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        HatchMetadataSync.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.data != null && message.hasOwnProperty("data")) {
+                properties._data = 1;
+                if (!(message.data && typeof message.data.length === "number" || $util.isString(message.data)))
+                    return "data: buffer expected";
+            }
+            if (message.timestampMs != null && message.hasOwnProperty("timestampMs")) {
+                properties._timestampMs = 1;
+                if (!$util.isInteger(message.timestampMs) && !(message.timestampMs && $util.isInteger(message.timestampMs.low) && $util.isInteger(message.timestampMs.high)))
+                    return "timestampMs: integer|Long expected";
+            }
+            if (message.requestId != null && message.hasOwnProperty("requestId")) {
+                properties._requestId = 1;
+                if (!$util.isString(message.requestId))
+                    return "requestId: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a HatchMetadataSync message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {AICommon.HatchMetadataSync} HatchMetadataSync
+         */
+        HatchMetadataSync.fromObject = function fromObject(object) {
+            if (object instanceof $root.AICommon.HatchMetadataSync)
+                return object;
+            var message = new $root.AICommon.HatchMetadataSync();
+            if (object.data != null)
+                if (typeof object.data === "string")
+                    $util.base64.decode(object.data, message.data = $util.newBuffer($util.base64.length(object.data)), 0);
+                else if (object.data.length >= 0)
+                    message.data = object.data;
+            if (object.timestampMs != null)
+                if ($util.Long)
+                    (message.timestampMs = $util.Long.fromValue(object.timestampMs)).unsigned = false;
+                else if (typeof object.timestampMs === "string")
+                    message.timestampMs = parseInt(object.timestampMs, 10);
+                else if (typeof object.timestampMs === "number")
+                    message.timestampMs = object.timestampMs;
+                else if (typeof object.timestampMs === "object")
+                    message.timestampMs = new $util.LongBits(object.timestampMs.low >>> 0, object.timestampMs.high >>> 0).toNumber();
+            if (object.requestId != null)
+                message.requestId = String(object.requestId);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a HatchMetadataSync message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {AICommon.HatchMetadataSync} message HatchMetadataSync
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        HatchMetadataSync.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (message.data != null && message.hasOwnProperty("data")) {
+                object.data = options.bytes === String ? $util.base64.encode(message.data, 0, message.data.length) : options.bytes === Array ? Array.prototype.slice.call(message.data) : message.data;
+                if (options.oneofs)
+                    object._data = "data";
+            }
+            if (message.timestampMs != null && message.hasOwnProperty("timestampMs")) {
+                if (typeof message.timestampMs === "number")
+                    object.timestampMs = options.longs === String ? String(message.timestampMs) : message.timestampMs;
+                else
+                    object.timestampMs = options.longs === String ? $util.Long.prototype.toString.call(message.timestampMs) : options.longs === Number ? new $util.LongBits(message.timestampMs.low >>> 0, message.timestampMs.high >>> 0).toNumber() : message.timestampMs;
+                if (options.oneofs)
+                    object._timestampMs = "timestampMs";
+            }
+            if (message.requestId != null && message.hasOwnProperty("requestId")) {
+                object.requestId = message.requestId;
+                if (options.oneofs)
+                    object._requestId = "requestId";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this HatchMetadataSync to JSON.
+         * @function toJSON
+         * @memberof AICommon.HatchMetadataSync
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        HatchMetadataSync.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for HatchMetadataSync
+         * @function getTypeUrl
+         * @memberof AICommon.HatchMetadataSync
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        HatchMetadataSync.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/AICommon.HatchMetadataSync";
+        };
+
+        return HatchMetadataSync;
     })();
 
     AICommon.AIMediaCollectionMessage = (function() {
@@ -16336,6 +18759,15 @@ $root.AICommon = (function() {
                     case 59:
                     case 60:
                     case 61:
+                    case 62:
+                    case 63:
+                    case 64:
+                    case 65:
+                    case 66:
+                    case 67:
+                    case 68:
+                    case 69:
+                    case 70:
                         break;
                     }
             }
@@ -16613,6 +19045,42 @@ $root.AICommon = (function() {
                     case 61:
                         message.capabilities[i] = 61;
                         break;
+                    case "UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED":
+                    case 62:
+                        message.capabilities[i] = 62;
+                        break;
+                    case "UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED":
+                    case 63:
+                        message.capabilities[i] = 63;
+                        break;
+                    case "AI_RICH_RESPONSE_MAPS_V2_ENABLED":
+                    case 64:
+                        message.capabilities[i] = 64;
+                        break;
+                    case "AI_SUBSCRIPTION_METERING_ENABLED":
+                    case 65:
+                        message.capabilities[i] = 65;
+                        break;
+                    case "RICH_RESPONSE_SPORTS_WIDGET_ENABLED":
+                    case 66:
+                        message.capabilities[i] = 66;
+                        break;
+                    case "AI_RICH_RESPONSE_ARTIFACTS_ENABLED":
+                    case 67:
+                        message.capabilities[i] = 67;
+                        break;
+                    case "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED":
+                    case 68:
+                        message.capabilities[i] = 68;
+                        break;
+                    case "AI_RICH_RESPONSE_REMINDERS_ENABLED":
+                    case 69:
+                        message.capabilities[i] = 69;
+                        break;
+                    case "AI_STOP_GENERATION_ENABLED":
+                    case 70:
+                        message.capabilities[i] = 70;
+                        break;
                     }
             }
             return message;
@@ -16733,6 +19201,15 @@ $root.AICommon = (function() {
          * @property {number} AI_TAB_FORCE_CLIPPY=59 AI_TAB_FORCE_CLIPPY value
          * @property {number} UNIFIED_RESPONSE_EMBEDDED_SCREENS=60 UNIFIED_RESPONSE_EMBEDDED_SCREENS value
          * @property {number} AI_SUBSCRIPTION_ENABLED=61 AI_SUBSCRIPTION_ENABLED value
+         * @property {number} UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED=62 UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED value
+         * @property {number} UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED=63 UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_MAPS_V2_ENABLED=64 AI_RICH_RESPONSE_MAPS_V2_ENABLED value
+         * @property {number} AI_SUBSCRIPTION_METERING_ENABLED=65 AI_SUBSCRIPTION_METERING_ENABLED value
+         * @property {number} RICH_RESPONSE_SPORTS_WIDGET_ENABLED=66 RICH_RESPONSE_SPORTS_WIDGET_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_ARTIFACTS_ENABLED=67 AI_RICH_RESPONSE_ARTIFACTS_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED=68 AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_REMINDERS_ENABLED=69 AI_RICH_RESPONSE_REMINDERS_ENABLED value
+         * @property {number} AI_STOP_GENERATION_ENABLED=70 AI_STOP_GENERATION_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -16798,6 +19275,15 @@ $root.AICommon = (function() {
             values[valuesById[59] = "AI_TAB_FORCE_CLIPPY"] = 59;
             values[valuesById[60] = "UNIFIED_RESPONSE_EMBEDDED_SCREENS"] = 60;
             values[valuesById[61] = "AI_SUBSCRIPTION_ENABLED"] = 61;
+            values[valuesById[62] = "UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED"] = 62;
+            values[valuesById[63] = "UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED"] = 63;
+            values[valuesById[64] = "AI_RICH_RESPONSE_MAPS_V2_ENABLED"] = 64;
+            values[valuesById[65] = "AI_SUBSCRIPTION_METERING_ENABLED"] = 65;
+            values[valuesById[66] = "RICH_RESPONSE_SPORTS_WIDGET_ENABLED"] = 66;
+            values[valuesById[67] = "AI_RICH_RESPONSE_ARTIFACTS_ENABLED"] = 67;
+            values[valuesById[68] = "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED"] = 68;
+            values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
+            values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             return values;
         })();
 
@@ -18958,7 +21444,7 @@ $root.AICommon = (function() {
          * Properties of a BotReminderMetadata.
          * @memberof AICommon
          * @interface IBotReminderMetadata
-         * @property {Protocol.IMessageKey|null} [requestMessageKey] BotReminderMetadata requestMessageKey
+         * @property {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null} [requestMessageKey] BotReminderMetadata requestMessageKey
          * @property {AICommon.BotReminderMetadata.ReminderAction|null} [action] BotReminderMetadata action
          * @property {string|null} [name] BotReminderMetadata name
          * @property {number|Long|null} [nextTriggerTimestamp] BotReminderMetadata nextTriggerTimestamp
@@ -18982,7 +21468,7 @@ $root.AICommon = (function() {
 
         /**
          * BotReminderMetadata requestMessageKey.
-         * @member {Protocol.IMessageKey|null|undefined} requestMessageKey
+         * @member {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null|undefined} requestMessageKey
          * @memberof AICommon.BotReminderMetadata
          * @instance
          */
@@ -19078,7 +21564,7 @@ $root.AICommon = (function() {
             if (!writer)
                 writer = $Writer.create();
             if (message.requestMessageKey != null && Object.hasOwnProperty.call(message, "requestMessageKey"))
-                $root.Protocol.MessageKey.encode(message.requestMessageKey, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.encode(message.requestMessageKey, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.action != null && Object.hasOwnProperty.call(message, "action"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.action);
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
@@ -19124,7 +21610,7 @@ $root.AICommon = (function() {
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.requestMessageKey = $root.Protocol.MessageKey.decode(reader, reader.uint32());
+                        message.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(reader, reader.uint32());
                         break;
                     }
                 case 2: {
@@ -19182,7 +21668,7 @@ $root.AICommon = (function() {
             if (message.requestMessageKey != null && message.hasOwnProperty("requestMessageKey")) {
                 properties._requestMessageKey = 1;
                 {
-                    var error = $root.Protocol.MessageKey.verify(message.requestMessageKey);
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify(message.requestMessageKey);
                     if (error)
                         return "requestMessageKey." + error;
                 }
@@ -19240,7 +21726,7 @@ $root.AICommon = (function() {
             if (object.requestMessageKey != null) {
                 if (typeof object.requestMessageKey !== "object")
                     throw TypeError(".AICommon.BotReminderMetadata.requestMessageKey: object expected");
-                message.requestMessageKey = $root.Protocol.MessageKey.fromObject(object.requestMessageKey);
+                message.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.fromObject(object.requestMessageKey);
             }
             switch (object.action) {
             default:
@@ -19322,7 +21808,7 @@ $root.AICommon = (function() {
                 options = {};
             var object = {};
             if (message.requestMessageKey != null && message.hasOwnProperty("requestMessageKey")) {
-                object.requestMessageKey = $root.Protocol.MessageKey.toObject(message.requestMessageKey, options);
+                object.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(message.requestMessageKey, options);
                 if (options.oneofs)
                     object._requestMessageKey = "requestMessageKey";
             }
@@ -20654,6 +23140,8 @@ $root.AICommon = (function() {
                 case 54:
                 case 55:
                 case 56:
+                case 57:
+                case 58:
                     break;
                 }
             }
@@ -20885,6 +23373,14 @@ $root.AICommon = (function() {
             case "NEW_CHAT_LIST":
             case 56:
                 message.destinationEntryPoint = 56;
+                break;
+            case "CONTACTS_TAB":
+            case 57:
+                message.destinationEntryPoint = 57;
+                break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                message.destinationEntryPoint = 58;
                 break;
             }
             switch (object.threadOrigin) {
@@ -21763,6 +24259,7 @@ $root.AICommon = (function() {
          * @property {AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null} [useCase] BotSignatureVerificationUseCaseProof useCase
          * @property {Uint8Array|null} [signature] BotSignatureVerificationUseCaseProof signature
          * @property {Array.<Uint8Array>|null} [certificateChain] BotSignatureVerificationUseCaseProof certificateChain
+         * @property {Array.<AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI>|null} [certificateChainSki] BotSignatureVerificationUseCaseProof certificateChainSki
          */
 
         /**
@@ -21775,6 +24272,7 @@ $root.AICommon = (function() {
          */
         function BotSignatureVerificationUseCaseProof(properties) {
             this.certificateChain = [];
+            this.certificateChainSki = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -21812,6 +24310,14 @@ $root.AICommon = (function() {
          * @instance
          */
         BotSignatureVerificationUseCaseProof.prototype.certificateChain = $util.emptyArray;
+
+        /**
+         * BotSignatureVerificationUseCaseProof certificateChainSki.
+         * @member {Array.<AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI>} certificateChainSki
+         * @memberof AICommon.BotSignatureVerificationUseCaseProof
+         * @instance
+         */
+        BotSignatureVerificationUseCaseProof.prototype.certificateChainSki = $util.emptyArray;
 
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
@@ -21867,6 +24373,9 @@ $root.AICommon = (function() {
             if (message.certificateChain != null && message.certificateChain.length)
                 for (var i = 0; i < message.certificateChain.length; ++i)
                     writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.certificateChain[i]);
+            if (message.certificateChainSki != null && message.certificateChainSki.length)
+                for (var i = 0; i < message.certificateChainSki.length; ++i)
+                    $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.encode(message.certificateChainSki[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
 
@@ -21921,6 +24430,12 @@ $root.AICommon = (function() {
                         message.certificateChain.push(reader.bytes());
                         break;
                     }
+                case 5: {
+                        if (!(message.certificateChainSki && message.certificateChainSki.length))
+                            message.certificateChainSki = [];
+                        message.certificateChainSki.push($root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -21970,6 +24485,9 @@ $root.AICommon = (function() {
                 case 0:
                 case 1:
                 case 2:
+                case 3:
+                case 4:
+                case 5:
                     break;
                 }
             }
@@ -21984,6 +24502,15 @@ $root.AICommon = (function() {
                 for (var i = 0; i < message.certificateChain.length; ++i)
                     if (!(message.certificateChain[i] && typeof message.certificateChain[i].length === "number" || $util.isString(message.certificateChain[i])))
                         return "certificateChain: buffer[] expected";
+            }
+            if (message.certificateChainSki != null && message.hasOwnProperty("certificateChainSki")) {
+                if (!Array.isArray(message.certificateChainSki))
+                    return "certificateChainSki: array expected";
+                for (var i = 0; i < message.certificateChainSki.length; ++i) {
+                    var error = $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.verify(message.certificateChainSki[i]);
+                    if (error)
+                        return "certificateChainSki." + error;
+                }
             }
             return null;
         };
@@ -22021,6 +24548,18 @@ $root.AICommon = (function() {
             case 2:
                 message.useCase = 2;
                 break;
+            case "P2P_PILLS":
+            case 3:
+                message.useCase = 3;
+                break;
+            case "WA_WAFFLE":
+            case 4:
+                message.useCase = 4;
+                break;
+            case "WA_FEATURE_PKI":
+            case 5:
+                message.useCase = 5;
+                break;
             }
             if (object.signature != null)
                 if (typeof object.signature === "string")
@@ -22036,6 +24575,16 @@ $root.AICommon = (function() {
                         $util.base64.decode(object.certificateChain[i], message.certificateChain[i] = $util.newBuffer($util.base64.length(object.certificateChain[i])), 0);
                     else if (object.certificateChain[i].length >= 0)
                         message.certificateChain[i] = object.certificateChain[i];
+            }
+            if (object.certificateChainSki) {
+                if (!Array.isArray(object.certificateChainSki))
+                    throw TypeError(".AICommon.BotSignatureVerificationUseCaseProof.certificateChainSki: array expected");
+                message.certificateChainSki = [];
+                for (var i = 0; i < object.certificateChainSki.length; ++i) {
+                    if (typeof object.certificateChainSki[i] !== "object")
+                        throw TypeError(".AICommon.BotSignatureVerificationUseCaseProof.certificateChainSki: object expected");
+                    message.certificateChainSki[i] = $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.fromObject(object.certificateChainSki[i]);
+                }
             }
             return message;
         };
@@ -22053,8 +24602,10 @@ $root.AICommon = (function() {
             if (!options)
                 options = {};
             var object = {};
-            if (options.arrays || options.defaults)
+            if (options.arrays || options.defaults) {
                 object.certificateChain = [];
+                object.certificateChainSki = [];
+            }
             if (message.version != null && message.hasOwnProperty("version")) {
                 object.version = message.version;
                 if (options.oneofs)
@@ -22074,6 +24625,11 @@ $root.AICommon = (function() {
                 object.certificateChain = [];
                 for (var j = 0; j < message.certificateChain.length; ++j)
                     object.certificateChain[j] = options.bytes === String ? $util.base64.encode(message.certificateChain[j], 0, message.certificateChain[j].length) : options.bytes === Array ? Array.prototype.slice.call(message.certificateChain[j]) : message.certificateChain[j];
+            }
+            if (message.certificateChainSki && message.certificateChainSki.length) {
+                object.certificateChainSki = [];
+                for (var j = 0; j < message.certificateChainSki.length; ++j)
+                    object.certificateChainSki[j] = $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.toObject(message.certificateChainSki[j], options);
             }
             return object;
         };
@@ -22111,13 +24667,312 @@ $root.AICommon = (function() {
          * @property {number} UNSPECIFIED=0 UNSPECIFIED value
          * @property {number} WA_BOT_MSG=1 WA_BOT_MSG value
          * @property {number} WA_TEE_BOT_MSG=2 WA_TEE_BOT_MSG value
+         * @property {number} P2P_PILLS=3 P2P_PILLS value
+         * @property {number} WA_WAFFLE=4 WA_WAFFLE value
+         * @property {number} WA_FEATURE_PKI=5 WA_FEATURE_PKI value
          */
         BotSignatureVerificationUseCaseProof.BotSignatureUseCase = (function() {
             var valuesById = {}, values = Object.create(valuesById);
             values[valuesById[0] = "UNSPECIFIED"] = 0;
             values[valuesById[1] = "WA_BOT_MSG"] = 1;
             values[valuesById[2] = "WA_TEE_BOT_MSG"] = 2;
+            values[valuesById[3] = "P2P_PILLS"] = 3;
+            values[valuesById[4] = "WA_WAFFLE"] = 4;
+            values[valuesById[5] = "WA_FEATURE_PKI"] = 5;
             return values;
+        })();
+
+        BotSignatureVerificationUseCaseProof.CertificateSKI = (function() {
+
+            /**
+             * Properties of a CertificateSKI.
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof
+             * @interface ICertificateSKI
+             * @property {AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null} [useCase] CertificateSKI useCase
+             * @property {Uint8Array|null} [ski] CertificateSKI ski
+             */
+
+            /**
+             * Constructs a new CertificateSKI.
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof
+             * @classdesc Represents a CertificateSKI.
+             * @implements ICertificateSKI
+             * @constructor
+             * @param {AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI=} [properties] Properties to set
+             */
+            function CertificateSKI(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * CertificateSKI useCase.
+             * @member {AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null|undefined} useCase
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @instance
+             */
+            CertificateSKI.prototype.useCase = null;
+
+            /**
+             * CertificateSKI ski.
+             * @member {Uint8Array|null|undefined} ski
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @instance
+             */
+            CertificateSKI.prototype.ski = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(CertificateSKI.prototype, "_useCase", {
+                get: $util.oneOfGetter($oneOfFields = ["useCase"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(CertificateSKI.prototype, "_ski", {
+                get: $util.oneOfGetter($oneOfFields = ["ski"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new CertificateSKI instance using the specified properties.
+             * @function create
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI=} [properties] Properties to set
+             * @returns {AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI instance
+             */
+            CertificateSKI.create = function create(properties) {
+                return new CertificateSKI(properties);
+            };
+
+            /**
+             * Encodes the specified CertificateSKI message. Does not implicitly {@link AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @function encode
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI} message CertificateSKI message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CertificateSKI.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.useCase != null && Object.hasOwnProperty.call(message, "useCase"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.useCase);
+                if (message.ski != null && Object.hasOwnProperty.call(message, "ski"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.ski);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified CertificateSKI message, length delimited. Does not implicitly {@link AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI} message CertificateSKI message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CertificateSKI.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer.
+             * @function decode
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CertificateSKI.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.useCase = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.ski = reader.bytes();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CertificateSKI.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a CertificateSKI message.
+             * @function verify
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            CertificateSKI.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.useCase != null && message.hasOwnProperty("useCase")) {
+                    properties._useCase = 1;
+                    switch (message.useCase) {
+                    default:
+                        return "useCase: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        break;
+                    }
+                }
+                if (message.ski != null && message.hasOwnProperty("ski")) {
+                    properties._ski = 1;
+                    if (!(message.ski && typeof message.ski.length === "number" || $util.isString(message.ski)))
+                        return "ski: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a CertificateSKI message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI
+             */
+            CertificateSKI.fromObject = function fromObject(object) {
+                if (object instanceof $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI)
+                    return object;
+                var message = new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI();
+                switch (object.useCase) {
+                default:
+                    if (typeof object.useCase === "number") {
+                        message.useCase = object.useCase;
+                        break;
+                    }
+                    break;
+                case "UNSPECIFIED":
+                case 0:
+                    message.useCase = 0;
+                    break;
+                case "WA_BOT_MSG":
+                case 1:
+                    message.useCase = 1;
+                    break;
+                case "WA_TEE_BOT_MSG":
+                case 2:
+                    message.useCase = 2;
+                    break;
+                case "P2P_PILLS":
+                case 3:
+                    message.useCase = 3;
+                    break;
+                case "WA_WAFFLE":
+                case 4:
+                    message.useCase = 4;
+                    break;
+                case "WA_FEATURE_PKI":
+                case 5:
+                    message.useCase = 5;
+                    break;
+                }
+                if (object.ski != null)
+                    if (typeof object.ski === "string")
+                        $util.base64.decode(object.ski, message.ski = $util.newBuffer($util.base64.length(object.ski)), 0);
+                    else if (object.ski.length >= 0)
+                        message.ski = object.ski;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a CertificateSKI message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI} message CertificateSKI
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            CertificateSKI.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.useCase != null && message.hasOwnProperty("useCase")) {
+                    object.useCase = options.enums === String ? $root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[message.useCase] === undefined ? message.useCase : $root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[message.useCase] : message.useCase;
+                    if (options.oneofs)
+                        object._useCase = "useCase";
+                }
+                if (message.ski != null && message.hasOwnProperty("ski")) {
+                    object.ski = options.bytes === String ? $util.base64.encode(message.ski, 0, message.ski.length) : options.bytes === Array ? Array.prototype.slice.call(message.ski) : message.ski;
+                    if (options.oneofs)
+                        object._ski = "ski";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this CertificateSKI to JSON.
+             * @function toJSON
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            CertificateSKI.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for CertificateSKI
+             * @function getTypeUrl
+             * @memberof AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            CertificateSKI.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI";
+            };
+
+            return CertificateSKI;
         })();
 
         return BotSignatureVerificationUseCaseProof;
@@ -24272,7 +27127,7 @@ $root.AICommon = (function() {
          * @property {number|null} [referenceIndex] BotPluginMetadata referenceIndex
          * @property {number|null} [expectedLinksCount] BotPluginMetadata expectedLinksCount
          * @property {string|null} [searchQuery] BotPluginMetadata searchQuery
-         * @property {Protocol.IMessageKey|null} [parentPluginMessageKey] BotPluginMetadata parentPluginMessageKey
+         * @property {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null} [parentPluginMessageKey] BotPluginMetadata parentPluginMessageKey
          * @property {AICommon.BotPluginMetadata.PluginType|null} [deprecatedField] BotPluginMetadata deprecatedField
          * @property {AICommon.BotPluginMetadata.PluginType|null} [parentPluginType] BotPluginMetadata parentPluginType
          * @property {string|null} [faviconCdnUrl] BotPluginMetadata faviconCdnUrl
@@ -24359,7 +27214,7 @@ $root.AICommon = (function() {
 
         /**
          * BotPluginMetadata parentPluginMessageKey.
-         * @member {Protocol.IMessageKey|null|undefined} parentPluginMessageKey
+         * @member {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null|undefined} parentPluginMessageKey
          * @memberof AICommon.BotPluginMetadata
          * @instance
          */
@@ -24505,7 +27360,7 @@ $root.AICommon = (function() {
             if (message.searchQuery != null && Object.hasOwnProperty.call(message, "searchQuery"))
                 writer.uint32(/* id 9, wireType 2 =*/74).string(message.searchQuery);
             if (message.parentPluginMessageKey != null && Object.hasOwnProperty.call(message, "parentPluginMessageKey"))
-                $root.Protocol.MessageKey.encode(message.parentPluginMessageKey, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
+                $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.encode(message.parentPluginMessageKey, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             if (message.deprecatedField != null && Object.hasOwnProperty.call(message, "deprecatedField"))
                 writer.uint32(/* id 11, wireType 0 =*/88).int32(message.deprecatedField);
             if (message.parentPluginType != null && Object.hasOwnProperty.call(message, "parentPluginType"))
@@ -24581,7 +27436,7 @@ $root.AICommon = (function() {
                         break;
                     }
                 case 10: {
-                        message.parentPluginMessageKey = $root.Protocol.MessageKey.decode(reader, reader.uint32());
+                        message.parentPluginMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(reader, reader.uint32());
                         break;
                     }
                 case 11: {
@@ -24688,7 +27543,7 @@ $root.AICommon = (function() {
             if (message.parentPluginMessageKey != null && message.hasOwnProperty("parentPluginMessageKey")) {
                 properties._parentPluginMessageKey = 1;
                 {
-                    var error = $root.Protocol.MessageKey.verify(message.parentPluginMessageKey);
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify(message.parentPluginMessageKey);
                     if (error)
                         return "parentPluginMessageKey." + error;
                 }
@@ -24794,7 +27649,7 @@ $root.AICommon = (function() {
             if (object.parentPluginMessageKey != null) {
                 if (typeof object.parentPluginMessageKey !== "object")
                     throw TypeError(".AICommon.BotPluginMetadata.parentPluginMessageKey: object expected");
-                message.parentPluginMessageKey = $root.Protocol.MessageKey.fromObject(object.parentPluginMessageKey);
+                message.parentPluginMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.fromObject(object.parentPluginMessageKey);
             }
             switch (object.deprecatedField) {
             default:
@@ -24895,7 +27750,7 @@ $root.AICommon = (function() {
                     object._searchQuery = "searchQuery";
             }
             if (message.parentPluginMessageKey != null && message.hasOwnProperty("parentPluginMessageKey")) {
-                object.parentPluginMessageKey = $root.Protocol.MessageKey.toObject(message.parentPluginMessageKey, options);
+                object.parentPluginMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(message.parentPluginMessageKey, options);
                 if (options.oneofs)
                     object._parentPluginMessageKey = "parentPluginMessageKey";
             }
@@ -25110,6 +27965,8 @@ $root.AICommon = (function() {
      * @property {number} GROUP_MEMBER=54 GROUP_MEMBER value
      * @property {number} CHATLIST_SEARCH=55 CHATLIST_SEARCH value
      * @property {number} NEW_CHAT_LIST=56 NEW_CHAT_LIST value
+     * @property {number} CONTACTS_TAB=57 CONTACTS_TAB value
+     * @property {number} NEW_3P_AGENT_CREATION=58 NEW_3P_AGENT_CREATION value
      */
     AICommon.BotMetricsEntryPoint = (function() {
         var valuesById = {}, values = Object.create(valuesById);
@@ -25161,42 +28018,42 @@ $root.AICommon = (function() {
         values[valuesById[54] = "GROUP_MEMBER"] = 54;
         values[valuesById[55] = "CHATLIST_SEARCH"] = 55;
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
+        values[valuesById[57] = "CONTACTS_TAB"] = 57;
+        values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
         return values;
     })();
 
     return AICommon;
 })();
 
-$root.Protocol = (function() {
+$root.SignalLocalStorageProtocol = (function() {
 
     /**
-     * Namespace Protocol.
-     * @exports Protocol
+     * Namespace SignalLocalStorageProtocol.
+     * @exports SignalLocalStorageProtocol
      * @namespace
      */
-    var Protocol = {};
+    var SignalLocalStorageProtocol = {};
 
-    Protocol.LimitSharing = (function() {
+    SignalLocalStorageProtocol.SenderKeyRecordStructure = (function() {
 
         /**
-         * Properties of a LimitSharing.
-         * @memberof Protocol
-         * @interface ILimitSharing
-         * @property {boolean|null} [sharingLimited] LimitSharing sharingLimited
-         * @property {Protocol.LimitSharing.TriggerType|null} [trigger] LimitSharing trigger
-         * @property {number|Long|null} [limitSharingSettingTimestamp] LimitSharing limitSharingSettingTimestamp
-         * @property {boolean|null} [initiatedByMe] LimitSharing initiatedByMe
+         * Properties of a SenderKeyRecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @interface ISenderKeyRecordStructure
+         * @property {Array.<SignalLocalStorageProtocol.ISenderKeyStateStructure>|null} [senderKeyStates] SenderKeyRecordStructure senderKeyStates
          */
 
         /**
-         * Constructs a new LimitSharing.
-         * @memberof Protocol
-         * @classdesc Represents a LimitSharing.
-         * @implements ILimitSharing
+         * Constructs a new SenderKeyRecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @classdesc Represents a SenderKeyRecordStructure.
+         * @implements ISenderKeyRecordStructure
          * @constructor
-         * @param {Protocol.ILimitSharing=} [properties] Properties to set
+         * @param {SignalLocalStorageProtocol.ISenderKeyRecordStructure=} [properties] Properties to set
          */
-        function LimitSharing(properties) {
+        function SenderKeyRecordStructure(properties) {
+            this.senderKeyStates = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -25204,146 +28061,80 @@ $root.Protocol = (function() {
         }
 
         /**
-         * LimitSharing sharingLimited.
-         * @member {boolean|null|undefined} sharingLimited
-         * @memberof Protocol.LimitSharing
+         * SenderKeyRecordStructure senderKeyStates.
+         * @member {Array.<SignalLocalStorageProtocol.ISenderKeyStateStructure>} senderKeyStates
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @instance
          */
-        LimitSharing.prototype.sharingLimited = null;
+        SenderKeyRecordStructure.prototype.senderKeyStates = $util.emptyArray;
 
         /**
-         * LimitSharing trigger.
-         * @member {Protocol.LimitSharing.TriggerType|null|undefined} trigger
-         * @memberof Protocol.LimitSharing
-         * @instance
-         */
-        LimitSharing.prototype.trigger = null;
-
-        /**
-         * LimitSharing limitSharingSettingTimestamp.
-         * @member {number|Long|null|undefined} limitSharingSettingTimestamp
-         * @memberof Protocol.LimitSharing
-         * @instance
-         */
-        LimitSharing.prototype.limitSharingSettingTimestamp = null;
-
-        /**
-         * LimitSharing initiatedByMe.
-         * @member {boolean|null|undefined} initiatedByMe
-         * @memberof Protocol.LimitSharing
-         * @instance
-         */
-        LimitSharing.prototype.initiatedByMe = null;
-
-        // OneOf field names bound to virtual getters and setters
-        var $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(LimitSharing.prototype, "_sharingLimited", {
-            get: $util.oneOfGetter($oneOfFields = ["sharingLimited"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(LimitSharing.prototype, "_trigger", {
-            get: $util.oneOfGetter($oneOfFields = ["trigger"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(LimitSharing.prototype, "_limitSharingSettingTimestamp", {
-            get: $util.oneOfGetter($oneOfFields = ["limitSharingSettingTimestamp"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(LimitSharing.prototype, "_initiatedByMe", {
-            get: $util.oneOfGetter($oneOfFields = ["initiatedByMe"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new LimitSharing instance using the specified properties.
+         * Creates a new SenderKeyRecordStructure instance using the specified properties.
          * @function create
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
-         * @param {Protocol.ILimitSharing=} [properties] Properties to set
-         * @returns {Protocol.LimitSharing} LimitSharing instance
+         * @param {SignalLocalStorageProtocol.ISenderKeyRecordStructure=} [properties] Properties to set
+         * @returns {SignalLocalStorageProtocol.SenderKeyRecordStructure} SenderKeyRecordStructure instance
          */
-        LimitSharing.create = function create(properties) {
-            return new LimitSharing(properties);
+        SenderKeyRecordStructure.create = function create(properties) {
+            return new SenderKeyRecordStructure(properties);
         };
 
         /**
-         * Encodes the specified LimitSharing message. Does not implicitly {@link Protocol.LimitSharing.verify|verify} messages.
+         * Encodes the specified SenderKeyRecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyRecordStructure.verify|verify} messages.
          * @function encode
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
-         * @param {Protocol.ILimitSharing} message LimitSharing message or plain object to encode
+         * @param {SignalLocalStorageProtocol.ISenderKeyRecordStructure} message SenderKeyRecordStructure message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        LimitSharing.encode = function encode(message, writer) {
+        SenderKeyRecordStructure.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.sharingLimited != null && Object.hasOwnProperty.call(message, "sharingLimited"))
-                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.sharingLimited);
-            if (message.trigger != null && Object.hasOwnProperty.call(message, "trigger"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.trigger);
-            if (message.limitSharingSettingTimestamp != null && Object.hasOwnProperty.call(message, "limitSharingSettingTimestamp"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.limitSharingSettingTimestamp);
-            if (message.initiatedByMe != null && Object.hasOwnProperty.call(message, "initiatedByMe"))
-                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.initiatedByMe);
+            if (message.senderKeyStates != null && message.senderKeyStates.length)
+                for (var i = 0; i < message.senderKeyStates.length; ++i)
+                    $root.SignalLocalStorageProtocol.SenderKeyStateStructure.encode(message.senderKeyStates[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
 
         /**
-         * Encodes the specified LimitSharing message, length delimited. Does not implicitly {@link Protocol.LimitSharing.verify|verify} messages.
+         * Encodes the specified SenderKeyRecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyRecordStructure.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
-         * @param {Protocol.ILimitSharing} message LimitSharing message or plain object to encode
+         * @param {SignalLocalStorageProtocol.ISenderKeyRecordStructure} message SenderKeyRecordStructure message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        LimitSharing.encodeDelimited = function encodeDelimited(message, writer) {
+        SenderKeyRecordStructure.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes a LimitSharing message from the specified reader or buffer.
+         * Decodes a SenderKeyRecordStructure message from the specified reader or buffer.
          * @function decode
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {Protocol.LimitSharing} LimitSharing
+         * @returns {SignalLocalStorageProtocol.SenderKeyRecordStructure} SenderKeyRecordStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        LimitSharing.decode = function decode(reader, length, error) {
+        SenderKeyRecordStructure.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Protocol.LimitSharing();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 if (tag === error)
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.sharingLimited = reader.bool();
-                        break;
-                    }
-                case 2: {
-                        message.trigger = reader.int32();
-                        break;
-                    }
-                case 3: {
-                        message.limitSharingSettingTimestamp = reader.int64();
-                        break;
-                    }
-                case 4: {
-                        message.initiatedByMe = reader.bool();
+                        if (!(message.senderKeyStates && message.senderKeyStates.length))
+                            message.senderKeyStates = [];
+                        message.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(reader, reader.uint32()));
                         break;
                     }
                 default:
@@ -25355,222 +28146,143 @@ $root.Protocol = (function() {
         };
 
         /**
-         * Decodes a LimitSharing message from the specified reader or buffer, length delimited.
+         * Decodes a SenderKeyRecordStructure message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {Protocol.LimitSharing} LimitSharing
+         * @returns {SignalLocalStorageProtocol.SenderKeyRecordStructure} SenderKeyRecordStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        LimitSharing.decodeDelimited = function decodeDelimited(reader) {
+        SenderKeyRecordStructure.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies a LimitSharing message.
+         * Verifies a SenderKeyRecordStructure message.
          * @function verify
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        LimitSharing.verify = function verify(message) {
+        SenderKeyRecordStructure.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            var properties = {};
-            if (message.sharingLimited != null && message.hasOwnProperty("sharingLimited")) {
-                properties._sharingLimited = 1;
-                if (typeof message.sharingLimited !== "boolean")
-                    return "sharingLimited: boolean expected";
-            }
-            if (message.trigger != null && message.hasOwnProperty("trigger")) {
-                properties._trigger = 1;
-                switch (message.trigger) {
-                default:
-                    return "trigger: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                    break;
+            if (message.senderKeyStates != null && message.hasOwnProperty("senderKeyStates")) {
+                if (!Array.isArray(message.senderKeyStates))
+                    return "senderKeyStates: array expected";
+                for (var i = 0; i < message.senderKeyStates.length; ++i) {
+                    var error = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.verify(message.senderKeyStates[i]);
+                    if (error)
+                        return "senderKeyStates." + error;
                 }
-            }
-            if (message.limitSharingSettingTimestamp != null && message.hasOwnProperty("limitSharingSettingTimestamp")) {
-                properties._limitSharingSettingTimestamp = 1;
-                if (!$util.isInteger(message.limitSharingSettingTimestamp) && !(message.limitSharingSettingTimestamp && $util.isInteger(message.limitSharingSettingTimestamp.low) && $util.isInteger(message.limitSharingSettingTimestamp.high)))
-                    return "limitSharingSettingTimestamp: integer|Long expected";
-            }
-            if (message.initiatedByMe != null && message.hasOwnProperty("initiatedByMe")) {
-                properties._initiatedByMe = 1;
-                if (typeof message.initiatedByMe !== "boolean")
-                    return "initiatedByMe: boolean expected";
             }
             return null;
         };
 
         /**
-         * Creates a LimitSharing message from a plain object. Also converts values to their respective internal types.
+         * Creates a SenderKeyRecordStructure message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {Protocol.LimitSharing} LimitSharing
+         * @returns {SignalLocalStorageProtocol.SenderKeyRecordStructure} SenderKeyRecordStructure
          */
-        LimitSharing.fromObject = function fromObject(object) {
-            if (object instanceof $root.Protocol.LimitSharing)
+        SenderKeyRecordStructure.fromObject = function fromObject(object) {
+            if (object instanceof $root.SignalLocalStorageProtocol.SenderKeyRecordStructure)
                 return object;
-            var message = new $root.Protocol.LimitSharing();
-            if (object.sharingLimited != null)
-                message.sharingLimited = Boolean(object.sharingLimited);
-            switch (object.trigger) {
-            default:
-                if (typeof object.trigger === "number") {
-                    message.trigger = object.trigger;
-                    break;
+            var message = new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
+            if (object.senderKeyStates) {
+                if (!Array.isArray(object.senderKeyStates))
+                    throw TypeError(".SignalLocalStorageProtocol.SenderKeyRecordStructure.senderKeyStates: array expected");
+                message.senderKeyStates = [];
+                for (var i = 0; i < object.senderKeyStates.length; ++i) {
+                    if (typeof object.senderKeyStates[i] !== "object")
+                        throw TypeError(".SignalLocalStorageProtocol.SenderKeyRecordStructure.senderKeyStates: object expected");
+                    message.senderKeyStates[i] = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.fromObject(object.senderKeyStates[i]);
                 }
-                break;
-            case "UNKNOWN":
-            case 0:
-                message.trigger = 0;
-                break;
-            case "CHAT_SETTING":
-            case 1:
-                message.trigger = 1;
-                break;
-            case "BIZ_SUPPORTS_FB_HOSTING":
-            case 2:
-                message.trigger = 2;
-                break;
-            case "UNKNOWN_GROUP":
-            case 3:
-                message.trigger = 3;
-                break;
             }
-            if (object.limitSharingSettingTimestamp != null)
-                if ($util.Long)
-                    (message.limitSharingSettingTimestamp = $util.Long.fromValue(object.limitSharingSettingTimestamp)).unsigned = false;
-                else if (typeof object.limitSharingSettingTimestamp === "string")
-                    message.limitSharingSettingTimestamp = parseInt(object.limitSharingSettingTimestamp, 10);
-                else if (typeof object.limitSharingSettingTimestamp === "number")
-                    message.limitSharingSettingTimestamp = object.limitSharingSettingTimestamp;
-                else if (typeof object.limitSharingSettingTimestamp === "object")
-                    message.limitSharingSettingTimestamp = new $util.LongBits(object.limitSharingSettingTimestamp.low >>> 0, object.limitSharingSettingTimestamp.high >>> 0).toNumber();
-            if (object.initiatedByMe != null)
-                message.initiatedByMe = Boolean(object.initiatedByMe);
             return message;
         };
 
         /**
-         * Creates a plain object from a LimitSharing message. Also converts values to other types if specified.
+         * Creates a plain object from a SenderKeyRecordStructure message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
-         * @param {Protocol.LimitSharing} message LimitSharing
+         * @param {SignalLocalStorageProtocol.SenderKeyRecordStructure} message SenderKeyRecordStructure
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
-        LimitSharing.toObject = function toObject(message, options) {
+        SenderKeyRecordStructure.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
             var object = {};
-            if (message.sharingLimited != null && message.hasOwnProperty("sharingLimited")) {
-                object.sharingLimited = message.sharingLimited;
-                if (options.oneofs)
-                    object._sharingLimited = "sharingLimited";
-            }
-            if (message.trigger != null && message.hasOwnProperty("trigger")) {
-                object.trigger = options.enums === String ? $root.Protocol.LimitSharing.TriggerType[message.trigger] === undefined ? message.trigger : $root.Protocol.LimitSharing.TriggerType[message.trigger] : message.trigger;
-                if (options.oneofs)
-                    object._trigger = "trigger";
-            }
-            if (message.limitSharingSettingTimestamp != null && message.hasOwnProperty("limitSharingSettingTimestamp")) {
-                if (typeof message.limitSharingSettingTimestamp === "number")
-                    object.limitSharingSettingTimestamp = options.longs === String ? String(message.limitSharingSettingTimestamp) : message.limitSharingSettingTimestamp;
-                else
-                    object.limitSharingSettingTimestamp = options.longs === String ? $util.Long.prototype.toString.call(message.limitSharingSettingTimestamp) : options.longs === Number ? new $util.LongBits(message.limitSharingSettingTimestamp.low >>> 0, message.limitSharingSettingTimestamp.high >>> 0).toNumber() : message.limitSharingSettingTimestamp;
-                if (options.oneofs)
-                    object._limitSharingSettingTimestamp = "limitSharingSettingTimestamp";
-            }
-            if (message.initiatedByMe != null && message.hasOwnProperty("initiatedByMe")) {
-                object.initiatedByMe = message.initiatedByMe;
-                if (options.oneofs)
-                    object._initiatedByMe = "initiatedByMe";
+            if (options.arrays || options.defaults)
+                object.senderKeyStates = [];
+            if (message.senderKeyStates && message.senderKeyStates.length) {
+                object.senderKeyStates = [];
+                for (var j = 0; j < message.senderKeyStates.length; ++j)
+                    object.senderKeyStates[j] = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.toObject(message.senderKeyStates[j], options);
             }
             return object;
         };
 
         /**
-         * Converts this LimitSharing to JSON.
+         * Converts this SenderKeyRecordStructure to JSON.
          * @function toJSON
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
-        LimitSharing.prototype.toJSON = function toJSON() {
+        SenderKeyRecordStructure.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
 
         /**
-         * Gets the default type url for LimitSharing
+         * Gets the default type url for SenderKeyRecordStructure
          * @function getTypeUrl
-         * @memberof Protocol.LimitSharing
+         * @memberof SignalLocalStorageProtocol.SenderKeyRecordStructure
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
          */
-        LimitSharing.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        SenderKeyRecordStructure.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/Protocol.LimitSharing";
+            return typeUrlPrefix + "/SignalLocalStorageProtocol.SenderKeyRecordStructure";
         };
 
-        /**
-         * TriggerType enum.
-         * @name Protocol.LimitSharing.TriggerType
-         * @enum {number}
-         * @property {number} UNKNOWN=0 UNKNOWN value
-         * @property {number} CHAT_SETTING=1 CHAT_SETTING value
-         * @property {number} BIZ_SUPPORTS_FB_HOSTING=2 BIZ_SUPPORTS_FB_HOSTING value
-         * @property {number} UNKNOWN_GROUP=3 UNKNOWN_GROUP value
-         */
-        LimitSharing.TriggerType = (function() {
-            var valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "UNKNOWN"] = 0;
-            values[valuesById[1] = "CHAT_SETTING"] = 1;
-            values[valuesById[2] = "BIZ_SUPPORTS_FB_HOSTING"] = 2;
-            values[valuesById[3] = "UNKNOWN_GROUP"] = 3;
-            return values;
-        })();
-
-        return LimitSharing;
+        return SenderKeyRecordStructure;
     })();
 
-    Protocol.MessageKey = (function() {
+    SignalLocalStorageProtocol.SenderKeyStateStructure = (function() {
 
         /**
-         * Properties of a MessageKey.
-         * @memberof Protocol
-         * @interface IMessageKey
-         * @property {string|null} [remoteJid] MessageKey remoteJid
-         * @property {boolean|null} [fromMe] MessageKey fromMe
-         * @property {string|null} [id] MessageKey id
-         * @property {string|null} [participant] MessageKey participant
+         * Properties of a SenderKeyStateStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @interface ISenderKeyStateStructure
+         * @property {number|null} [senderKeyId] SenderKeyStateStructure senderKeyId
+         * @property {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey|null} [senderChainKey] SenderKeyStateStructure senderChainKey
+         * @property {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey|null} [senderSigningKey] SenderKeyStateStructure senderSigningKey
+         * @property {Array.<SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey>|null} [senderMessageKeys] SenderKeyStateStructure senderMessageKeys
          */
 
         /**
-         * Constructs a new MessageKey.
-         * @memberof Protocol
-         * @classdesc Represents a MessageKey.
-         * @implements IMessageKey
+         * Constructs a new SenderKeyStateStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @classdesc Represents a SenderKeyStateStructure.
+         * @implements ISenderKeyStateStructure
          * @constructor
-         * @param {Protocol.IMessageKey=} [properties] Properties to set
+         * @param {SignalLocalStorageProtocol.ISenderKeyStateStructure=} [properties] Properties to set
          */
-        function MessageKey(properties) {
+        function SenderKeyStateStructure(properties) {
+            this.senderMessageKeys = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -25578,146 +28290,1529 @@ $root.Protocol = (function() {
         }
 
         /**
-         * MessageKey remoteJid.
-         * @member {string|null|undefined} remoteJid
-         * @memberof Protocol.MessageKey
+         * SenderKeyStateStructure senderKeyId.
+         * @member {number|null|undefined} senderKeyId
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
          * @instance
          */
-        MessageKey.prototype.remoteJid = null;
+        SenderKeyStateStructure.prototype.senderKeyId = null;
 
         /**
-         * MessageKey fromMe.
-         * @member {boolean|null|undefined} fromMe
-         * @memberof Protocol.MessageKey
+         * SenderKeyStateStructure senderChainKey.
+         * @member {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey|null|undefined} senderChainKey
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
          * @instance
          */
-        MessageKey.prototype.fromMe = null;
+        SenderKeyStateStructure.prototype.senderChainKey = null;
 
         /**
-         * MessageKey id.
-         * @member {string|null|undefined} id
-         * @memberof Protocol.MessageKey
+         * SenderKeyStateStructure senderSigningKey.
+         * @member {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey|null|undefined} senderSigningKey
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
          * @instance
          */
-        MessageKey.prototype.id = null;
+        SenderKeyStateStructure.prototype.senderSigningKey = null;
 
         /**
-         * MessageKey participant.
-         * @member {string|null|undefined} participant
-         * @memberof Protocol.MessageKey
+         * SenderKeyStateStructure senderMessageKeys.
+         * @member {Array.<SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey>} senderMessageKeys
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
          * @instance
          */
-        MessageKey.prototype.participant = null;
+        SenderKeyStateStructure.prototype.senderMessageKeys = $util.emptyArray;
 
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
-        Object.defineProperty(MessageKey.prototype, "_remoteJid", {
-            get: $util.oneOfGetter($oneOfFields = ["remoteJid"]),
+        Object.defineProperty(SenderKeyStateStructure.prototype, "_senderKeyId", {
+            get: $util.oneOfGetter($oneOfFields = ["senderKeyId"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
         // Virtual OneOf for proto3 optional field
-        Object.defineProperty(MessageKey.prototype, "_fromMe", {
-            get: $util.oneOfGetter($oneOfFields = ["fromMe"]),
+        Object.defineProperty(SenderKeyStateStructure.prototype, "_senderChainKey", {
+            get: $util.oneOfGetter($oneOfFields = ["senderChainKey"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
         // Virtual OneOf for proto3 optional field
-        Object.defineProperty(MessageKey.prototype, "_id", {
+        Object.defineProperty(SenderKeyStateStructure.prototype, "_senderSigningKey", {
+            get: $util.oneOfGetter($oneOfFields = ["senderSigningKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new SenderKeyStateStructure instance using the specified properties.
+         * @function create
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.ISenderKeyStateStructure=} [properties] Properties to set
+         * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure} SenderKeyStateStructure instance
+         */
+        SenderKeyStateStructure.create = function create(properties) {
+            return new SenderKeyStateStructure(properties);
+        };
+
+        /**
+         * Encodes the specified SenderKeyStateStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.verify|verify} messages.
+         * @function encode
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.ISenderKeyStateStructure} message SenderKeyStateStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SenderKeyStateStructure.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.senderKeyId != null && Object.hasOwnProperty.call(message, "senderKeyId"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.senderKeyId);
+            if (message.senderChainKey != null && Object.hasOwnProperty.call(message, "senderChainKey"))
+                $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.encode(message.senderChainKey, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.senderSigningKey != null && Object.hasOwnProperty.call(message, "senderSigningKey"))
+                $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.encode(message.senderSigningKey, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            if (message.senderMessageKeys != null && message.senderMessageKeys.length)
+                for (var i = 0; i < message.senderMessageKeys.length; ++i)
+                    $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.encode(message.senderMessageKeys[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SenderKeyStateStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.ISenderKeyStateStructure} message SenderKeyStateStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SenderKeyStateStructure.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SenderKeyStateStructure message from the specified reader or buffer.
+         * @function decode
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure} SenderKeyStateStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SenderKeyStateStructure.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.senderKeyId = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 3: {
+                        message.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 4: {
+                        if (!(message.senderMessageKeys && message.senderMessageKeys.length))
+                            message.senderMessageKeys = [];
+                        message.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SenderKeyStateStructure message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure} SenderKeyStateStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SenderKeyStateStructure.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SenderKeyStateStructure message.
+         * @function verify
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SenderKeyStateStructure.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.senderKeyId != null && message.hasOwnProperty("senderKeyId")) {
+                properties._senderKeyId = 1;
+                if (!$util.isInteger(message.senderKeyId))
+                    return "senderKeyId: integer expected";
+            }
+            if (message.senderChainKey != null && message.hasOwnProperty("senderChainKey")) {
+                properties._senderChainKey = 1;
+                {
+                    var error = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.verify(message.senderChainKey);
+                    if (error)
+                        return "senderChainKey." + error;
+                }
+            }
+            if (message.senderSigningKey != null && message.hasOwnProperty("senderSigningKey")) {
+                properties._senderSigningKey = 1;
+                {
+                    var error = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.verify(message.senderSigningKey);
+                    if (error)
+                        return "senderSigningKey." + error;
+                }
+            }
+            if (message.senderMessageKeys != null && message.hasOwnProperty("senderMessageKeys")) {
+                if (!Array.isArray(message.senderMessageKeys))
+                    return "senderMessageKeys: array expected";
+                for (var i = 0; i < message.senderMessageKeys.length; ++i) {
+                    var error = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.verify(message.senderMessageKeys[i]);
+                    if (error)
+                        return "senderMessageKeys." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a SenderKeyStateStructure message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure} SenderKeyStateStructure
+         */
+        SenderKeyStateStructure.fromObject = function fromObject(object) {
+            if (object instanceof $root.SignalLocalStorageProtocol.SenderKeyStateStructure)
+                return object;
+            var message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
+            if (object.senderKeyId != null)
+                message.senderKeyId = object.senderKeyId >>> 0;
+            if (object.senderChainKey != null) {
+                if (typeof object.senderChainKey !== "object")
+                    throw TypeError(".SignalLocalStorageProtocol.SenderKeyStateStructure.senderChainKey: object expected");
+                message.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.fromObject(object.senderChainKey);
+            }
+            if (object.senderSigningKey != null) {
+                if (typeof object.senderSigningKey !== "object")
+                    throw TypeError(".SignalLocalStorageProtocol.SenderKeyStateStructure.senderSigningKey: object expected");
+                message.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.fromObject(object.senderSigningKey);
+            }
+            if (object.senderMessageKeys) {
+                if (!Array.isArray(object.senderMessageKeys))
+                    throw TypeError(".SignalLocalStorageProtocol.SenderKeyStateStructure.senderMessageKeys: array expected");
+                message.senderMessageKeys = [];
+                for (var i = 0; i < object.senderMessageKeys.length; ++i) {
+                    if (typeof object.senderMessageKeys[i] !== "object")
+                        throw TypeError(".SignalLocalStorageProtocol.SenderKeyStateStructure.senderMessageKeys: object expected");
+                    message.senderMessageKeys[i] = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.fromObject(object.senderMessageKeys[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SenderKeyStateStructure message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.SenderKeyStateStructure} message SenderKeyStateStructure
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SenderKeyStateStructure.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.senderMessageKeys = [];
+            if (message.senderKeyId != null && message.hasOwnProperty("senderKeyId")) {
+                object.senderKeyId = message.senderKeyId;
+                if (options.oneofs)
+                    object._senderKeyId = "senderKeyId";
+            }
+            if (message.senderChainKey != null && message.hasOwnProperty("senderChainKey")) {
+                object.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.toObject(message.senderChainKey, options);
+                if (options.oneofs)
+                    object._senderChainKey = "senderChainKey";
+            }
+            if (message.senderSigningKey != null && message.hasOwnProperty("senderSigningKey")) {
+                object.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.toObject(message.senderSigningKey, options);
+                if (options.oneofs)
+                    object._senderSigningKey = "senderSigningKey";
+            }
+            if (message.senderMessageKeys && message.senderMessageKeys.length) {
+                object.senderMessageKeys = [];
+                for (var j = 0; j < message.senderMessageKeys.length; ++j)
+                    object.senderMessageKeys[j] = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.toObject(message.senderMessageKeys[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this SenderKeyStateStructure to JSON.
+         * @function toJSON
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SenderKeyStateStructure.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SenderKeyStateStructure
+         * @function getTypeUrl
+         * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SenderKeyStateStructure.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/SignalLocalStorageProtocol.SenderKeyStateStructure";
+        };
+
+        SenderKeyStateStructure.SenderChainKey = (function() {
+
+            /**
+             * Properties of a SenderChainKey.
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+             * @interface ISenderChainKey
+             * @property {number|null} [iteration] SenderChainKey iteration
+             * @property {Uint8Array|null} [seed] SenderChainKey seed
+             */
+
+            /**
+             * Constructs a new SenderChainKey.
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+             * @classdesc Represents a SenderChainKey.
+             * @implements ISenderChainKey
+             * @constructor
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey=} [properties] Properties to set
+             */
+            function SenderChainKey(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SenderChainKey iteration.
+             * @member {number|null|undefined} iteration
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @instance
+             */
+            SenderChainKey.prototype.iteration = null;
+
+            /**
+             * SenderChainKey seed.
+             * @member {Uint8Array|null|undefined} seed
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @instance
+             */
+            SenderChainKey.prototype.seed = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SenderChainKey.prototype, "_iteration", {
+                get: $util.oneOfGetter($oneOfFields = ["iteration"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SenderChainKey.prototype, "_seed", {
+                get: $util.oneOfGetter($oneOfFields = ["seed"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SenderChainKey instance using the specified properties.
+             * @function create
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey=} [properties] Properties to set
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey} SenderChainKey instance
+             */
+            SenderChainKey.create = function create(properties) {
+                return new SenderChainKey(properties);
+            };
+
+            /**
+             * Encodes the specified SenderChainKey message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.verify|verify} messages.
+             * @function encode
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey} message SenderChainKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SenderChainKey.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.iteration != null && Object.hasOwnProperty.call(message, "iteration"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.iteration);
+                if (message.seed != null && Object.hasOwnProperty.call(message, "seed"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.seed);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SenderChainKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey} message SenderChainKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SenderChainKey.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SenderChainKey message from the specified reader or buffer.
+             * @function decode
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey} SenderChainKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SenderChainKey.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.iteration = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.seed = reader.bytes();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SenderChainKey message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey} SenderChainKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SenderChainKey.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SenderChainKey message.
+             * @function verify
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SenderChainKey.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.iteration != null && message.hasOwnProperty("iteration")) {
+                    properties._iteration = 1;
+                    if (!$util.isInteger(message.iteration))
+                        return "iteration: integer expected";
+                }
+                if (message.seed != null && message.hasOwnProperty("seed")) {
+                    properties._seed = 1;
+                    if (!(message.seed && typeof message.seed.length === "number" || $util.isString(message.seed)))
+                        return "seed: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SenderChainKey message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey} SenderChainKey
+             */
+            SenderChainKey.fromObject = function fromObject(object) {
+                if (object instanceof $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey)
+                    return object;
+                var message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
+                if (object.iteration != null)
+                    message.iteration = object.iteration >>> 0;
+                if (object.seed != null)
+                    if (typeof object.seed === "string")
+                        $util.base64.decode(object.seed, message.seed = $util.newBuffer($util.base64.length(object.seed)), 0);
+                    else if (object.seed.length >= 0)
+                        message.seed = object.seed;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SenderChainKey message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey} message SenderChainKey
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SenderChainKey.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.iteration != null && message.hasOwnProperty("iteration")) {
+                    object.iteration = message.iteration;
+                    if (options.oneofs)
+                        object._iteration = "iteration";
+                }
+                if (message.seed != null && message.hasOwnProperty("seed")) {
+                    object.seed = options.bytes === String ? $util.base64.encode(message.seed, 0, message.seed.length) : options.bytes === Array ? Array.prototype.slice.call(message.seed) : message.seed;
+                    if (options.oneofs)
+                        object._seed = "seed";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SenderChainKey to JSON.
+             * @function toJSON
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SenderChainKey.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SenderChainKey
+             * @function getTypeUrl
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SenderChainKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey";
+            };
+
+            return SenderChainKey;
+        })();
+
+        SenderKeyStateStructure.SenderMessageKey = (function() {
+
+            /**
+             * Properties of a SenderMessageKey.
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+             * @interface ISenderMessageKey
+             * @property {number|null} [iteration] SenderMessageKey iteration
+             * @property {Uint8Array|null} [seed] SenderMessageKey seed
+             */
+
+            /**
+             * Constructs a new SenderMessageKey.
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+             * @classdesc Represents a SenderMessageKey.
+             * @implements ISenderMessageKey
+             * @constructor
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey=} [properties] Properties to set
+             */
+            function SenderMessageKey(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SenderMessageKey iteration.
+             * @member {number|null|undefined} iteration
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @instance
+             */
+            SenderMessageKey.prototype.iteration = null;
+
+            /**
+             * SenderMessageKey seed.
+             * @member {Uint8Array|null|undefined} seed
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @instance
+             */
+            SenderMessageKey.prototype.seed = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SenderMessageKey.prototype, "_iteration", {
+                get: $util.oneOfGetter($oneOfFields = ["iteration"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SenderMessageKey.prototype, "_seed", {
+                get: $util.oneOfGetter($oneOfFields = ["seed"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SenderMessageKey instance using the specified properties.
+             * @function create
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey=} [properties] Properties to set
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey} SenderMessageKey instance
+             */
+            SenderMessageKey.create = function create(properties) {
+                return new SenderMessageKey(properties);
+            };
+
+            /**
+             * Encodes the specified SenderMessageKey message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.verify|verify} messages.
+             * @function encode
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey} message SenderMessageKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SenderMessageKey.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.iteration != null && Object.hasOwnProperty.call(message, "iteration"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.iteration);
+                if (message.seed != null && Object.hasOwnProperty.call(message, "seed"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.seed);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SenderMessageKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey} message SenderMessageKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SenderMessageKey.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SenderMessageKey message from the specified reader or buffer.
+             * @function decode
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey} SenderMessageKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SenderMessageKey.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.iteration = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.seed = reader.bytes();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SenderMessageKey message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey} SenderMessageKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SenderMessageKey.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SenderMessageKey message.
+             * @function verify
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SenderMessageKey.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.iteration != null && message.hasOwnProperty("iteration")) {
+                    properties._iteration = 1;
+                    if (!$util.isInteger(message.iteration))
+                        return "iteration: integer expected";
+                }
+                if (message.seed != null && message.hasOwnProperty("seed")) {
+                    properties._seed = 1;
+                    if (!(message.seed && typeof message.seed.length === "number" || $util.isString(message.seed)))
+                        return "seed: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SenderMessageKey message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey} SenderMessageKey
+             */
+            SenderMessageKey.fromObject = function fromObject(object) {
+                if (object instanceof $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey)
+                    return object;
+                var message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
+                if (object.iteration != null)
+                    message.iteration = object.iteration >>> 0;
+                if (object.seed != null)
+                    if (typeof object.seed === "string")
+                        $util.base64.decode(object.seed, message.seed = $util.newBuffer($util.base64.length(object.seed)), 0);
+                    else if (object.seed.length >= 0)
+                        message.seed = object.seed;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SenderMessageKey message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey} message SenderMessageKey
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SenderMessageKey.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.iteration != null && message.hasOwnProperty("iteration")) {
+                    object.iteration = message.iteration;
+                    if (options.oneofs)
+                        object._iteration = "iteration";
+                }
+                if (message.seed != null && message.hasOwnProperty("seed")) {
+                    object.seed = options.bytes === String ? $util.base64.encode(message.seed, 0, message.seed.length) : options.bytes === Array ? Array.prototype.slice.call(message.seed) : message.seed;
+                    if (options.oneofs)
+                        object._seed = "seed";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SenderMessageKey to JSON.
+             * @function toJSON
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SenderMessageKey.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SenderMessageKey
+             * @function getTypeUrl
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SenderMessageKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey";
+            };
+
+            return SenderMessageKey;
+        })();
+
+        SenderKeyStateStructure.SenderSigningKey = (function() {
+
+            /**
+             * Properties of a SenderSigningKey.
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+             * @interface ISenderSigningKey
+             * @property {Uint8Array|null} ["public"] SenderSigningKey public
+             * @property {Uint8Array|null} ["private"] SenderSigningKey private
+             */
+
+            /**
+             * Constructs a new SenderSigningKey.
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure
+             * @classdesc Represents a SenderSigningKey.
+             * @implements ISenderSigningKey
+             * @constructor
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey=} [properties] Properties to set
+             */
+            function SenderSigningKey(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SenderSigningKey public.
+             * @member {Uint8Array|null|undefined} public
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @instance
+             */
+            SenderSigningKey.prototype["public"] = null;
+
+            /**
+             * SenderSigningKey private.
+             * @member {Uint8Array|null|undefined} private
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @instance
+             */
+            SenderSigningKey.prototype["private"] = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SenderSigningKey.prototype, "_public", {
+                get: $util.oneOfGetter($oneOfFields = ["public"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SenderSigningKey.prototype, "_private", {
+                get: $util.oneOfGetter($oneOfFields = ["private"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SenderSigningKey instance using the specified properties.
+             * @function create
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey=} [properties] Properties to set
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey} SenderSigningKey instance
+             */
+            SenderSigningKey.create = function create(properties) {
+                return new SenderSigningKey(properties);
+            };
+
+            /**
+             * Encodes the specified SenderSigningKey message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.verify|verify} messages.
+             * @function encode
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey} message SenderSigningKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SenderSigningKey.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message["public"] != null && Object.hasOwnProperty.call(message, "public"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).bytes(message["public"]);
+                if (message["private"] != null && Object.hasOwnProperty.call(message, "private"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message["private"]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SenderSigningKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey} message SenderSigningKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SenderSigningKey.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SenderSigningKey message from the specified reader or buffer.
+             * @function decode
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey} SenderSigningKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SenderSigningKey.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message["public"] = reader.bytes();
+                            break;
+                        }
+                    case 2: {
+                            message["private"] = reader.bytes();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SenderSigningKey message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey} SenderSigningKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SenderSigningKey.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SenderSigningKey message.
+             * @function verify
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SenderSigningKey.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message["public"] != null && message.hasOwnProperty("public")) {
+                    properties._public = 1;
+                    if (!(message["public"] && typeof message["public"].length === "number" || $util.isString(message["public"])))
+                        return "public: buffer expected";
+                }
+                if (message["private"] != null && message.hasOwnProperty("private")) {
+                    properties._private = 1;
+                    if (!(message["private"] && typeof message["private"].length === "number" || $util.isString(message["private"])))
+                        return "private: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SenderSigningKey message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey} SenderSigningKey
+             */
+            SenderSigningKey.fromObject = function fromObject(object) {
+                if (object instanceof $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey)
+                    return object;
+                var message = new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
+                if (object["public"] != null)
+                    if (typeof object["public"] === "string")
+                        $util.base64.decode(object["public"], message["public"] = $util.newBuffer($util.base64.length(object["public"])), 0);
+                    else if (object["public"].length >= 0)
+                        message["public"] = object["public"];
+                if (object["private"] != null)
+                    if (typeof object["private"] === "string")
+                        $util.base64.decode(object["private"], message["private"] = $util.newBuffer($util.base64.length(object["private"])), 0);
+                    else if (object["private"].length >= 0)
+                        message["private"] = object["private"];
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SenderSigningKey message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey} message SenderSigningKey
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SenderSigningKey.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message["public"] != null && message.hasOwnProperty("public")) {
+                    object["public"] = options.bytes === String ? $util.base64.encode(message["public"], 0, message["public"].length) : options.bytes === Array ? Array.prototype.slice.call(message["public"]) : message["public"];
+                    if (options.oneofs)
+                        object._public = "public";
+                }
+                if (message["private"] != null && message.hasOwnProperty("private")) {
+                    object["private"] = options.bytes === String ? $util.base64.encode(message["private"], 0, message["private"].length) : options.bytes === Array ? Array.prototype.slice.call(message["private"]) : message["private"];
+                    if (options.oneofs)
+                        object._private = "private";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SenderSigningKey to JSON.
+             * @function toJSON
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SenderSigningKey.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SenderSigningKey
+             * @function getTypeUrl
+             * @memberof SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SenderSigningKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey";
+            };
+
+            return SenderSigningKey;
+        })();
+
+        return SenderKeyStateStructure;
+    })();
+
+    SignalLocalStorageProtocol.IdentityKeyPairStructure = (function() {
+
+        /**
+         * Properties of an IdentityKeyPairStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @interface IIdentityKeyPairStructure
+         * @property {Uint8Array|null} [publicKey] IdentityKeyPairStructure publicKey
+         * @property {Uint8Array|null} [privateKey] IdentityKeyPairStructure privateKey
+         */
+
+        /**
+         * Constructs a new IdentityKeyPairStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @classdesc Represents an IdentityKeyPairStructure.
+         * @implements IIdentityKeyPairStructure
+         * @constructor
+         * @param {SignalLocalStorageProtocol.IIdentityKeyPairStructure=} [properties] Properties to set
+         */
+        function IdentityKeyPairStructure(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * IdentityKeyPairStructure publicKey.
+         * @member {Uint8Array|null|undefined} publicKey
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @instance
+         */
+        IdentityKeyPairStructure.prototype.publicKey = null;
+
+        /**
+         * IdentityKeyPairStructure privateKey.
+         * @member {Uint8Array|null|undefined} privateKey
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @instance
+         */
+        IdentityKeyPairStructure.prototype.privateKey = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(IdentityKeyPairStructure.prototype, "_publicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["publicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(IdentityKeyPairStructure.prototype, "_privateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["privateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new IdentityKeyPairStructure instance using the specified properties.
+         * @function create
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IIdentityKeyPairStructure=} [properties] Properties to set
+         * @returns {SignalLocalStorageProtocol.IdentityKeyPairStructure} IdentityKeyPairStructure instance
+         */
+        IdentityKeyPairStructure.create = function create(properties) {
+            return new IdentityKeyPairStructure(properties);
+        };
+
+        /**
+         * Encodes the specified IdentityKeyPairStructure message. Does not implicitly {@link SignalLocalStorageProtocol.IdentityKeyPairStructure.verify|verify} messages.
+         * @function encode
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IIdentityKeyPairStructure} message IdentityKeyPairStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        IdentityKeyPairStructure.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.publicKey != null && Object.hasOwnProperty.call(message, "publicKey"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.publicKey);
+            if (message.privateKey != null && Object.hasOwnProperty.call(message, "privateKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.privateKey);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified IdentityKeyPairStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.IdentityKeyPairStructure.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IIdentityKeyPairStructure} message IdentityKeyPairStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        IdentityKeyPairStructure.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an IdentityKeyPairStructure message from the specified reader or buffer.
+         * @function decode
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {SignalLocalStorageProtocol.IdentityKeyPairStructure} IdentityKeyPairStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        IdentityKeyPairStructure.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.publicKey = reader.bytes();
+                        break;
+                    }
+                case 2: {
+                        message.privateKey = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an IdentityKeyPairStructure message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {SignalLocalStorageProtocol.IdentityKeyPairStructure} IdentityKeyPairStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        IdentityKeyPairStructure.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an IdentityKeyPairStructure message.
+         * @function verify
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        IdentityKeyPairStructure.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.publicKey != null && message.hasOwnProperty("publicKey")) {
+                properties._publicKey = 1;
+                if (!(message.publicKey && typeof message.publicKey.length === "number" || $util.isString(message.publicKey)))
+                    return "publicKey: buffer expected";
+            }
+            if (message.privateKey != null && message.hasOwnProperty("privateKey")) {
+                properties._privateKey = 1;
+                if (!(message.privateKey && typeof message.privateKey.length === "number" || $util.isString(message.privateKey)))
+                    return "privateKey: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates an IdentityKeyPairStructure message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {SignalLocalStorageProtocol.IdentityKeyPairStructure} IdentityKeyPairStructure
+         */
+        IdentityKeyPairStructure.fromObject = function fromObject(object) {
+            if (object instanceof $root.SignalLocalStorageProtocol.IdentityKeyPairStructure)
+                return object;
+            var message = new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
+            if (object.publicKey != null)
+                if (typeof object.publicKey === "string")
+                    $util.base64.decode(object.publicKey, message.publicKey = $util.newBuffer($util.base64.length(object.publicKey)), 0);
+                else if (object.publicKey.length >= 0)
+                    message.publicKey = object.publicKey;
+            if (object.privateKey != null)
+                if (typeof object.privateKey === "string")
+                    $util.base64.decode(object.privateKey, message.privateKey = $util.newBuffer($util.base64.length(object.privateKey)), 0);
+                else if (object.privateKey.length >= 0)
+                    message.privateKey = object.privateKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an IdentityKeyPairStructure message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IdentityKeyPairStructure} message IdentityKeyPairStructure
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        IdentityKeyPairStructure.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (message.publicKey != null && message.hasOwnProperty("publicKey")) {
+                object.publicKey = options.bytes === String ? $util.base64.encode(message.publicKey, 0, message.publicKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.publicKey) : message.publicKey;
+                if (options.oneofs)
+                    object._publicKey = "publicKey";
+            }
+            if (message.privateKey != null && message.hasOwnProperty("privateKey")) {
+                object.privateKey = options.bytes === String ? $util.base64.encode(message.privateKey, 0, message.privateKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.privateKey) : message.privateKey;
+                if (options.oneofs)
+                    object._privateKey = "privateKey";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this IdentityKeyPairStructure to JSON.
+         * @function toJSON
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        IdentityKeyPairStructure.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for IdentityKeyPairStructure
+         * @function getTypeUrl
+         * @memberof SignalLocalStorageProtocol.IdentityKeyPairStructure
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        IdentityKeyPairStructure.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/SignalLocalStorageProtocol.IdentityKeyPairStructure";
+        };
+
+        return IdentityKeyPairStructure;
+    })();
+
+    SignalLocalStorageProtocol.SignedPreKeyRecordStructure = (function() {
+
+        /**
+         * Properties of a SignedPreKeyRecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @interface ISignedPreKeyRecordStructure
+         * @property {number|null} [id] SignedPreKeyRecordStructure id
+         * @property {Uint8Array|null} [publicKey] SignedPreKeyRecordStructure publicKey
+         * @property {Uint8Array|null} [privateKey] SignedPreKeyRecordStructure privateKey
+         * @property {Uint8Array|null} [signature] SignedPreKeyRecordStructure signature
+         * @property {number|Long|null} [timestamp] SignedPreKeyRecordStructure timestamp
+         */
+
+        /**
+         * Constructs a new SignedPreKeyRecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @classdesc Represents a SignedPreKeyRecordStructure.
+         * @implements ISignedPreKeyRecordStructure
+         * @constructor
+         * @param {SignalLocalStorageProtocol.ISignedPreKeyRecordStructure=} [properties] Properties to set
+         */
+        function SignedPreKeyRecordStructure(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SignedPreKeyRecordStructure id.
+         * @member {number|null|undefined} id
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
+         * @instance
+         */
+        SignedPreKeyRecordStructure.prototype.id = null;
+
+        /**
+         * SignedPreKeyRecordStructure publicKey.
+         * @member {Uint8Array|null|undefined} publicKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
+         * @instance
+         */
+        SignedPreKeyRecordStructure.prototype.publicKey = null;
+
+        /**
+         * SignedPreKeyRecordStructure privateKey.
+         * @member {Uint8Array|null|undefined} privateKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
+         * @instance
+         */
+        SignedPreKeyRecordStructure.prototype.privateKey = null;
+
+        /**
+         * SignedPreKeyRecordStructure signature.
+         * @member {Uint8Array|null|undefined} signature
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
+         * @instance
+         */
+        SignedPreKeyRecordStructure.prototype.signature = null;
+
+        /**
+         * SignedPreKeyRecordStructure timestamp.
+         * @member {number|Long|null|undefined} timestamp
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
+         * @instance
+         */
+        SignedPreKeyRecordStructure.prototype.timestamp = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SignedPreKeyRecordStructure.prototype, "_id", {
             get: $util.oneOfGetter($oneOfFields = ["id"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
         // Virtual OneOf for proto3 optional field
-        Object.defineProperty(MessageKey.prototype, "_participant", {
-            get: $util.oneOfGetter($oneOfFields = ["participant"]),
+        Object.defineProperty(SignedPreKeyRecordStructure.prototype, "_publicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["publicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SignedPreKeyRecordStructure.prototype, "_privateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["privateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SignedPreKeyRecordStructure.prototype, "_signature", {
+            get: $util.oneOfGetter($oneOfFields = ["signature"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SignedPreKeyRecordStructure.prototype, "_timestamp", {
+            get: $util.oneOfGetter($oneOfFields = ["timestamp"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
         /**
-         * Creates a new MessageKey instance using the specified properties.
+         * Creates a new SignedPreKeyRecordStructure instance using the specified properties.
          * @function create
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
-         * @param {Protocol.IMessageKey=} [properties] Properties to set
-         * @returns {Protocol.MessageKey} MessageKey instance
+         * @param {SignalLocalStorageProtocol.ISignedPreKeyRecordStructure=} [properties] Properties to set
+         * @returns {SignalLocalStorageProtocol.SignedPreKeyRecordStructure} SignedPreKeyRecordStructure instance
          */
-        MessageKey.create = function create(properties) {
-            return new MessageKey(properties);
+        SignedPreKeyRecordStructure.create = function create(properties) {
+            return new SignedPreKeyRecordStructure(properties);
         };
 
         /**
-         * Encodes the specified MessageKey message. Does not implicitly {@link Protocol.MessageKey.verify|verify} messages.
+         * Encodes the specified SignedPreKeyRecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SignedPreKeyRecordStructure.verify|verify} messages.
          * @function encode
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
-         * @param {Protocol.IMessageKey} message MessageKey message or plain object to encode
+         * @param {SignalLocalStorageProtocol.ISignedPreKeyRecordStructure} message SignedPreKeyRecordStructure message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        MessageKey.encode = function encode(message, writer) {
+        SignedPreKeyRecordStructure.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.remoteJid != null && Object.hasOwnProperty.call(message, "remoteJid"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.remoteJid);
-            if (message.fromMe != null && Object.hasOwnProperty.call(message, "fromMe"))
-                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.fromMe);
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.id);
-            if (message.participant != null && Object.hasOwnProperty.call(message, "participant"))
-                writer.uint32(/* id 4, wireType 2 =*/34).string(message.participant);
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
+            if (message.publicKey != null && Object.hasOwnProperty.call(message, "publicKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.publicKey);
+            if (message.privateKey != null && Object.hasOwnProperty.call(message, "privateKey"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.privateKey);
+            if (message.signature != null && Object.hasOwnProperty.call(message, "signature"))
+                writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.signature);
+            if (message.timestamp != null && Object.hasOwnProperty.call(message, "timestamp"))
+                writer.uint32(/* id 5, wireType 1 =*/41).fixed64(message.timestamp);
             return writer;
         };
 
         /**
-         * Encodes the specified MessageKey message, length delimited. Does not implicitly {@link Protocol.MessageKey.verify|verify} messages.
+         * Encodes the specified SignedPreKeyRecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SignedPreKeyRecordStructure.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
-         * @param {Protocol.IMessageKey} message MessageKey message or plain object to encode
+         * @param {SignalLocalStorageProtocol.ISignedPreKeyRecordStructure} message SignedPreKeyRecordStructure message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        MessageKey.encodeDelimited = function encodeDelimited(message, writer) {
+        SignedPreKeyRecordStructure.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes a MessageKey message from the specified reader or buffer.
+         * Decodes a SignedPreKeyRecordStructure message from the specified reader or buffer.
          * @function decode
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {Protocol.MessageKey} MessageKey
+         * @returns {SignalLocalStorageProtocol.SignedPreKeyRecordStructure} SignedPreKeyRecordStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        MessageKey.decode = function decode(reader, length, error) {
+        SignedPreKeyRecordStructure.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Protocol.MessageKey();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 if (tag === error)
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.remoteJid = reader.string();
+                        message.id = reader.uint32();
                         break;
                     }
                 case 2: {
-                        message.fromMe = reader.bool();
+                        message.publicKey = reader.bytes();
                         break;
                     }
                 case 3: {
-                        message.id = reader.string();
+                        message.privateKey = reader.bytes();
                         break;
                     }
                 case 4: {
-                        message.participant = reader.string();
+                        message.signature = reader.bytes();
+                        break;
+                    }
+                case 5: {
+                        message.timestamp = reader.fixed64();
                         break;
                     }
                 default:
@@ -25729,145 +29824,3102 @@ $root.Protocol = (function() {
         };
 
         /**
-         * Decodes a MessageKey message from the specified reader or buffer, length delimited.
+         * Decodes a SignedPreKeyRecordStructure message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {Protocol.MessageKey} MessageKey
+         * @returns {SignalLocalStorageProtocol.SignedPreKeyRecordStructure} SignedPreKeyRecordStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        MessageKey.decodeDelimited = function decodeDelimited(reader) {
+        SignedPreKeyRecordStructure.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies a MessageKey message.
+         * Verifies a SignedPreKeyRecordStructure message.
          * @function verify
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        MessageKey.verify = function verify(message) {
+        SignedPreKeyRecordStructure.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
             var properties = {};
-            if (message.remoteJid != null && message.hasOwnProperty("remoteJid")) {
-                properties._remoteJid = 1;
-                if (!$util.isString(message.remoteJid))
-                    return "remoteJid: string expected";
-            }
-            if (message.fromMe != null && message.hasOwnProperty("fromMe")) {
-                properties._fromMe = 1;
-                if (typeof message.fromMe !== "boolean")
-                    return "fromMe: boolean expected";
-            }
             if (message.id != null && message.hasOwnProperty("id")) {
                 properties._id = 1;
-                if (!$util.isString(message.id))
-                    return "id: string expected";
+                if (!$util.isInteger(message.id))
+                    return "id: integer expected";
             }
-            if (message.participant != null && message.hasOwnProperty("participant")) {
-                properties._participant = 1;
-                if (!$util.isString(message.participant))
-                    return "participant: string expected";
+            if (message.publicKey != null && message.hasOwnProperty("publicKey")) {
+                properties._publicKey = 1;
+                if (!(message.publicKey && typeof message.publicKey.length === "number" || $util.isString(message.publicKey)))
+                    return "publicKey: buffer expected";
+            }
+            if (message.privateKey != null && message.hasOwnProperty("privateKey")) {
+                properties._privateKey = 1;
+                if (!(message.privateKey && typeof message.privateKey.length === "number" || $util.isString(message.privateKey)))
+                    return "privateKey: buffer expected";
+            }
+            if (message.signature != null && message.hasOwnProperty("signature")) {
+                properties._signature = 1;
+                if (!(message.signature && typeof message.signature.length === "number" || $util.isString(message.signature)))
+                    return "signature: buffer expected";
+            }
+            if (message.timestamp != null && message.hasOwnProperty("timestamp")) {
+                properties._timestamp = 1;
+                if (!$util.isInteger(message.timestamp) && !(message.timestamp && $util.isInteger(message.timestamp.low) && $util.isInteger(message.timestamp.high)))
+                    return "timestamp: integer|Long expected";
             }
             return null;
         };
 
         /**
-         * Creates a MessageKey message from a plain object. Also converts values to their respective internal types.
+         * Creates a SignedPreKeyRecordStructure message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {Protocol.MessageKey} MessageKey
+         * @returns {SignalLocalStorageProtocol.SignedPreKeyRecordStructure} SignedPreKeyRecordStructure
          */
-        MessageKey.fromObject = function fromObject(object) {
-            if (object instanceof $root.Protocol.MessageKey)
+        SignedPreKeyRecordStructure.fromObject = function fromObject(object) {
+            if (object instanceof $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure)
                 return object;
-            var message = new $root.Protocol.MessageKey();
-            if (object.remoteJid != null)
-                message.remoteJid = String(object.remoteJid);
-            if (object.fromMe != null)
-                message.fromMe = Boolean(object.fromMe);
+            var message = new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
             if (object.id != null)
-                message.id = String(object.id);
-            if (object.participant != null)
-                message.participant = String(object.participant);
+                message.id = object.id >>> 0;
+            if (object.publicKey != null)
+                if (typeof object.publicKey === "string")
+                    $util.base64.decode(object.publicKey, message.publicKey = $util.newBuffer($util.base64.length(object.publicKey)), 0);
+                else if (object.publicKey.length >= 0)
+                    message.publicKey = object.publicKey;
+            if (object.privateKey != null)
+                if (typeof object.privateKey === "string")
+                    $util.base64.decode(object.privateKey, message.privateKey = $util.newBuffer($util.base64.length(object.privateKey)), 0);
+                else if (object.privateKey.length >= 0)
+                    message.privateKey = object.privateKey;
+            if (object.signature != null)
+                if (typeof object.signature === "string")
+                    $util.base64.decode(object.signature, message.signature = $util.newBuffer($util.base64.length(object.signature)), 0);
+                else if (object.signature.length >= 0)
+                    message.signature = object.signature;
+            if (object.timestamp != null)
+                if ($util.Long)
+                    (message.timestamp = $util.Long.fromValue(object.timestamp)).unsigned = false;
+                else if (typeof object.timestamp === "string")
+                    message.timestamp = parseInt(object.timestamp, 10);
+                else if (typeof object.timestamp === "number")
+                    message.timestamp = object.timestamp;
+                else if (typeof object.timestamp === "object")
+                    message.timestamp = new $util.LongBits(object.timestamp.low >>> 0, object.timestamp.high >>> 0).toNumber();
             return message;
         };
 
         /**
-         * Creates a plain object from a MessageKey message. Also converts values to other types if specified.
+         * Creates a plain object from a SignedPreKeyRecordStructure message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
-         * @param {Protocol.MessageKey} message MessageKey
+         * @param {SignalLocalStorageProtocol.SignedPreKeyRecordStructure} message SignedPreKeyRecordStructure
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
-        MessageKey.toObject = function toObject(message, options) {
+        SignedPreKeyRecordStructure.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
             var object = {};
-            if (message.remoteJid != null && message.hasOwnProperty("remoteJid")) {
-                object.remoteJid = message.remoteJid;
-                if (options.oneofs)
-                    object._remoteJid = "remoteJid";
-            }
-            if (message.fromMe != null && message.hasOwnProperty("fromMe")) {
-                object.fromMe = message.fromMe;
-                if (options.oneofs)
-                    object._fromMe = "fromMe";
-            }
             if (message.id != null && message.hasOwnProperty("id")) {
                 object.id = message.id;
                 if (options.oneofs)
                     object._id = "id";
             }
-            if (message.participant != null && message.hasOwnProperty("participant")) {
-                object.participant = message.participant;
+            if (message.publicKey != null && message.hasOwnProperty("publicKey")) {
+                object.publicKey = options.bytes === String ? $util.base64.encode(message.publicKey, 0, message.publicKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.publicKey) : message.publicKey;
                 if (options.oneofs)
-                    object._participant = "participant";
+                    object._publicKey = "publicKey";
+            }
+            if (message.privateKey != null && message.hasOwnProperty("privateKey")) {
+                object.privateKey = options.bytes === String ? $util.base64.encode(message.privateKey, 0, message.privateKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.privateKey) : message.privateKey;
+                if (options.oneofs)
+                    object._privateKey = "privateKey";
+            }
+            if (message.signature != null && message.hasOwnProperty("signature")) {
+                object.signature = options.bytes === String ? $util.base64.encode(message.signature, 0, message.signature.length) : options.bytes === Array ? Array.prototype.slice.call(message.signature) : message.signature;
+                if (options.oneofs)
+                    object._signature = "signature";
+            }
+            if (message.timestamp != null && message.hasOwnProperty("timestamp")) {
+                if (typeof message.timestamp === "number")
+                    object.timestamp = options.longs === String ? String(message.timestamp) : message.timestamp;
+                else
+                    object.timestamp = options.longs === String ? $util.Long.prototype.toString.call(message.timestamp) : options.longs === Number ? new $util.LongBits(message.timestamp.low >>> 0, message.timestamp.high >>> 0).toNumber() : message.timestamp;
+                if (options.oneofs)
+                    object._timestamp = "timestamp";
             }
             return object;
         };
 
         /**
-         * Converts this MessageKey to JSON.
+         * Converts this SignedPreKeyRecordStructure to JSON.
          * @function toJSON
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
-        MessageKey.prototype.toJSON = function toJSON() {
+        SignedPreKeyRecordStructure.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
 
         /**
-         * Gets the default type url for MessageKey
+         * Gets the default type url for SignedPreKeyRecordStructure
          * @function getTypeUrl
-         * @memberof Protocol.MessageKey
+         * @memberof SignalLocalStorageProtocol.SignedPreKeyRecordStructure
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
          */
-        MessageKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        SignedPreKeyRecordStructure.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/Protocol.MessageKey";
+            return typeUrlPrefix + "/SignalLocalStorageProtocol.SignedPreKeyRecordStructure";
         };
 
-        return MessageKey;
+        return SignedPreKeyRecordStructure;
     })();
 
-    return Protocol;
+    SignalLocalStorageProtocol.PreKeyRecordStructure = (function() {
+
+        /**
+         * Properties of a PreKeyRecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @interface IPreKeyRecordStructure
+         * @property {number|null} [id] PreKeyRecordStructure id
+         * @property {Uint8Array|null} [publicKey] PreKeyRecordStructure publicKey
+         * @property {Uint8Array|null} [privateKey] PreKeyRecordStructure privateKey
+         */
+
+        /**
+         * Constructs a new PreKeyRecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @classdesc Represents a PreKeyRecordStructure.
+         * @implements IPreKeyRecordStructure
+         * @constructor
+         * @param {SignalLocalStorageProtocol.IPreKeyRecordStructure=} [properties] Properties to set
+         */
+        function PreKeyRecordStructure(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * PreKeyRecordStructure id.
+         * @member {number|null|undefined} id
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @instance
+         */
+        PreKeyRecordStructure.prototype.id = null;
+
+        /**
+         * PreKeyRecordStructure publicKey.
+         * @member {Uint8Array|null|undefined} publicKey
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @instance
+         */
+        PreKeyRecordStructure.prototype.publicKey = null;
+
+        /**
+         * PreKeyRecordStructure privateKey.
+         * @member {Uint8Array|null|undefined} privateKey
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @instance
+         */
+        PreKeyRecordStructure.prototype.privateKey = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(PreKeyRecordStructure.prototype, "_id", {
+            get: $util.oneOfGetter($oneOfFields = ["id"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(PreKeyRecordStructure.prototype, "_publicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["publicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(PreKeyRecordStructure.prototype, "_privateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["privateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new PreKeyRecordStructure instance using the specified properties.
+         * @function create
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IPreKeyRecordStructure=} [properties] Properties to set
+         * @returns {SignalLocalStorageProtocol.PreKeyRecordStructure} PreKeyRecordStructure instance
+         */
+        PreKeyRecordStructure.create = function create(properties) {
+            return new PreKeyRecordStructure(properties);
+        };
+
+        /**
+         * Encodes the specified PreKeyRecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.PreKeyRecordStructure.verify|verify} messages.
+         * @function encode
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IPreKeyRecordStructure} message PreKeyRecordStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PreKeyRecordStructure.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
+            if (message.publicKey != null && Object.hasOwnProperty.call(message, "publicKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.publicKey);
+            if (message.privateKey != null && Object.hasOwnProperty.call(message, "privateKey"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.privateKey);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified PreKeyRecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.PreKeyRecordStructure.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IPreKeyRecordStructure} message PreKeyRecordStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PreKeyRecordStructure.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a PreKeyRecordStructure message from the specified reader or buffer.
+         * @function decode
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {SignalLocalStorageProtocol.PreKeyRecordStructure} PreKeyRecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PreKeyRecordStructure.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.publicKey = reader.bytes();
+                        break;
+                    }
+                case 3: {
+                        message.privateKey = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a PreKeyRecordStructure message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {SignalLocalStorageProtocol.PreKeyRecordStructure} PreKeyRecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PreKeyRecordStructure.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a PreKeyRecordStructure message.
+         * @function verify
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        PreKeyRecordStructure.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.id != null && message.hasOwnProperty("id")) {
+                properties._id = 1;
+                if (!$util.isInteger(message.id))
+                    return "id: integer expected";
+            }
+            if (message.publicKey != null && message.hasOwnProperty("publicKey")) {
+                properties._publicKey = 1;
+                if (!(message.publicKey && typeof message.publicKey.length === "number" || $util.isString(message.publicKey)))
+                    return "publicKey: buffer expected";
+            }
+            if (message.privateKey != null && message.hasOwnProperty("privateKey")) {
+                properties._privateKey = 1;
+                if (!(message.privateKey && typeof message.privateKey.length === "number" || $util.isString(message.privateKey)))
+                    return "privateKey: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a PreKeyRecordStructure message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {SignalLocalStorageProtocol.PreKeyRecordStructure} PreKeyRecordStructure
+         */
+        PreKeyRecordStructure.fromObject = function fromObject(object) {
+            if (object instanceof $root.SignalLocalStorageProtocol.PreKeyRecordStructure)
+                return object;
+            var message = new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
+            if (object.id != null)
+                message.id = object.id >>> 0;
+            if (object.publicKey != null)
+                if (typeof object.publicKey === "string")
+                    $util.base64.decode(object.publicKey, message.publicKey = $util.newBuffer($util.base64.length(object.publicKey)), 0);
+                else if (object.publicKey.length >= 0)
+                    message.publicKey = object.publicKey;
+            if (object.privateKey != null)
+                if (typeof object.privateKey === "string")
+                    $util.base64.decode(object.privateKey, message.privateKey = $util.newBuffer($util.base64.length(object.privateKey)), 0);
+                else if (object.privateKey.length >= 0)
+                    message.privateKey = object.privateKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a PreKeyRecordStructure message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.PreKeyRecordStructure} message PreKeyRecordStructure
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        PreKeyRecordStructure.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (message.id != null && message.hasOwnProperty("id")) {
+                object.id = message.id;
+                if (options.oneofs)
+                    object._id = "id";
+            }
+            if (message.publicKey != null && message.hasOwnProperty("publicKey")) {
+                object.publicKey = options.bytes === String ? $util.base64.encode(message.publicKey, 0, message.publicKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.publicKey) : message.publicKey;
+                if (options.oneofs)
+                    object._publicKey = "publicKey";
+            }
+            if (message.privateKey != null && message.hasOwnProperty("privateKey")) {
+                object.privateKey = options.bytes === String ? $util.base64.encode(message.privateKey, 0, message.privateKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.privateKey) : message.privateKey;
+                if (options.oneofs)
+                    object._privateKey = "privateKey";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this PreKeyRecordStructure to JSON.
+         * @function toJSON
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        PreKeyRecordStructure.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for PreKeyRecordStructure
+         * @function getTypeUrl
+         * @memberof SignalLocalStorageProtocol.PreKeyRecordStructure
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        PreKeyRecordStructure.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/SignalLocalStorageProtocol.PreKeyRecordStructure";
+        };
+
+        return PreKeyRecordStructure;
+    })();
+
+    SignalLocalStorageProtocol.RecordStructure = (function() {
+
+        /**
+         * Properties of a RecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @interface IRecordStructure
+         * @property {SignalLocalStorageProtocol.ISessionStructure|null} [currentSession] RecordStructure currentSession
+         * @property {Array.<SignalLocalStorageProtocol.ISessionStructure>|null} [previousSessions] RecordStructure previousSessions
+         */
+
+        /**
+         * Constructs a new RecordStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @classdesc Represents a RecordStructure.
+         * @implements IRecordStructure
+         * @constructor
+         * @param {SignalLocalStorageProtocol.IRecordStructure=} [properties] Properties to set
+         */
+        function RecordStructure(properties) {
+            this.previousSessions = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RecordStructure currentSession.
+         * @member {SignalLocalStorageProtocol.ISessionStructure|null|undefined} currentSession
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @instance
+         */
+        RecordStructure.prototype.currentSession = null;
+
+        /**
+         * RecordStructure previousSessions.
+         * @member {Array.<SignalLocalStorageProtocol.ISessionStructure>} previousSessions
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @instance
+         */
+        RecordStructure.prototype.previousSessions = $util.emptyArray;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(RecordStructure.prototype, "_currentSession", {
+            get: $util.oneOfGetter($oneOfFields = ["currentSession"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new RecordStructure instance using the specified properties.
+         * @function create
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IRecordStructure=} [properties] Properties to set
+         * @returns {SignalLocalStorageProtocol.RecordStructure} RecordStructure instance
+         */
+        RecordStructure.create = function create(properties) {
+            return new RecordStructure(properties);
+        };
+
+        /**
+         * Encodes the specified RecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.RecordStructure.verify|verify} messages.
+         * @function encode
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IRecordStructure} message RecordStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RecordStructure.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.currentSession != null && Object.hasOwnProperty.call(message, "currentSession"))
+                $root.SignalLocalStorageProtocol.SessionStructure.encode(message.currentSession, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.previousSessions != null && message.previousSessions.length)
+                for (var i = 0; i < message.previousSessions.length; ++i)
+                    $root.SignalLocalStorageProtocol.SessionStructure.encode(message.previousSessions[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.RecordStructure.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.IRecordStructure} message RecordStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RecordStructure.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RecordStructure message from the specified reader or buffer.
+         * @function decode
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {SignalLocalStorageProtocol.RecordStructure} RecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RecordStructure.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.RecordStructure();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        if (!(message.previousSessions && message.previousSessions.length))
+                            message.previousSessions = [];
+                        message.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RecordStructure message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {SignalLocalStorageProtocol.RecordStructure} RecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RecordStructure.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RecordStructure message.
+         * @function verify
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RecordStructure.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.currentSession != null && message.hasOwnProperty("currentSession")) {
+                properties._currentSession = 1;
+                {
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.verify(message.currentSession);
+                    if (error)
+                        return "currentSession." + error;
+                }
+            }
+            if (message.previousSessions != null && message.hasOwnProperty("previousSessions")) {
+                if (!Array.isArray(message.previousSessions))
+                    return "previousSessions: array expected";
+                for (var i = 0; i < message.previousSessions.length; ++i) {
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.verify(message.previousSessions[i]);
+                    if (error)
+                        return "previousSessions." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RecordStructure message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {SignalLocalStorageProtocol.RecordStructure} RecordStructure
+         */
+        RecordStructure.fromObject = function fromObject(object) {
+            if (object instanceof $root.SignalLocalStorageProtocol.RecordStructure)
+                return object;
+            var message = new $root.SignalLocalStorageProtocol.RecordStructure();
+            if (object.currentSession != null) {
+                if (typeof object.currentSession !== "object")
+                    throw TypeError(".SignalLocalStorageProtocol.RecordStructure.currentSession: object expected");
+                message.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.fromObject(object.currentSession);
+            }
+            if (object.previousSessions) {
+                if (!Array.isArray(object.previousSessions))
+                    throw TypeError(".SignalLocalStorageProtocol.RecordStructure.previousSessions: array expected");
+                message.previousSessions = [];
+                for (var i = 0; i < object.previousSessions.length; ++i) {
+                    if (typeof object.previousSessions[i] !== "object")
+                        throw TypeError(".SignalLocalStorageProtocol.RecordStructure.previousSessions: object expected");
+                    message.previousSessions[i] = $root.SignalLocalStorageProtocol.SessionStructure.fromObject(object.previousSessions[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RecordStructure message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.RecordStructure} message RecordStructure
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RecordStructure.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.previousSessions = [];
+            if (message.currentSession != null && message.hasOwnProperty("currentSession")) {
+                object.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.toObject(message.currentSession, options);
+                if (options.oneofs)
+                    object._currentSession = "currentSession";
+            }
+            if (message.previousSessions && message.previousSessions.length) {
+                object.previousSessions = [];
+                for (var j = 0; j < message.previousSessions.length; ++j)
+                    object.previousSessions[j] = $root.SignalLocalStorageProtocol.SessionStructure.toObject(message.previousSessions[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RecordStructure to JSON.
+         * @function toJSON
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RecordStructure.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RecordStructure
+         * @function getTypeUrl
+         * @memberof SignalLocalStorageProtocol.RecordStructure
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RecordStructure.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/SignalLocalStorageProtocol.RecordStructure";
+        };
+
+        return RecordStructure;
+    })();
+
+    SignalLocalStorageProtocol.SessionStructure = (function() {
+
+        /**
+         * Properties of a SessionStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @interface ISessionStructure
+         * @property {number|null} [sessionVersion] SessionStructure sessionVersion
+         * @property {Uint8Array|null} [localIdentityPublic] SessionStructure localIdentityPublic
+         * @property {Uint8Array|null} [remoteIdentityPublic] SessionStructure remoteIdentityPublic
+         * @property {Uint8Array|null} [rootKey] SessionStructure rootKey
+         * @property {number|null} [previousCounter] SessionStructure previousCounter
+         * @property {SignalLocalStorageProtocol.SessionStructure.IChain|null} [senderChain] SessionStructure senderChain
+         * @property {Array.<SignalLocalStorageProtocol.SessionStructure.IChain>|null} [receiverChains] SessionStructure receiverChains
+         * @property {SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange|null} [pendingKeyExchange] SessionStructure pendingKeyExchange
+         * @property {SignalLocalStorageProtocol.SessionStructure.IPendingPreKey|null} [pendingPreKey] SessionStructure pendingPreKey
+         * @property {number|null} [remoteRegistrationId] SessionStructure remoteRegistrationId
+         * @property {number|null} [localRegistrationId] SessionStructure localRegistrationId
+         * @property {boolean|null} [needsRefresh] SessionStructure needsRefresh
+         * @property {Uint8Array|null} [aliceBaseKey] SessionStructure aliceBaseKey
+         */
+
+        /**
+         * Constructs a new SessionStructure.
+         * @memberof SignalLocalStorageProtocol
+         * @classdesc Represents a SessionStructure.
+         * @implements ISessionStructure
+         * @constructor
+         * @param {SignalLocalStorageProtocol.ISessionStructure=} [properties] Properties to set
+         */
+        function SessionStructure(properties) {
+            this.receiverChains = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SessionStructure sessionVersion.
+         * @member {number|null|undefined} sessionVersion
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.sessionVersion = null;
+
+        /**
+         * SessionStructure localIdentityPublic.
+         * @member {Uint8Array|null|undefined} localIdentityPublic
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.localIdentityPublic = null;
+
+        /**
+         * SessionStructure remoteIdentityPublic.
+         * @member {Uint8Array|null|undefined} remoteIdentityPublic
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.remoteIdentityPublic = null;
+
+        /**
+         * SessionStructure rootKey.
+         * @member {Uint8Array|null|undefined} rootKey
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.rootKey = null;
+
+        /**
+         * SessionStructure previousCounter.
+         * @member {number|null|undefined} previousCounter
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.previousCounter = null;
+
+        /**
+         * SessionStructure senderChain.
+         * @member {SignalLocalStorageProtocol.SessionStructure.IChain|null|undefined} senderChain
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.senderChain = null;
+
+        /**
+         * SessionStructure receiverChains.
+         * @member {Array.<SignalLocalStorageProtocol.SessionStructure.IChain>} receiverChains
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.receiverChains = $util.emptyArray;
+
+        /**
+         * SessionStructure pendingKeyExchange.
+         * @member {SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange|null|undefined} pendingKeyExchange
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.pendingKeyExchange = null;
+
+        /**
+         * SessionStructure pendingPreKey.
+         * @member {SignalLocalStorageProtocol.SessionStructure.IPendingPreKey|null|undefined} pendingPreKey
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.pendingPreKey = null;
+
+        /**
+         * SessionStructure remoteRegistrationId.
+         * @member {number|null|undefined} remoteRegistrationId
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.remoteRegistrationId = null;
+
+        /**
+         * SessionStructure localRegistrationId.
+         * @member {number|null|undefined} localRegistrationId
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.localRegistrationId = null;
+
+        /**
+         * SessionStructure needsRefresh.
+         * @member {boolean|null|undefined} needsRefresh
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.needsRefresh = null;
+
+        /**
+         * SessionStructure aliceBaseKey.
+         * @member {Uint8Array|null|undefined} aliceBaseKey
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         */
+        SessionStructure.prototype.aliceBaseKey = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_sessionVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["sessionVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_localIdentityPublic", {
+            get: $util.oneOfGetter($oneOfFields = ["localIdentityPublic"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_remoteIdentityPublic", {
+            get: $util.oneOfGetter($oneOfFields = ["remoteIdentityPublic"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_rootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["rootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_previousCounter", {
+            get: $util.oneOfGetter($oneOfFields = ["previousCounter"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_senderChain", {
+            get: $util.oneOfGetter($oneOfFields = ["senderChain"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_pendingKeyExchange", {
+            get: $util.oneOfGetter($oneOfFields = ["pendingKeyExchange"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_pendingPreKey", {
+            get: $util.oneOfGetter($oneOfFields = ["pendingPreKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_remoteRegistrationId", {
+            get: $util.oneOfGetter($oneOfFields = ["remoteRegistrationId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_localRegistrationId", {
+            get: $util.oneOfGetter($oneOfFields = ["localRegistrationId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_needsRefresh", {
+            get: $util.oneOfGetter($oneOfFields = ["needsRefresh"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SessionStructure.prototype, "_aliceBaseKey", {
+            get: $util.oneOfGetter($oneOfFields = ["aliceBaseKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new SessionStructure instance using the specified properties.
+         * @function create
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.ISessionStructure=} [properties] Properties to set
+         * @returns {SignalLocalStorageProtocol.SessionStructure} SessionStructure instance
+         */
+        SessionStructure.create = function create(properties) {
+            return new SessionStructure(properties);
+        };
+
+        /**
+         * Encodes the specified SessionStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.verify|verify} messages.
+         * @function encode
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.ISessionStructure} message SessionStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SessionStructure.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.sessionVersion != null && Object.hasOwnProperty.call(message, "sessionVersion"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.sessionVersion);
+            if (message.localIdentityPublic != null && Object.hasOwnProperty.call(message, "localIdentityPublic"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.localIdentityPublic);
+            if (message.remoteIdentityPublic != null && Object.hasOwnProperty.call(message, "remoteIdentityPublic"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.remoteIdentityPublic);
+            if (message.rootKey != null && Object.hasOwnProperty.call(message, "rootKey"))
+                writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.rootKey);
+            if (message.previousCounter != null && Object.hasOwnProperty.call(message, "previousCounter"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.previousCounter);
+            if (message.senderChain != null && Object.hasOwnProperty.call(message, "senderChain"))
+                $root.SignalLocalStorageProtocol.SessionStructure.Chain.encode(message.senderChain, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+            if (message.receiverChains != null && message.receiverChains.length)
+                for (var i = 0; i < message.receiverChains.length; ++i)
+                    $root.SignalLocalStorageProtocol.SessionStructure.Chain.encode(message.receiverChains[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
+            if (message.pendingKeyExchange != null && Object.hasOwnProperty.call(message, "pendingKeyExchange"))
+                $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.encode(message.pendingKeyExchange, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
+            if (message.pendingPreKey != null && Object.hasOwnProperty.call(message, "pendingPreKey"))
+                $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.encode(message.pendingPreKey, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+            if (message.remoteRegistrationId != null && Object.hasOwnProperty.call(message, "remoteRegistrationId"))
+                writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.remoteRegistrationId);
+            if (message.localRegistrationId != null && Object.hasOwnProperty.call(message, "localRegistrationId"))
+                writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.localRegistrationId);
+            if (message.needsRefresh != null && Object.hasOwnProperty.call(message, "needsRefresh"))
+                writer.uint32(/* id 12, wireType 0 =*/96).bool(message.needsRefresh);
+            if (message.aliceBaseKey != null && Object.hasOwnProperty.call(message, "aliceBaseKey"))
+                writer.uint32(/* id 13, wireType 2 =*/106).bytes(message.aliceBaseKey);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SessionStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.ISessionStructure} message SessionStructure message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SessionStructure.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SessionStructure message from the specified reader or buffer.
+         * @function decode
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {SignalLocalStorageProtocol.SessionStructure} SessionStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SessionStructure.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SessionStructure();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.sessionVersion = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.localIdentityPublic = reader.bytes();
+                        break;
+                    }
+                case 3: {
+                        message.remoteIdentityPublic = reader.bytes();
+                        break;
+                    }
+                case 4: {
+                        message.rootKey = reader.bytes();
+                        break;
+                    }
+                case 5: {
+                        message.previousCounter = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 7: {
+                        if (!(message.receiverChains && message.receiverChains.length))
+                            message.receiverChains = [];
+                        message.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 8: {
+                        message.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 9: {
+                        message.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 10: {
+                        message.remoteRegistrationId = reader.uint32();
+                        break;
+                    }
+                case 11: {
+                        message.localRegistrationId = reader.uint32();
+                        break;
+                    }
+                case 12: {
+                        message.needsRefresh = reader.bool();
+                        break;
+                    }
+                case 13: {
+                        message.aliceBaseKey = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SessionStructure message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {SignalLocalStorageProtocol.SessionStructure} SessionStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SessionStructure.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SessionStructure message.
+         * @function verify
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SessionStructure.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            var properties = {};
+            if (message.sessionVersion != null && message.hasOwnProperty("sessionVersion")) {
+                properties._sessionVersion = 1;
+                if (!$util.isInteger(message.sessionVersion))
+                    return "sessionVersion: integer expected";
+            }
+            if (message.localIdentityPublic != null && message.hasOwnProperty("localIdentityPublic")) {
+                properties._localIdentityPublic = 1;
+                if (!(message.localIdentityPublic && typeof message.localIdentityPublic.length === "number" || $util.isString(message.localIdentityPublic)))
+                    return "localIdentityPublic: buffer expected";
+            }
+            if (message.remoteIdentityPublic != null && message.hasOwnProperty("remoteIdentityPublic")) {
+                properties._remoteIdentityPublic = 1;
+                if (!(message.remoteIdentityPublic && typeof message.remoteIdentityPublic.length === "number" || $util.isString(message.remoteIdentityPublic)))
+                    return "remoteIdentityPublic: buffer expected";
+            }
+            if (message.rootKey != null && message.hasOwnProperty("rootKey")) {
+                properties._rootKey = 1;
+                if (!(message.rootKey && typeof message.rootKey.length === "number" || $util.isString(message.rootKey)))
+                    return "rootKey: buffer expected";
+            }
+            if (message.previousCounter != null && message.hasOwnProperty("previousCounter")) {
+                properties._previousCounter = 1;
+                if (!$util.isInteger(message.previousCounter))
+                    return "previousCounter: integer expected";
+            }
+            if (message.senderChain != null && message.hasOwnProperty("senderChain")) {
+                properties._senderChain = 1;
+                {
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.verify(message.senderChain);
+                    if (error)
+                        return "senderChain." + error;
+                }
+            }
+            if (message.receiverChains != null && message.hasOwnProperty("receiverChains")) {
+                if (!Array.isArray(message.receiverChains))
+                    return "receiverChains: array expected";
+                for (var i = 0; i < message.receiverChains.length; ++i) {
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.verify(message.receiverChains[i]);
+                    if (error)
+                        return "receiverChains." + error;
+                }
+            }
+            if (message.pendingKeyExchange != null && message.hasOwnProperty("pendingKeyExchange")) {
+                properties._pendingKeyExchange = 1;
+                {
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.verify(message.pendingKeyExchange);
+                    if (error)
+                        return "pendingKeyExchange." + error;
+                }
+            }
+            if (message.pendingPreKey != null && message.hasOwnProperty("pendingPreKey")) {
+                properties._pendingPreKey = 1;
+                {
+                    var error = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.verify(message.pendingPreKey);
+                    if (error)
+                        return "pendingPreKey." + error;
+                }
+            }
+            if (message.remoteRegistrationId != null && message.hasOwnProperty("remoteRegistrationId")) {
+                properties._remoteRegistrationId = 1;
+                if (!$util.isInteger(message.remoteRegistrationId))
+                    return "remoteRegistrationId: integer expected";
+            }
+            if (message.localRegistrationId != null && message.hasOwnProperty("localRegistrationId")) {
+                properties._localRegistrationId = 1;
+                if (!$util.isInteger(message.localRegistrationId))
+                    return "localRegistrationId: integer expected";
+            }
+            if (message.needsRefresh != null && message.hasOwnProperty("needsRefresh")) {
+                properties._needsRefresh = 1;
+                if (typeof message.needsRefresh !== "boolean")
+                    return "needsRefresh: boolean expected";
+            }
+            if (message.aliceBaseKey != null && message.hasOwnProperty("aliceBaseKey")) {
+                properties._aliceBaseKey = 1;
+                if (!(message.aliceBaseKey && typeof message.aliceBaseKey.length === "number" || $util.isString(message.aliceBaseKey)))
+                    return "aliceBaseKey: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a SessionStructure message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {SignalLocalStorageProtocol.SessionStructure} SessionStructure
+         */
+        SessionStructure.fromObject = function fromObject(object) {
+            if (object instanceof $root.SignalLocalStorageProtocol.SessionStructure)
+                return object;
+            var message = new $root.SignalLocalStorageProtocol.SessionStructure();
+            if (object.sessionVersion != null)
+                message.sessionVersion = object.sessionVersion >>> 0;
+            if (object.localIdentityPublic != null)
+                if (typeof object.localIdentityPublic === "string")
+                    $util.base64.decode(object.localIdentityPublic, message.localIdentityPublic = $util.newBuffer($util.base64.length(object.localIdentityPublic)), 0);
+                else if (object.localIdentityPublic.length >= 0)
+                    message.localIdentityPublic = object.localIdentityPublic;
+            if (object.remoteIdentityPublic != null)
+                if (typeof object.remoteIdentityPublic === "string")
+                    $util.base64.decode(object.remoteIdentityPublic, message.remoteIdentityPublic = $util.newBuffer($util.base64.length(object.remoteIdentityPublic)), 0);
+                else if (object.remoteIdentityPublic.length >= 0)
+                    message.remoteIdentityPublic = object.remoteIdentityPublic;
+            if (object.rootKey != null)
+                if (typeof object.rootKey === "string")
+                    $util.base64.decode(object.rootKey, message.rootKey = $util.newBuffer($util.base64.length(object.rootKey)), 0);
+                else if (object.rootKey.length >= 0)
+                    message.rootKey = object.rootKey;
+            if (object.previousCounter != null)
+                message.previousCounter = object.previousCounter >>> 0;
+            if (object.senderChain != null) {
+                if (typeof object.senderChain !== "object")
+                    throw TypeError(".SignalLocalStorageProtocol.SessionStructure.senderChain: object expected");
+                message.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.fromObject(object.senderChain);
+            }
+            if (object.receiverChains) {
+                if (!Array.isArray(object.receiverChains))
+                    throw TypeError(".SignalLocalStorageProtocol.SessionStructure.receiverChains: array expected");
+                message.receiverChains = [];
+                for (var i = 0; i < object.receiverChains.length; ++i) {
+                    if (typeof object.receiverChains[i] !== "object")
+                        throw TypeError(".SignalLocalStorageProtocol.SessionStructure.receiverChains: object expected");
+                    message.receiverChains[i] = $root.SignalLocalStorageProtocol.SessionStructure.Chain.fromObject(object.receiverChains[i]);
+                }
+            }
+            if (object.pendingKeyExchange != null) {
+                if (typeof object.pendingKeyExchange !== "object")
+                    throw TypeError(".SignalLocalStorageProtocol.SessionStructure.pendingKeyExchange: object expected");
+                message.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.fromObject(object.pendingKeyExchange);
+            }
+            if (object.pendingPreKey != null) {
+                if (typeof object.pendingPreKey !== "object")
+                    throw TypeError(".SignalLocalStorageProtocol.SessionStructure.pendingPreKey: object expected");
+                message.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.fromObject(object.pendingPreKey);
+            }
+            if (object.remoteRegistrationId != null)
+                message.remoteRegistrationId = object.remoteRegistrationId >>> 0;
+            if (object.localRegistrationId != null)
+                message.localRegistrationId = object.localRegistrationId >>> 0;
+            if (object.needsRefresh != null)
+                message.needsRefresh = Boolean(object.needsRefresh);
+            if (object.aliceBaseKey != null)
+                if (typeof object.aliceBaseKey === "string")
+                    $util.base64.decode(object.aliceBaseKey, message.aliceBaseKey = $util.newBuffer($util.base64.length(object.aliceBaseKey)), 0);
+                else if (object.aliceBaseKey.length >= 0)
+                    message.aliceBaseKey = object.aliceBaseKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SessionStructure message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {SignalLocalStorageProtocol.SessionStructure} message SessionStructure
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SessionStructure.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.receiverChains = [];
+            if (message.sessionVersion != null && message.hasOwnProperty("sessionVersion")) {
+                object.sessionVersion = message.sessionVersion;
+                if (options.oneofs)
+                    object._sessionVersion = "sessionVersion";
+            }
+            if (message.localIdentityPublic != null && message.hasOwnProperty("localIdentityPublic")) {
+                object.localIdentityPublic = options.bytes === String ? $util.base64.encode(message.localIdentityPublic, 0, message.localIdentityPublic.length) : options.bytes === Array ? Array.prototype.slice.call(message.localIdentityPublic) : message.localIdentityPublic;
+                if (options.oneofs)
+                    object._localIdentityPublic = "localIdentityPublic";
+            }
+            if (message.remoteIdentityPublic != null && message.hasOwnProperty("remoteIdentityPublic")) {
+                object.remoteIdentityPublic = options.bytes === String ? $util.base64.encode(message.remoteIdentityPublic, 0, message.remoteIdentityPublic.length) : options.bytes === Array ? Array.prototype.slice.call(message.remoteIdentityPublic) : message.remoteIdentityPublic;
+                if (options.oneofs)
+                    object._remoteIdentityPublic = "remoteIdentityPublic";
+            }
+            if (message.rootKey != null && message.hasOwnProperty("rootKey")) {
+                object.rootKey = options.bytes === String ? $util.base64.encode(message.rootKey, 0, message.rootKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.rootKey) : message.rootKey;
+                if (options.oneofs)
+                    object._rootKey = "rootKey";
+            }
+            if (message.previousCounter != null && message.hasOwnProperty("previousCounter")) {
+                object.previousCounter = message.previousCounter;
+                if (options.oneofs)
+                    object._previousCounter = "previousCounter";
+            }
+            if (message.senderChain != null && message.hasOwnProperty("senderChain")) {
+                object.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.toObject(message.senderChain, options);
+                if (options.oneofs)
+                    object._senderChain = "senderChain";
+            }
+            if (message.receiverChains && message.receiverChains.length) {
+                object.receiverChains = [];
+                for (var j = 0; j < message.receiverChains.length; ++j)
+                    object.receiverChains[j] = $root.SignalLocalStorageProtocol.SessionStructure.Chain.toObject(message.receiverChains[j], options);
+            }
+            if (message.pendingKeyExchange != null && message.hasOwnProperty("pendingKeyExchange")) {
+                object.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.toObject(message.pendingKeyExchange, options);
+                if (options.oneofs)
+                    object._pendingKeyExchange = "pendingKeyExchange";
+            }
+            if (message.pendingPreKey != null && message.hasOwnProperty("pendingPreKey")) {
+                object.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.toObject(message.pendingPreKey, options);
+                if (options.oneofs)
+                    object._pendingPreKey = "pendingPreKey";
+            }
+            if (message.remoteRegistrationId != null && message.hasOwnProperty("remoteRegistrationId")) {
+                object.remoteRegistrationId = message.remoteRegistrationId;
+                if (options.oneofs)
+                    object._remoteRegistrationId = "remoteRegistrationId";
+            }
+            if (message.localRegistrationId != null && message.hasOwnProperty("localRegistrationId")) {
+                object.localRegistrationId = message.localRegistrationId;
+                if (options.oneofs)
+                    object._localRegistrationId = "localRegistrationId";
+            }
+            if (message.needsRefresh != null && message.hasOwnProperty("needsRefresh")) {
+                object.needsRefresh = message.needsRefresh;
+                if (options.oneofs)
+                    object._needsRefresh = "needsRefresh";
+            }
+            if (message.aliceBaseKey != null && message.hasOwnProperty("aliceBaseKey")) {
+                object.aliceBaseKey = options.bytes === String ? $util.base64.encode(message.aliceBaseKey, 0, message.aliceBaseKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.aliceBaseKey) : message.aliceBaseKey;
+                if (options.oneofs)
+                    object._aliceBaseKey = "aliceBaseKey";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this SessionStructure to JSON.
+         * @function toJSON
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SessionStructure.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SessionStructure
+         * @function getTypeUrl
+         * @memberof SignalLocalStorageProtocol.SessionStructure
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SessionStructure.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/SignalLocalStorageProtocol.SessionStructure";
+        };
+
+        SessionStructure.Chain = (function() {
+
+            /**
+             * Properties of a Chain.
+             * @memberof SignalLocalStorageProtocol.SessionStructure
+             * @interface IChain
+             * @property {Uint8Array|null} [senderRatchetKey] Chain senderRatchetKey
+             * @property {Uint8Array|null} [senderRatchetKeyPrivate] Chain senderRatchetKeyPrivate
+             * @property {SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey|null} [chainKey] Chain chainKey
+             * @property {Array.<SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey>|null} [messageKeys] Chain messageKeys
+             */
+
+            /**
+             * Constructs a new Chain.
+             * @memberof SignalLocalStorageProtocol.SessionStructure
+             * @classdesc Represents a Chain.
+             * @implements IChain
+             * @constructor
+             * @param {SignalLocalStorageProtocol.SessionStructure.IChain=} [properties] Properties to set
+             */
+            function Chain(properties) {
+                this.messageKeys = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Chain senderRatchetKey.
+             * @member {Uint8Array|null|undefined} senderRatchetKey
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @instance
+             */
+            Chain.prototype.senderRatchetKey = null;
+
+            /**
+             * Chain senderRatchetKeyPrivate.
+             * @member {Uint8Array|null|undefined} senderRatchetKeyPrivate
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @instance
+             */
+            Chain.prototype.senderRatchetKeyPrivate = null;
+
+            /**
+             * Chain chainKey.
+             * @member {SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey|null|undefined} chainKey
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @instance
+             */
+            Chain.prototype.chainKey = null;
+
+            /**
+             * Chain messageKeys.
+             * @member {Array.<SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey>} messageKeys
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @instance
+             */
+            Chain.prototype.messageKeys = $util.emptyArray;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(Chain.prototype, "_senderRatchetKey", {
+                get: $util.oneOfGetter($oneOfFields = ["senderRatchetKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(Chain.prototype, "_senderRatchetKeyPrivate", {
+                get: $util.oneOfGetter($oneOfFields = ["senderRatchetKeyPrivate"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(Chain.prototype, "_chainKey", {
+                get: $util.oneOfGetter($oneOfFields = ["chainKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new Chain instance using the specified properties.
+             * @function create
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IChain=} [properties] Properties to set
+             * @returns {SignalLocalStorageProtocol.SessionStructure.Chain} Chain instance
+             */
+            Chain.create = function create(properties) {
+                return new Chain(properties);
+            };
+
+            /**
+             * Encodes the specified Chain message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.verify|verify} messages.
+             * @function encode
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IChain} message Chain message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Chain.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.senderRatchetKey != null && Object.hasOwnProperty.call(message, "senderRatchetKey"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.senderRatchetKey);
+                if (message.senderRatchetKeyPrivate != null && Object.hasOwnProperty.call(message, "senderRatchetKeyPrivate"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.senderRatchetKeyPrivate);
+                if (message.chainKey != null && Object.hasOwnProperty.call(message, "chainKey"))
+                    $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.encode(message.chainKey, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                if (message.messageKeys != null && message.messageKeys.length)
+                    for (var i = 0; i < message.messageKeys.length; ++i)
+                        $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.encode(message.messageKeys[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Chain message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IChain} message Chain message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Chain.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a Chain message from the specified reader or buffer.
+             * @function decode
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {SignalLocalStorageProtocol.SessionStructure.Chain} Chain
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Chain.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.senderRatchetKey = reader.bytes();
+                            break;
+                        }
+                    case 2: {
+                            message.senderRatchetKeyPrivate = reader.bytes();
+                            break;
+                        }
+                    case 3: {
+                            message.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(reader, reader.uint32());
+                            break;
+                        }
+                    case 4: {
+                            if (!(message.messageKeys && message.messageKeys.length))
+                                message.messageKeys = [];
+                            message.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(reader, reader.uint32()));
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a Chain message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {SignalLocalStorageProtocol.SessionStructure.Chain} Chain
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Chain.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a Chain message.
+             * @function verify
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Chain.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.senderRatchetKey != null && message.hasOwnProperty("senderRatchetKey")) {
+                    properties._senderRatchetKey = 1;
+                    if (!(message.senderRatchetKey && typeof message.senderRatchetKey.length === "number" || $util.isString(message.senderRatchetKey)))
+                        return "senderRatchetKey: buffer expected";
+                }
+                if (message.senderRatchetKeyPrivate != null && message.hasOwnProperty("senderRatchetKeyPrivate")) {
+                    properties._senderRatchetKeyPrivate = 1;
+                    if (!(message.senderRatchetKeyPrivate && typeof message.senderRatchetKeyPrivate.length === "number" || $util.isString(message.senderRatchetKeyPrivate)))
+                        return "senderRatchetKeyPrivate: buffer expected";
+                }
+                if (message.chainKey != null && message.hasOwnProperty("chainKey")) {
+                    properties._chainKey = 1;
+                    {
+                        var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.verify(message.chainKey);
+                        if (error)
+                            return "chainKey." + error;
+                    }
+                }
+                if (message.messageKeys != null && message.hasOwnProperty("messageKeys")) {
+                    if (!Array.isArray(message.messageKeys))
+                        return "messageKeys: array expected";
+                    for (var i = 0; i < message.messageKeys.length; ++i) {
+                        var error = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify(message.messageKeys[i]);
+                        if (error)
+                            return "messageKeys." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a Chain message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {SignalLocalStorageProtocol.SessionStructure.Chain} Chain
+             */
+            Chain.fromObject = function fromObject(object) {
+                if (object instanceof $root.SignalLocalStorageProtocol.SessionStructure.Chain)
+                    return object;
+                var message = new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
+                if (object.senderRatchetKey != null)
+                    if (typeof object.senderRatchetKey === "string")
+                        $util.base64.decode(object.senderRatchetKey, message.senderRatchetKey = $util.newBuffer($util.base64.length(object.senderRatchetKey)), 0);
+                    else if (object.senderRatchetKey.length >= 0)
+                        message.senderRatchetKey = object.senderRatchetKey;
+                if (object.senderRatchetKeyPrivate != null)
+                    if (typeof object.senderRatchetKeyPrivate === "string")
+                        $util.base64.decode(object.senderRatchetKeyPrivate, message.senderRatchetKeyPrivate = $util.newBuffer($util.base64.length(object.senderRatchetKeyPrivate)), 0);
+                    else if (object.senderRatchetKeyPrivate.length >= 0)
+                        message.senderRatchetKeyPrivate = object.senderRatchetKeyPrivate;
+                if (object.chainKey != null) {
+                    if (typeof object.chainKey !== "object")
+                        throw TypeError(".SignalLocalStorageProtocol.SessionStructure.Chain.chainKey: object expected");
+                    message.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.fromObject(object.chainKey);
+                }
+                if (object.messageKeys) {
+                    if (!Array.isArray(object.messageKeys))
+                        throw TypeError(".SignalLocalStorageProtocol.SessionStructure.Chain.messageKeys: array expected");
+                    message.messageKeys = [];
+                    for (var i = 0; i < object.messageKeys.length; ++i) {
+                        if (typeof object.messageKeys[i] !== "object")
+                            throw TypeError(".SignalLocalStorageProtocol.SessionStructure.Chain.messageKeys: object expected");
+                        message.messageKeys[i] = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.fromObject(object.messageKeys[i]);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a Chain message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.Chain} message Chain
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Chain.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.messageKeys = [];
+                if (message.senderRatchetKey != null && message.hasOwnProperty("senderRatchetKey")) {
+                    object.senderRatchetKey = options.bytes === String ? $util.base64.encode(message.senderRatchetKey, 0, message.senderRatchetKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.senderRatchetKey) : message.senderRatchetKey;
+                    if (options.oneofs)
+                        object._senderRatchetKey = "senderRatchetKey";
+                }
+                if (message.senderRatchetKeyPrivate != null && message.hasOwnProperty("senderRatchetKeyPrivate")) {
+                    object.senderRatchetKeyPrivate = options.bytes === String ? $util.base64.encode(message.senderRatchetKeyPrivate, 0, message.senderRatchetKeyPrivate.length) : options.bytes === Array ? Array.prototype.slice.call(message.senderRatchetKeyPrivate) : message.senderRatchetKeyPrivate;
+                    if (options.oneofs)
+                        object._senderRatchetKeyPrivate = "senderRatchetKeyPrivate";
+                }
+                if (message.chainKey != null && message.hasOwnProperty("chainKey")) {
+                    object.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.toObject(message.chainKey, options);
+                    if (options.oneofs)
+                        object._chainKey = "chainKey";
+                }
+                if (message.messageKeys && message.messageKeys.length) {
+                    object.messageKeys = [];
+                    for (var j = 0; j < message.messageKeys.length; ++j)
+                        object.messageKeys[j] = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(message.messageKeys[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this Chain to JSON.
+             * @function toJSON
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Chain.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for Chain
+             * @function getTypeUrl
+             * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Chain.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/SignalLocalStorageProtocol.SessionStructure.Chain";
+            };
+
+            Chain.ChainKey = (function() {
+
+                /**
+                 * Properties of a ChainKey.
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+                 * @interface IChainKey
+                 * @property {number|null} [index] ChainKey index
+                 * @property {Uint8Array|null} [key] ChainKey key
+                 */
+
+                /**
+                 * Constructs a new ChainKey.
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+                 * @classdesc Represents a ChainKey.
+                 * @implements IChainKey
+                 * @constructor
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey=} [properties] Properties to set
+                 */
+                function ChainKey(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * ChainKey index.
+                 * @member {number|null|undefined} index
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @instance
+                 */
+                ChainKey.prototype.index = null;
+
+                /**
+                 * ChainKey key.
+                 * @member {Uint8Array|null|undefined} key
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @instance
+                 */
+                ChainKey.prototype.key = null;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(ChainKey.prototype, "_index", {
+                    get: $util.oneOfGetter($oneOfFields = ["index"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(ChainKey.prototype, "_key", {
+                    get: $util.oneOfGetter($oneOfFields = ["key"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new ChainKey instance using the specified properties.
+                 * @function create
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey=} [properties] Properties to set
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey} ChainKey instance
+                 */
+                ChainKey.create = function create(properties) {
+                    return new ChainKey(properties);
+                };
+
+                /**
+                 * Encodes the specified ChainKey message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.verify|verify} messages.
+                 * @function encode
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey} message ChainKey message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                ChainKey.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.index != null && Object.hasOwnProperty.call(message, "index"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
+                    if (message.key != null && Object.hasOwnProperty.call(message, "key"))
+                        writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.key);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified ChainKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey} message ChainKey message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                ChainKey.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+
+                /**
+                 * Decodes a ChainKey message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey} ChainKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                ChainKey.decode = function decode(reader, length, error) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        if (tag === error)
+                            break;
+                        switch (tag >>> 3) {
+                        case 1: {
+                                message.index = reader.uint32();
+                                break;
+                            }
+                        case 2: {
+                                message.key = reader.bytes();
+                                break;
+                            }
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a ChainKey message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey} ChainKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                ChainKey.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a ChainKey message.
+                 * @function verify
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                ChainKey.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    var properties = {};
+                    if (message.index != null && message.hasOwnProperty("index")) {
+                        properties._index = 1;
+                        if (!$util.isInteger(message.index))
+                            return "index: integer expected";
+                    }
+                    if (message.key != null && message.hasOwnProperty("key")) {
+                        properties._key = 1;
+                        if (!(message.key && typeof message.key.length === "number" || $util.isString(message.key)))
+                            return "key: buffer expected";
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates a ChainKey message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey} ChainKey
+                 */
+                ChainKey.fromObject = function fromObject(object) {
+                    if (object instanceof $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey)
+                        return object;
+                    var message = new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
+                    if (object.index != null)
+                        message.index = object.index >>> 0;
+                    if (object.key != null)
+                        if (typeof object.key === "string")
+                            $util.base64.decode(object.key, message.key = $util.newBuffer($util.base64.length(object.key)), 0);
+                        else if (object.key.length >= 0)
+                            message.key = object.key;
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a ChainKey message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey} message ChainKey
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                ChainKey.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (message.index != null && message.hasOwnProperty("index")) {
+                        object.index = message.index;
+                        if (options.oneofs)
+                            object._index = "index";
+                    }
+                    if (message.key != null && message.hasOwnProperty("key")) {
+                        object.key = options.bytes === String ? $util.base64.encode(message.key, 0, message.key.length) : options.bytes === Array ? Array.prototype.slice.call(message.key) : message.key;
+                        if (options.oneofs)
+                            object._key = "key";
+                    }
+                    return object;
+                };
+
+                /**
+                 * Converts this ChainKey to JSON.
+                 * @function toJSON
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                ChainKey.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the default type url for ChainKey
+                 * @function getTypeUrl
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                ChainKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey";
+                };
+
+                return ChainKey;
+            })();
+
+            Chain.MessageKey = (function() {
+
+                /**
+                 * Properties of a MessageKey.
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+                 * @interface IMessageKey
+                 * @property {number|null} [index] MessageKey index
+                 * @property {Uint8Array|null} [cipherKey] MessageKey cipherKey
+                 * @property {Uint8Array|null} [macKey] MessageKey macKey
+                 * @property {Uint8Array|null} [iv] MessageKey iv
+                 */
+
+                /**
+                 * Constructs a new MessageKey.
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain
+                 * @classdesc Represents a MessageKey.
+                 * @implements IMessageKey
+                 * @constructor
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey=} [properties] Properties to set
+                 */
+                function MessageKey(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * MessageKey index.
+                 * @member {number|null|undefined} index
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @instance
+                 */
+                MessageKey.prototype.index = null;
+
+                /**
+                 * MessageKey cipherKey.
+                 * @member {Uint8Array|null|undefined} cipherKey
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @instance
+                 */
+                MessageKey.prototype.cipherKey = null;
+
+                /**
+                 * MessageKey macKey.
+                 * @member {Uint8Array|null|undefined} macKey
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @instance
+                 */
+                MessageKey.prototype.macKey = null;
+
+                /**
+                 * MessageKey iv.
+                 * @member {Uint8Array|null|undefined} iv
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @instance
+                 */
+                MessageKey.prototype.iv = null;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(MessageKey.prototype, "_index", {
+                    get: $util.oneOfGetter($oneOfFields = ["index"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(MessageKey.prototype, "_cipherKey", {
+                    get: $util.oneOfGetter($oneOfFields = ["cipherKey"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(MessageKey.prototype, "_macKey", {
+                    get: $util.oneOfGetter($oneOfFields = ["macKey"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(MessageKey.prototype, "_iv", {
+                    get: $util.oneOfGetter($oneOfFields = ["iv"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new MessageKey instance using the specified properties.
+                 * @function create
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey=} [properties] Properties to set
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey} MessageKey instance
+                 */
+                MessageKey.create = function create(properties) {
+                    return new MessageKey(properties);
+                };
+
+                /**
+                 * Encodes the specified MessageKey message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify|verify} messages.
+                 * @function encode
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey} message MessageKey message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                MessageKey.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.index != null && Object.hasOwnProperty.call(message, "index"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
+                    if (message.cipherKey != null && Object.hasOwnProperty.call(message, "cipherKey"))
+                        writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.cipherKey);
+                    if (message.macKey != null && Object.hasOwnProperty.call(message, "macKey"))
+                        writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.macKey);
+                    if (message.iv != null && Object.hasOwnProperty.call(message, "iv"))
+                        writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.iv);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified MessageKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey} message MessageKey message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                MessageKey.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+
+                /**
+                 * Decodes a MessageKey message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey} MessageKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                MessageKey.decode = function decode(reader, length, error) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        if (tag === error)
+                            break;
+                        switch (tag >>> 3) {
+                        case 1: {
+                                message.index = reader.uint32();
+                                break;
+                            }
+                        case 2: {
+                                message.cipherKey = reader.bytes();
+                                break;
+                            }
+                        case 3: {
+                                message.macKey = reader.bytes();
+                                break;
+                            }
+                        case 4: {
+                                message.iv = reader.bytes();
+                                break;
+                            }
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a MessageKey message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey} MessageKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                MessageKey.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a MessageKey message.
+                 * @function verify
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                MessageKey.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    var properties = {};
+                    if (message.index != null && message.hasOwnProperty("index")) {
+                        properties._index = 1;
+                        if (!$util.isInteger(message.index))
+                            return "index: integer expected";
+                    }
+                    if (message.cipherKey != null && message.hasOwnProperty("cipherKey")) {
+                        properties._cipherKey = 1;
+                        if (!(message.cipherKey && typeof message.cipherKey.length === "number" || $util.isString(message.cipherKey)))
+                            return "cipherKey: buffer expected";
+                    }
+                    if (message.macKey != null && message.hasOwnProperty("macKey")) {
+                        properties._macKey = 1;
+                        if (!(message.macKey && typeof message.macKey.length === "number" || $util.isString(message.macKey)))
+                            return "macKey: buffer expected";
+                    }
+                    if (message.iv != null && message.hasOwnProperty("iv")) {
+                        properties._iv = 1;
+                        if (!(message.iv && typeof message.iv.length === "number" || $util.isString(message.iv)))
+                            return "iv: buffer expected";
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates a MessageKey message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey} MessageKey
+                 */
+                MessageKey.fromObject = function fromObject(object) {
+                    if (object instanceof $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey)
+                        return object;
+                    var message = new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
+                    if (object.index != null)
+                        message.index = object.index >>> 0;
+                    if (object.cipherKey != null)
+                        if (typeof object.cipherKey === "string")
+                            $util.base64.decode(object.cipherKey, message.cipherKey = $util.newBuffer($util.base64.length(object.cipherKey)), 0);
+                        else if (object.cipherKey.length >= 0)
+                            message.cipherKey = object.cipherKey;
+                    if (object.macKey != null)
+                        if (typeof object.macKey === "string")
+                            $util.base64.decode(object.macKey, message.macKey = $util.newBuffer($util.base64.length(object.macKey)), 0);
+                        else if (object.macKey.length >= 0)
+                            message.macKey = object.macKey;
+                    if (object.iv != null)
+                        if (typeof object.iv === "string")
+                            $util.base64.decode(object.iv, message.iv = $util.newBuffer($util.base64.length(object.iv)), 0);
+                        else if (object.iv.length >= 0)
+                            message.iv = object.iv;
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a MessageKey message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey} message MessageKey
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                MessageKey.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (message.index != null && message.hasOwnProperty("index")) {
+                        object.index = message.index;
+                        if (options.oneofs)
+                            object._index = "index";
+                    }
+                    if (message.cipherKey != null && message.hasOwnProperty("cipherKey")) {
+                        object.cipherKey = options.bytes === String ? $util.base64.encode(message.cipherKey, 0, message.cipherKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.cipherKey) : message.cipherKey;
+                        if (options.oneofs)
+                            object._cipherKey = "cipherKey";
+                    }
+                    if (message.macKey != null && message.hasOwnProperty("macKey")) {
+                        object.macKey = options.bytes === String ? $util.base64.encode(message.macKey, 0, message.macKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.macKey) : message.macKey;
+                        if (options.oneofs)
+                            object._macKey = "macKey";
+                    }
+                    if (message.iv != null && message.hasOwnProperty("iv")) {
+                        object.iv = options.bytes === String ? $util.base64.encode(message.iv, 0, message.iv.length) : options.bytes === Array ? Array.prototype.slice.call(message.iv) : message.iv;
+                        if (options.oneofs)
+                            object._iv = "iv";
+                    }
+                    return object;
+                };
+
+                /**
+                 * Converts this MessageKey to JSON.
+                 * @function toJSON
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                MessageKey.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the default type url for MessageKey
+                 * @function getTypeUrl
+                 * @memberof SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                MessageKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey";
+                };
+
+                return MessageKey;
+            })();
+
+            return Chain;
+        })();
+
+        SessionStructure.PendingKeyExchange = (function() {
+
+            /**
+             * Properties of a PendingKeyExchange.
+             * @memberof SignalLocalStorageProtocol.SessionStructure
+             * @interface IPendingKeyExchange
+             * @property {number|null} [sequence] PendingKeyExchange sequence
+             * @property {Uint8Array|null} [localBaseKey] PendingKeyExchange localBaseKey
+             * @property {Uint8Array|null} [localBaseKeyPrivate] PendingKeyExchange localBaseKeyPrivate
+             * @property {Uint8Array|null} [localRatchetKey] PendingKeyExchange localRatchetKey
+             * @property {Uint8Array|null} [localRatchetKeyPrivate] PendingKeyExchange localRatchetKeyPrivate
+             * @property {Uint8Array|null} [localIdentityKey] PendingKeyExchange localIdentityKey
+             * @property {Uint8Array|null} [localIdentityKeyPrivate] PendingKeyExchange localIdentityKeyPrivate
+             */
+
+            /**
+             * Constructs a new PendingKeyExchange.
+             * @memberof SignalLocalStorageProtocol.SessionStructure
+             * @classdesc Represents a PendingKeyExchange.
+             * @implements IPendingKeyExchange
+             * @constructor
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange=} [properties] Properties to set
+             */
+            function PendingKeyExchange(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * PendingKeyExchange sequence.
+             * @member {number|null|undefined} sequence
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             */
+            PendingKeyExchange.prototype.sequence = null;
+
+            /**
+             * PendingKeyExchange localBaseKey.
+             * @member {Uint8Array|null|undefined} localBaseKey
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             */
+            PendingKeyExchange.prototype.localBaseKey = null;
+
+            /**
+             * PendingKeyExchange localBaseKeyPrivate.
+             * @member {Uint8Array|null|undefined} localBaseKeyPrivate
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             */
+            PendingKeyExchange.prototype.localBaseKeyPrivate = null;
+
+            /**
+             * PendingKeyExchange localRatchetKey.
+             * @member {Uint8Array|null|undefined} localRatchetKey
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             */
+            PendingKeyExchange.prototype.localRatchetKey = null;
+
+            /**
+             * PendingKeyExchange localRatchetKeyPrivate.
+             * @member {Uint8Array|null|undefined} localRatchetKeyPrivate
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             */
+            PendingKeyExchange.prototype.localRatchetKeyPrivate = null;
+
+            /**
+             * PendingKeyExchange localIdentityKey.
+             * @member {Uint8Array|null|undefined} localIdentityKey
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             */
+            PendingKeyExchange.prototype.localIdentityKey = null;
+
+            /**
+             * PendingKeyExchange localIdentityKeyPrivate.
+             * @member {Uint8Array|null|undefined} localIdentityKeyPrivate
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             */
+            PendingKeyExchange.prototype.localIdentityKeyPrivate = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingKeyExchange.prototype, "_sequence", {
+                get: $util.oneOfGetter($oneOfFields = ["sequence"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingKeyExchange.prototype, "_localBaseKey", {
+                get: $util.oneOfGetter($oneOfFields = ["localBaseKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingKeyExchange.prototype, "_localBaseKeyPrivate", {
+                get: $util.oneOfGetter($oneOfFields = ["localBaseKeyPrivate"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingKeyExchange.prototype, "_localRatchetKey", {
+                get: $util.oneOfGetter($oneOfFields = ["localRatchetKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingKeyExchange.prototype, "_localRatchetKeyPrivate", {
+                get: $util.oneOfGetter($oneOfFields = ["localRatchetKeyPrivate"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingKeyExchange.prototype, "_localIdentityKey", {
+                get: $util.oneOfGetter($oneOfFields = ["localIdentityKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingKeyExchange.prototype, "_localIdentityKeyPrivate", {
+                get: $util.oneOfGetter($oneOfFields = ["localIdentityKeyPrivate"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new PendingKeyExchange instance using the specified properties.
+             * @function create
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange=} [properties] Properties to set
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange} PendingKeyExchange instance
+             */
+            PendingKeyExchange.create = function create(properties) {
+                return new PendingKeyExchange(properties);
+            };
+
+            /**
+             * Encodes the specified PendingKeyExchange message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.verify|verify} messages.
+             * @function encode
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange} message PendingKeyExchange message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PendingKeyExchange.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.sequence != null && Object.hasOwnProperty.call(message, "sequence"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.sequence);
+                if (message.localBaseKey != null && Object.hasOwnProperty.call(message, "localBaseKey"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.localBaseKey);
+                if (message.localBaseKeyPrivate != null && Object.hasOwnProperty.call(message, "localBaseKeyPrivate"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.localBaseKeyPrivate);
+                if (message.localRatchetKey != null && Object.hasOwnProperty.call(message, "localRatchetKey"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.localRatchetKey);
+                if (message.localRatchetKeyPrivate != null && Object.hasOwnProperty.call(message, "localRatchetKeyPrivate"))
+                    writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.localRatchetKeyPrivate);
+                if (message.localIdentityKey != null && Object.hasOwnProperty.call(message, "localIdentityKey"))
+                    writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.localIdentityKey);
+                if (message.localIdentityKeyPrivate != null && Object.hasOwnProperty.call(message, "localIdentityKeyPrivate"))
+                    writer.uint32(/* id 8, wireType 2 =*/66).bytes(message.localIdentityKeyPrivate);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PendingKeyExchange message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange} message PendingKeyExchange message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PendingKeyExchange.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a PendingKeyExchange message from the specified reader or buffer.
+             * @function decode
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange} PendingKeyExchange
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PendingKeyExchange.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.sequence = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.localBaseKey = reader.bytes();
+                            break;
+                        }
+                    case 3: {
+                            message.localBaseKeyPrivate = reader.bytes();
+                            break;
+                        }
+                    case 4: {
+                            message.localRatchetKey = reader.bytes();
+                            break;
+                        }
+                    case 5: {
+                            message.localRatchetKeyPrivate = reader.bytes();
+                            break;
+                        }
+                    case 7: {
+                            message.localIdentityKey = reader.bytes();
+                            break;
+                        }
+                    case 8: {
+                            message.localIdentityKeyPrivate = reader.bytes();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a PendingKeyExchange message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange} PendingKeyExchange
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PendingKeyExchange.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a PendingKeyExchange message.
+             * @function verify
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PendingKeyExchange.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.sequence != null && message.hasOwnProperty("sequence")) {
+                    properties._sequence = 1;
+                    if (!$util.isInteger(message.sequence))
+                        return "sequence: integer expected";
+                }
+                if (message.localBaseKey != null && message.hasOwnProperty("localBaseKey")) {
+                    properties._localBaseKey = 1;
+                    if (!(message.localBaseKey && typeof message.localBaseKey.length === "number" || $util.isString(message.localBaseKey)))
+                        return "localBaseKey: buffer expected";
+                }
+                if (message.localBaseKeyPrivate != null && message.hasOwnProperty("localBaseKeyPrivate")) {
+                    properties._localBaseKeyPrivate = 1;
+                    if (!(message.localBaseKeyPrivate && typeof message.localBaseKeyPrivate.length === "number" || $util.isString(message.localBaseKeyPrivate)))
+                        return "localBaseKeyPrivate: buffer expected";
+                }
+                if (message.localRatchetKey != null && message.hasOwnProperty("localRatchetKey")) {
+                    properties._localRatchetKey = 1;
+                    if (!(message.localRatchetKey && typeof message.localRatchetKey.length === "number" || $util.isString(message.localRatchetKey)))
+                        return "localRatchetKey: buffer expected";
+                }
+                if (message.localRatchetKeyPrivate != null && message.hasOwnProperty("localRatchetKeyPrivate")) {
+                    properties._localRatchetKeyPrivate = 1;
+                    if (!(message.localRatchetKeyPrivate && typeof message.localRatchetKeyPrivate.length === "number" || $util.isString(message.localRatchetKeyPrivate)))
+                        return "localRatchetKeyPrivate: buffer expected";
+                }
+                if (message.localIdentityKey != null && message.hasOwnProperty("localIdentityKey")) {
+                    properties._localIdentityKey = 1;
+                    if (!(message.localIdentityKey && typeof message.localIdentityKey.length === "number" || $util.isString(message.localIdentityKey)))
+                        return "localIdentityKey: buffer expected";
+                }
+                if (message.localIdentityKeyPrivate != null && message.hasOwnProperty("localIdentityKeyPrivate")) {
+                    properties._localIdentityKeyPrivate = 1;
+                    if (!(message.localIdentityKeyPrivate && typeof message.localIdentityKeyPrivate.length === "number" || $util.isString(message.localIdentityKeyPrivate)))
+                        return "localIdentityKeyPrivate: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a PendingKeyExchange message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange} PendingKeyExchange
+             */
+            PendingKeyExchange.fromObject = function fromObject(object) {
+                if (object instanceof $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange)
+                    return object;
+                var message = new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
+                if (object.sequence != null)
+                    message.sequence = object.sequence >>> 0;
+                if (object.localBaseKey != null)
+                    if (typeof object.localBaseKey === "string")
+                        $util.base64.decode(object.localBaseKey, message.localBaseKey = $util.newBuffer($util.base64.length(object.localBaseKey)), 0);
+                    else if (object.localBaseKey.length >= 0)
+                        message.localBaseKey = object.localBaseKey;
+                if (object.localBaseKeyPrivate != null)
+                    if (typeof object.localBaseKeyPrivate === "string")
+                        $util.base64.decode(object.localBaseKeyPrivate, message.localBaseKeyPrivate = $util.newBuffer($util.base64.length(object.localBaseKeyPrivate)), 0);
+                    else if (object.localBaseKeyPrivate.length >= 0)
+                        message.localBaseKeyPrivate = object.localBaseKeyPrivate;
+                if (object.localRatchetKey != null)
+                    if (typeof object.localRatchetKey === "string")
+                        $util.base64.decode(object.localRatchetKey, message.localRatchetKey = $util.newBuffer($util.base64.length(object.localRatchetKey)), 0);
+                    else if (object.localRatchetKey.length >= 0)
+                        message.localRatchetKey = object.localRatchetKey;
+                if (object.localRatchetKeyPrivate != null)
+                    if (typeof object.localRatchetKeyPrivate === "string")
+                        $util.base64.decode(object.localRatchetKeyPrivate, message.localRatchetKeyPrivate = $util.newBuffer($util.base64.length(object.localRatchetKeyPrivate)), 0);
+                    else if (object.localRatchetKeyPrivate.length >= 0)
+                        message.localRatchetKeyPrivate = object.localRatchetKeyPrivate;
+                if (object.localIdentityKey != null)
+                    if (typeof object.localIdentityKey === "string")
+                        $util.base64.decode(object.localIdentityKey, message.localIdentityKey = $util.newBuffer($util.base64.length(object.localIdentityKey)), 0);
+                    else if (object.localIdentityKey.length >= 0)
+                        message.localIdentityKey = object.localIdentityKey;
+                if (object.localIdentityKeyPrivate != null)
+                    if (typeof object.localIdentityKeyPrivate === "string")
+                        $util.base64.decode(object.localIdentityKeyPrivate, message.localIdentityKeyPrivate = $util.newBuffer($util.base64.length(object.localIdentityKeyPrivate)), 0);
+                    else if (object.localIdentityKeyPrivate.length >= 0)
+                        message.localIdentityKeyPrivate = object.localIdentityKeyPrivate;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a PendingKeyExchange message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange} message PendingKeyExchange
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PendingKeyExchange.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.sequence != null && message.hasOwnProperty("sequence")) {
+                    object.sequence = message.sequence;
+                    if (options.oneofs)
+                        object._sequence = "sequence";
+                }
+                if (message.localBaseKey != null && message.hasOwnProperty("localBaseKey")) {
+                    object.localBaseKey = options.bytes === String ? $util.base64.encode(message.localBaseKey, 0, message.localBaseKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.localBaseKey) : message.localBaseKey;
+                    if (options.oneofs)
+                        object._localBaseKey = "localBaseKey";
+                }
+                if (message.localBaseKeyPrivate != null && message.hasOwnProperty("localBaseKeyPrivate")) {
+                    object.localBaseKeyPrivate = options.bytes === String ? $util.base64.encode(message.localBaseKeyPrivate, 0, message.localBaseKeyPrivate.length) : options.bytes === Array ? Array.prototype.slice.call(message.localBaseKeyPrivate) : message.localBaseKeyPrivate;
+                    if (options.oneofs)
+                        object._localBaseKeyPrivate = "localBaseKeyPrivate";
+                }
+                if (message.localRatchetKey != null && message.hasOwnProperty("localRatchetKey")) {
+                    object.localRatchetKey = options.bytes === String ? $util.base64.encode(message.localRatchetKey, 0, message.localRatchetKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.localRatchetKey) : message.localRatchetKey;
+                    if (options.oneofs)
+                        object._localRatchetKey = "localRatchetKey";
+                }
+                if (message.localRatchetKeyPrivate != null && message.hasOwnProperty("localRatchetKeyPrivate")) {
+                    object.localRatchetKeyPrivate = options.bytes === String ? $util.base64.encode(message.localRatchetKeyPrivate, 0, message.localRatchetKeyPrivate.length) : options.bytes === Array ? Array.prototype.slice.call(message.localRatchetKeyPrivate) : message.localRatchetKeyPrivate;
+                    if (options.oneofs)
+                        object._localRatchetKeyPrivate = "localRatchetKeyPrivate";
+                }
+                if (message.localIdentityKey != null && message.hasOwnProperty("localIdentityKey")) {
+                    object.localIdentityKey = options.bytes === String ? $util.base64.encode(message.localIdentityKey, 0, message.localIdentityKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.localIdentityKey) : message.localIdentityKey;
+                    if (options.oneofs)
+                        object._localIdentityKey = "localIdentityKey";
+                }
+                if (message.localIdentityKeyPrivate != null && message.hasOwnProperty("localIdentityKeyPrivate")) {
+                    object.localIdentityKeyPrivate = options.bytes === String ? $util.base64.encode(message.localIdentityKeyPrivate, 0, message.localIdentityKeyPrivate.length) : options.bytes === Array ? Array.prototype.slice.call(message.localIdentityKeyPrivate) : message.localIdentityKeyPrivate;
+                    if (options.oneofs)
+                        object._localIdentityKeyPrivate = "localIdentityKeyPrivate";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this PendingKeyExchange to JSON.
+             * @function toJSON
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PendingKeyExchange.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for PendingKeyExchange
+             * @function getTypeUrl
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PendingKeyExchange.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange";
+            };
+
+            return PendingKeyExchange;
+        })();
+
+        SessionStructure.PendingPreKey = (function() {
+
+            /**
+             * Properties of a PendingPreKey.
+             * @memberof SignalLocalStorageProtocol.SessionStructure
+             * @interface IPendingPreKey
+             * @property {number|null} [preKeyId] PendingPreKey preKeyId
+             * @property {number|null} [signedPreKeyId] PendingPreKey signedPreKeyId
+             * @property {Uint8Array|null} [baseKey] PendingPreKey baseKey
+             * @property {number|null} [kyberPreKeyId] PendingPreKey kyberPreKeyId
+             * @property {Uint8Array|null} [kyberCiphertext] PendingPreKey kyberCiphertext
+             */
+
+            /**
+             * Constructs a new PendingPreKey.
+             * @memberof SignalLocalStorageProtocol.SessionStructure
+             * @classdesc Represents a PendingPreKey.
+             * @implements IPendingPreKey
+             * @constructor
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingPreKey=} [properties] Properties to set
+             */
+            function PendingPreKey(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * PendingPreKey preKeyId.
+             * @member {number|null|undefined} preKeyId
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @instance
+             */
+            PendingPreKey.prototype.preKeyId = null;
+
+            /**
+             * PendingPreKey signedPreKeyId.
+             * @member {number|null|undefined} signedPreKeyId
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @instance
+             */
+            PendingPreKey.prototype.signedPreKeyId = null;
+
+            /**
+             * PendingPreKey baseKey.
+             * @member {Uint8Array|null|undefined} baseKey
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @instance
+             */
+            PendingPreKey.prototype.baseKey = null;
+
+            /**
+             * PendingPreKey kyberPreKeyId.
+             * @member {number|null|undefined} kyberPreKeyId
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @instance
+             */
+            PendingPreKey.prototype.kyberPreKeyId = null;
+
+            /**
+             * PendingPreKey kyberCiphertext.
+             * @member {Uint8Array|null|undefined} kyberCiphertext
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @instance
+             */
+            PendingPreKey.prototype.kyberCiphertext = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingPreKey.prototype, "_preKeyId", {
+                get: $util.oneOfGetter($oneOfFields = ["preKeyId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingPreKey.prototype, "_signedPreKeyId", {
+                get: $util.oneOfGetter($oneOfFields = ["signedPreKeyId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingPreKey.prototype, "_baseKey", {
+                get: $util.oneOfGetter($oneOfFields = ["baseKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingPreKey.prototype, "_kyberPreKeyId", {
+                get: $util.oneOfGetter($oneOfFields = ["kyberPreKeyId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PendingPreKey.prototype, "_kyberCiphertext", {
+                get: $util.oneOfGetter($oneOfFields = ["kyberCiphertext"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new PendingPreKey instance using the specified properties.
+             * @function create
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingPreKey=} [properties] Properties to set
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingPreKey} PendingPreKey instance
+             */
+            PendingPreKey.create = function create(properties) {
+                return new PendingPreKey(properties);
+            };
+
+            /**
+             * Encodes the specified PendingPreKey message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingPreKey.verify|verify} messages.
+             * @function encode
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingPreKey} message PendingPreKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PendingPreKey.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.preKeyId != null && Object.hasOwnProperty.call(message, "preKeyId"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.preKeyId);
+                if (message.baseKey != null && Object.hasOwnProperty.call(message, "baseKey"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.baseKey);
+                if (message.signedPreKeyId != null && Object.hasOwnProperty.call(message, "signedPreKeyId"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).int32(message.signedPreKeyId);
+                if (message.kyberPreKeyId != null && Object.hasOwnProperty.call(message, "kyberPreKeyId"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.kyberPreKeyId);
+                if (message.kyberCiphertext != null && Object.hasOwnProperty.call(message, "kyberCiphertext"))
+                    writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.kyberCiphertext);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PendingPreKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingPreKey.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.IPendingPreKey} message PendingPreKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PendingPreKey.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a PendingPreKey message from the specified reader or buffer.
+             * @function decode
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingPreKey} PendingPreKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PendingPreKey.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.preKeyId = reader.uint32();
+                            break;
+                        }
+                    case 3: {
+                            message.signedPreKeyId = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.baseKey = reader.bytes();
+                            break;
+                        }
+                    case 4: {
+                            message.kyberPreKeyId = reader.uint32();
+                            break;
+                        }
+                    case 5: {
+                            message.kyberCiphertext = reader.bytes();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a PendingPreKey message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingPreKey} PendingPreKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PendingPreKey.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a PendingPreKey message.
+             * @function verify
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PendingPreKey.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.preKeyId != null && message.hasOwnProperty("preKeyId")) {
+                    properties._preKeyId = 1;
+                    if (!$util.isInteger(message.preKeyId))
+                        return "preKeyId: integer expected";
+                }
+                if (message.signedPreKeyId != null && message.hasOwnProperty("signedPreKeyId")) {
+                    properties._signedPreKeyId = 1;
+                    if (!$util.isInteger(message.signedPreKeyId))
+                        return "signedPreKeyId: integer expected";
+                }
+                if (message.baseKey != null && message.hasOwnProperty("baseKey")) {
+                    properties._baseKey = 1;
+                    if (!(message.baseKey && typeof message.baseKey.length === "number" || $util.isString(message.baseKey)))
+                        return "baseKey: buffer expected";
+                }
+                if (message.kyberPreKeyId != null && message.hasOwnProperty("kyberPreKeyId")) {
+                    properties._kyberPreKeyId = 1;
+                    if (!$util.isInteger(message.kyberPreKeyId))
+                        return "kyberPreKeyId: integer expected";
+                }
+                if (message.kyberCiphertext != null && message.hasOwnProperty("kyberCiphertext")) {
+                    properties._kyberCiphertext = 1;
+                    if (!(message.kyberCiphertext && typeof message.kyberCiphertext.length === "number" || $util.isString(message.kyberCiphertext)))
+                        return "kyberCiphertext: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a PendingPreKey message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {SignalLocalStorageProtocol.SessionStructure.PendingPreKey} PendingPreKey
+             */
+            PendingPreKey.fromObject = function fromObject(object) {
+                if (object instanceof $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey)
+                    return object;
+                var message = new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
+                if (object.preKeyId != null)
+                    message.preKeyId = object.preKeyId >>> 0;
+                if (object.signedPreKeyId != null)
+                    message.signedPreKeyId = object.signedPreKeyId | 0;
+                if (object.baseKey != null)
+                    if (typeof object.baseKey === "string")
+                        $util.base64.decode(object.baseKey, message.baseKey = $util.newBuffer($util.base64.length(object.baseKey)), 0);
+                    else if (object.baseKey.length >= 0)
+                        message.baseKey = object.baseKey;
+                if (object.kyberPreKeyId != null)
+                    message.kyberPreKeyId = object.kyberPreKeyId >>> 0;
+                if (object.kyberCiphertext != null)
+                    if (typeof object.kyberCiphertext === "string")
+                        $util.base64.decode(object.kyberCiphertext, message.kyberCiphertext = $util.newBuffer($util.base64.length(object.kyberCiphertext)), 0);
+                    else if (object.kyberCiphertext.length >= 0)
+                        message.kyberCiphertext = object.kyberCiphertext;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a PendingPreKey message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {SignalLocalStorageProtocol.SessionStructure.PendingPreKey} message PendingPreKey
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PendingPreKey.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.preKeyId != null && message.hasOwnProperty("preKeyId")) {
+                    object.preKeyId = message.preKeyId;
+                    if (options.oneofs)
+                        object._preKeyId = "preKeyId";
+                }
+                if (message.baseKey != null && message.hasOwnProperty("baseKey")) {
+                    object.baseKey = options.bytes === String ? $util.base64.encode(message.baseKey, 0, message.baseKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.baseKey) : message.baseKey;
+                    if (options.oneofs)
+                        object._baseKey = "baseKey";
+                }
+                if (message.signedPreKeyId != null && message.hasOwnProperty("signedPreKeyId")) {
+                    object.signedPreKeyId = message.signedPreKeyId;
+                    if (options.oneofs)
+                        object._signedPreKeyId = "signedPreKeyId";
+                }
+                if (message.kyberPreKeyId != null && message.hasOwnProperty("kyberPreKeyId")) {
+                    object.kyberPreKeyId = message.kyberPreKeyId;
+                    if (options.oneofs)
+                        object._kyberPreKeyId = "kyberPreKeyId";
+                }
+                if (message.kyberCiphertext != null && message.hasOwnProperty("kyberCiphertext")) {
+                    object.kyberCiphertext = options.bytes === String ? $util.base64.encode(message.kyberCiphertext, 0, message.kyberCiphertext.length) : options.bytes === Array ? Array.prototype.slice.call(message.kyberCiphertext) : message.kyberCiphertext;
+                    if (options.oneofs)
+                        object._kyberCiphertext = "kyberCiphertext";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this PendingPreKey to JSON.
+             * @function toJSON
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PendingPreKey.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for PendingPreKey
+             * @function getTypeUrl
+             * @memberof SignalLocalStorageProtocol.SessionStructure.PendingPreKey
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PendingPreKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/SignalLocalStorageProtocol.SessionStructure.PendingPreKey";
+            };
+
+            return PendingPreKey;
+        })();
+
+        return SessionStructure;
+    })();
+
+    return SignalLocalStorageProtocol;
 })();
 
 module.exports = $root;

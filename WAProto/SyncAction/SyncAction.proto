@@ -3,7 +3,7 @@ package SyncAction;
 
 import "../ChatLockSettings/ChatLockSettings.proto";
 import "../DeviceCapabilities/DeviceCapabilities.proto";
-import "../Protocol/Protocol.proto";
+import "../SignalLocalStorageProtocol/SignalLocalStorageProtocol.proto";
 
 message PatchDebugData {
     optional bytes currentLthash = 1;
@@ -119,9 +119,18 @@ message SyncActionValue {
     optional ThreadPinAction threadPinAction = 85;
     optional AutoOrganizeBusinessChatSetting autoOrganizeBusinessChatSetting = 86;
     optional BizAISettingsNudgeAction bizAiSettingsNudgeAction = 87;
+    optional CoexV2VersionAction coexV2VersionAction = 88;
+    optional WASARootSecretAction wasaRootSecretAction = 89;
+    optional BubbleLockMessageAction bubbleLockMessageAction = 90;
+    optional LabelSublistAction labelSublistAction = 91;
+    optional DeviceCapabilities.DeviceCapabilities deviceCapabilitiesV2 = 92;
+    optional CtwaMessageReceivedAction ctwaMessageReceivedAction = 93;
+    optional SharedDeviceAllowlistAction sharedDeviceAllowlistAction = 94;
+    optional ContactManagerMetadataAction contactManagerMetadataAction = 95;
+    optional BusinessFolderActivationAction businessFolderActivationAction = 96;
     message AgentAction {
         optional string name = 1;
-        optional int32 deviceID = 2;
+        optional int32 deviceId = 2;
         optional bool isDeleted = 3;
     }
     message AiThreadRenameAction {
@@ -157,6 +166,7 @@ message SyncActionValue {
             EXAMPLE_RESPONSES = 3;
             KNOWLEDGE = 4;
             LEAD_GEN = 5;
+            HANDOFF_REMOVAL_TIMING = 6;
         }
     }
     message BotWelcomeRequestAction {
@@ -165,6 +175,9 @@ message SyncActionValue {
     message BroadcastListParticipant {
         optional string lidJid = 1;
         optional string pnJid = 2;
+    }
+    message BubbleLockMessageAction {
+        optional bool locked = 1;
     }
     message BusinessBroadcastAssociationAction {
         optional bool deleted = 1;
@@ -200,18 +213,25 @@ message SyncActionValue {
         optional string listName = 3;
         repeated string labelIds = 4;
         optional string audienceExpression = 5;
+        optional string customAudienceFbid = 6;
+    }
+    message BusinessFolderActivationAction {
+        optional bool activated = 1;
     }
     message CallLogAction {
         optional CallLogRecord callLogRecord = 1;
     }
     message ChatAssignmentAction {
-        optional string deviceAgentID = 1;
+        optional string deviceAgentId = 1;
     }
     message ChatAssignmentOpenedStatusAction {
         optional bool chatOpened = 1;
     }
     message ClearChatAction {
         optional SyncActionValue.SyncActionMessageRange messageRange = 1;
+    }
+    message CoexV2VersionAction {
+        optional uint64 version = 1;
     }
     message ContactAction {
         optional string fullName = 1;
@@ -220,6 +240,12 @@ message SyncActionValue {
         optional bool saveOnPrimaryAddressbook = 4;
         optional string pnJid = 5;
         optional string username = 6;
+    }
+    message ContactManagerMetadataAction {
+        optional bool isHidden = 1;
+    }
+    message CtwaMessageReceivedAction {
+        optional bool isCtwaMessageReceived = 1;
     }
     message CtwaPerCustomerDataSharingAction {
         optional bool isCtwaPerCustomerDataSharingEnabled = 1;
@@ -285,7 +311,7 @@ message SyncActionValue {
     }
     message LabelAssociationAction {
         optional bool labeled = 1;
-        repeated SyncActionValue.ModelMetadata modelMetaData = 2;
+        optional string modelMetaData = 2;
     }
     message LabelEditAction {
         optional string name = 1;
@@ -310,10 +336,19 @@ message SyncActionValue {
             AI_HANDOFF = 9;
             CHANNELS = 10;
             AI_RESPONDING = 11;
+            ARCHIVED = 12;
+            LOCKED = 13;
+            INVITES = 14;
+            THIRD_PARTY = 15;
+            LEAD = 16;
+            MENTIONS_AND_REPLIES = 17;
         }
     }
     message LabelReorderingAction {
         repeated int32 sortedLabelIds = 1;
+    }
+    message LabelSublistAction {
+        optional int32 subListId = 1;
     }
     message LidContactAction {
         optional string fullName = 1;
@@ -328,10 +363,16 @@ message SyncActionValue {
     }
     message MaibaAIFeaturesControlAction {
         optional MaibaAIFeatureStatus aiFeatureStatus = 1;
+        optional MaibaAIReplyMode aiReplyMode = 2;
         enum MaibaAIFeatureStatus {
             ENABLED = 0;
             ENABLED_HAS_LEARNING = 1;
             DISABLED = 2;
+        }
+        enum MaibaAIReplyMode {
+            MUTED = 0;
+            AI_AGENT = 1;
+            SUGGESTIONS = 2;
         }
     }
     message MarkChatAsReadAction {
@@ -362,11 +403,6 @@ message SyncActionValue {
             ACTIVE = 0;
             INACTIVE = 1;
         }
-    }
-    message ModelMetadata {
-        optional string modelName = 1;
-        optional bool isLatestModel = 2;
-        optional bool isDetected = 3;
     }
     message MusicUserIdAction {
         optional string musicUserId = 1;
@@ -501,6 +537,7 @@ message SyncActionValue {
         optional bool shouldPlaySoundForCallNotification = 31;
         optional string chatThemeId = 32;
         optional string colorSchemeId = 33;
+        optional string stockWallpaperImageId = 34;
         enum DisplayMode {
             DISPLAY_MODE_UNKNOWN = 0;
             ALWAYS = 1;
@@ -547,6 +584,7 @@ message SyncActionValue {
             SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION = 31;
             CHAT_THEME_ID = 32;
             COLOR_SCHEME_ID = 33;
+            STOCK_WALLPAPER_IMAGE_ID = 34;
         }
         enum SettingPlatform {
             PLATFORM_UNKNOWN = 0;
@@ -555,6 +593,9 @@ message SyncActionValue {
             WINDOWS = 3;
             MAC = 4;
         }
+    }
+    message SharedDeviceAllowlistAction {
+        optional bool allowed = 1;
     }
     message StarAction {
         optional bool starred = 1;
@@ -565,8 +606,8 @@ message SyncActionValue {
     message StatusPrivacyAction {
         optional StatusDistributionMode mode = 1;
         repeated string userJid = 2;
-        optional bool shareToFB = 3;
-        optional bool shareToIG = 4;
+        optional bool shareToFb = 3;
+        optional bool shareToIg = 4;
         repeated CustomList customLists = 5;
         repeated StatusDistributionMode modes = 6;
         message CustomList {
@@ -625,7 +666,7 @@ message SyncActionValue {
         }
     }
     message SyncActionMessage {
-        optional Protocol.MessageKey key = 1;
+        optional SignalLocalStorageProtocol.MessageKey key = 1;
         optional int64 timestamp = 2;
     }
     message SyncActionMessageRange {
@@ -653,6 +694,19 @@ message SyncActionValue {
         enum ChatStartMode {
             LID = 1;
             PN = 2;
+        }
+    }
+    message WASARootSecretAction {
+        repeated RootSecretEntry secrets = 1;
+        message RootSecretEntry {
+            optional string id = 1;
+            optional bytes rootSecret = 2;
+            optional int64 epoch = 3;
+            optional Status status = 4;
+            enum Status {
+                INACTIVE = 0;
+                ACTIVE = 1;
+            }
         }
     }
     message WaffleAccountLinkStateAction {
@@ -801,6 +855,15 @@ enum MutationProps {
     THREAD_PIN_ACTION = 85;
     AUTO_ORGANIZE_BUSINESS_CHAT_SETTING = 86;
     BIZ_AI_SETTINGS_NUDGE_ACTION = 87;
+    COEX_V2_VERSION_ACTION = 88;
+    WASA_ROOT_SECRET_ACTION = 89;
+    BUBBLE_LOCK_MESSAGE_ACTION = 90;
+    LABEL_SUBLIST_ACTION = 91;
+    DEVICE_CAPABILITIES_V2 = 92;
+    CTWA_MESSAGE_RECEIVED_ACTION = 93;
+    SHARED_DEVICE_ALLOWLIST_ACTION = 94;
+    CONTACT_MANAGER_METADATA_ACTION = 95;
+    BUSINESS_FOLDER_ACTIVATION_ACTION = 96;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;

@@ -1,10 +1,39 @@
 syntax = "proto3";
 package AICommon;
 
-import "../Protocol/Protocol.proto";
+import "../SignalLocalStorageProtocol/SignalLocalStorageProtocol.proto";
+
+message BizAIMetadataSync {
+    oneof operation {
+        BizAIMetadataSync.ServerEvent serverEvent = 1;
+    }
+    message ServerEvent {
+        oneof event {
+            BizAIMetadataSync.ServerEvent.ProtocolEvent protocolEvent = 1;
+            BizAIMetadataSync.ServerEvent.AgentOnboardingStarted agentOnboardingStarted = 2;
+        }
+        message AgentOnboardingStarted {
+            optional int64 composerBlockDurationSecs = 1;
+        }
+        enum ProtocolEvent {
+            UNSPECIFIED = 0;
+            AGENT_CHAT_READY = 1;
+        }
+    }
+}
+
+message AIProvenance {
+    optional Metadata c2PaMetadata = 1;
+    optional Metadata iptcMetadata = 2;
+    message Metadata {
+        optional bool createdWithGenAi = 1;
+        optional bool editedWithGenAi = 2;
+    }
+}
 
 message BotAgentDeepLinkMetadata {
     optional string token = 1;
+    optional bytes clientPublicKey = 2;
 }
 
 message BotAgentMetadata {
@@ -60,7 +89,7 @@ message SessionTransparencyMetadata {
 }
 
 message AIRegenerateMetadata {
-    optional Protocol.MessageKey messageKey = 1;
+    optional SignalLocalStorageProtocol.MessageKey messageKey = 1;
     optional int64 responseTimestampMs = 2;
 }
 
@@ -80,7 +109,7 @@ message ForwardedAIBotMessageInfo {
 }
 
 message BotFeedbackMessage {
-    optional Protocol.MessageKey messageKey = 1;
+    optional SignalLocalStorageProtocol.MessageKey messageKey = 1;
     optional BotFeedbackKind kind = 2;
     optional string text = 3;
     optional uint64 kindNegative = 4;
@@ -176,6 +205,10 @@ message BotRenderingConfigMetadata {
     optional double pixelDensity = 2;
 }
 
+message BotHistoryShareMetadata {
+    repeated BotGroupParticipantMetadata participantsMetadata = 1;
+}
+
 message BotGroupMetadata {
     repeated BotGroupParticipantMetadata participantsMetadata = 1;
 }
@@ -225,7 +258,14 @@ message BotMetadata {
     optional BotCommandMetadata commandMetadata = 39;
     optional BotResolvedToolCallMetadata resolvedToolCallMetadata = 40;
     optional AISubscriptionUpsellMetadata subscriptionUpsellMetadata = 41;
+    optional BotPttPromptMetadata pttPromptMetadata = 42;
+    optional BotHistoryShareMetadata botHistoryShareMetadata = 43;
+    optional bool responseStoppedByUser = 44;
     optional bytes internalMetadata = 999;
+}
+
+message BotPttPromptMetadata {
+    optional string transcript = 1;
 }
 
 message BotResolvedToolCallMetadata {
@@ -237,6 +277,17 @@ message BotCommandMetadata {
     optional string commandName = 1;
     optional string commandDescription = 2;
     optional string commandPrompt = 3;
+}
+
+message AIMetadataOperation {
+    optional HatchMetadataSync hatchMetadataSync = 1;
+    optional BizAIMetadataSync bizAiMetadataSync = 2;
+}
+
+message HatchMetadataSync {
+    optional bytes data = 1;
+    optional int64 timestampMs = 2;
+    optional string requestId = 3;
 }
 
 message AIMediaCollectionMessage {
@@ -457,6 +508,15 @@ message BotCapabilityMetadata {
         AI_TAB_FORCE_CLIPPY = 59;
         UNIFIED_RESPONSE_EMBEDDED_SCREENS = 60;
         AI_SUBSCRIPTION_ENABLED = 61;
+        UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED = 62;
+        UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED = 63;
+        AI_RICH_RESPONSE_MAPS_V2_ENABLED = 64;
+        AI_SUBSCRIPTION_METERING_ENABLED = 65;
+        RICH_RESPONSE_SPORTS_WIDGET_ENABLED = 66;
+        AI_RICH_RESPONSE_ARTIFACTS_ENABLED = 67;
+        AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68;
+        AI_RICH_RESPONSE_REMINDERS_ENABLED = 69;
+        AI_STOP_GENERATION_ENABLED = 70;
     }
 }
 
@@ -526,7 +586,7 @@ message BotModelMetadata {
 }
 
 message BotReminderMetadata {
-    optional Protocol.MessageKey requestMessageKey = 1;
+    optional SignalLocalStorageProtocol.MessageKey requestMessageKey = 1;
     optional ReminderAction action = 2;
     optional string name = 3;
     optional uint64 nextTriggerTimestamp = 4;
@@ -599,10 +659,18 @@ message BotSignatureVerificationUseCaseProof {
     optional BotSignatureUseCase useCase = 2;
     optional bytes signature = 3;
     repeated bytes certificateChain = 4;
+    repeated CertificateSKI certificateChainSki = 5;
     enum BotSignatureUseCase {
         UNSPECIFIED = 0;
         WA_BOT_MSG = 1;
         WA_TEE_BOT_MSG = 2;
+        P2P_PILLS = 3;
+        WA_WAFFLE = 4;
+        WA_FEATURE_PKI = 5;
+    }
+    message CertificateSKI {
+        optional BotSignatureVerificationUseCaseProof.BotSignatureUseCase useCase = 1;
+        optional bytes ski = 2;
     }
 }
 
@@ -659,7 +727,7 @@ message BotPluginMetadata {
     optional uint32 referenceIndex = 6;
     optional uint32 expectedLinksCount = 7;
     optional string searchQuery = 9;
-    optional Protocol.MessageKey parentPluginMessageKey = 10;
+    optional SignalLocalStorageProtocol.MessageKey parentPluginMessageKey = 10;
     optional PluginType deprecatedField = 11;
     optional PluginType parentPluginType = 12;
     optional string faviconCdnUrl = 13;
@@ -756,4 +824,6 @@ enum BotMetricsEntryPoint {
     GROUP_MEMBER = 54;
     CHATLIST_SEARCH = 55;
     NEW_CHAT_LIST = 56;
+    CONTACTS_TAB = 57;
+    NEW_3P_AGENT_CREATION = 58;
 }
