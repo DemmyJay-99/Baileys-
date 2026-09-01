@@ -384,7 +384,8 @@ export namespace StatusAttributions {
                 SHARECHAT = 9,
                 GOOGLE_PHOTOS = 10,
                 SOUNDCLOUD = 11,
-                SHAZAM = 12
+                SHAZAM = 12,
+                PICSART = 13
             }
         }
 
@@ -963,7 +964,8 @@ export namespace StatusAttributions {
             LAYOUTS = 8,
             NEWSLETTER_STATUS = 9,
             STATUS_CLOSE_SHARING = 10,
-            PAID_PARTNERSHIP = 11
+            PAID_PARTNERSHIP = 11,
+            USERNAME_STATUS = 12
         }
     }
 }

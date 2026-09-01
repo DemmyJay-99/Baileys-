@@ -3,11 +3,538 @@ import Long = require("long");
 /** Namespace AICommon. */
 export namespace AICommon {
 
+    /** Properties of a BizAIMetadataSync. */
+    interface IBizAIMetadataSync {
+
+        /** BizAIMetadataSync serverEvent */
+        serverEvent?: (AICommon.BizAIMetadataSync.IServerEvent|null);
+    }
+
+    /** Represents a BizAIMetadataSync. */
+    class BizAIMetadataSync implements IBizAIMetadataSync {
+
+        /**
+         * Constructs a new BizAIMetadataSync.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: AICommon.IBizAIMetadataSync);
+
+        /** BizAIMetadataSync serverEvent. */
+        public serverEvent?: (AICommon.BizAIMetadataSync.IServerEvent|null);
+
+        /** BizAIMetadataSync operation. */
+        public operation?: "serverEvent";
+
+        /**
+         * Creates a new BizAIMetadataSync instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BizAIMetadataSync instance
+         */
+        public static create(properties?: AICommon.IBizAIMetadataSync): AICommon.BizAIMetadataSync;
+
+        /**
+         * Encodes the specified BizAIMetadataSync message. Does not implicitly {@link AICommon.BizAIMetadataSync.verify|verify} messages.
+         * @param message BizAIMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: AICommon.IBizAIMetadataSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BizAIMetadataSync message, length delimited. Does not implicitly {@link AICommon.BizAIMetadataSync.verify|verify} messages.
+         * @param message BizAIMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: AICommon.IBizAIMetadataSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.BizAIMetadataSync;
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.BizAIMetadataSync;
+
+        /**
+         * Verifies a BizAIMetadataSync message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BizAIMetadataSync message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BizAIMetadataSync
+         */
+        public static fromObject(object: { [k: string]: any }): AICommon.BizAIMetadataSync;
+
+        /**
+         * Creates a plain object from a BizAIMetadataSync message. Also converts values to other types if specified.
+         * @param message BizAIMetadataSync
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: AICommon.BizAIMetadataSync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BizAIMetadataSync to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BizAIMetadataSync
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BizAIMetadataSync {
+
+        /** Properties of a ServerEvent. */
+        interface IServerEvent {
+
+            /** ServerEvent protocolEvent */
+            protocolEvent?: (AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent|null);
+
+            /** ServerEvent agentOnboardingStarted */
+            agentOnboardingStarted?: (AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted|null);
+        }
+
+        /** Represents a ServerEvent. */
+        class ServerEvent implements IServerEvent {
+
+            /**
+             * Constructs a new ServerEvent.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: AICommon.BizAIMetadataSync.IServerEvent);
+
+            /** ServerEvent protocolEvent. */
+            public protocolEvent?: (AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent|null);
+
+            /** ServerEvent agentOnboardingStarted. */
+            public agentOnboardingStarted?: (AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted|null);
+
+            /** ServerEvent event. */
+            public event?: ("protocolEvent"|"agentOnboardingStarted");
+
+            /**
+             * Creates a new ServerEvent instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ServerEvent instance
+             */
+            public static create(properties?: AICommon.BizAIMetadataSync.IServerEvent): AICommon.BizAIMetadataSync.ServerEvent;
+
+            /**
+             * Encodes the specified ServerEvent message. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @param message ServerEvent message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: AICommon.BizAIMetadataSync.IServerEvent, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ServerEvent message, length delimited. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @param message ServerEvent message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: AICommon.BizAIMetadataSync.IServerEvent, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.BizAIMetadataSync.ServerEvent;
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.BizAIMetadataSync.ServerEvent;
+
+            /**
+             * Verifies a ServerEvent message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ServerEvent message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ServerEvent
+             */
+            public static fromObject(object: { [k: string]: any }): AICommon.BizAIMetadataSync.ServerEvent;
+
+            /**
+             * Creates a plain object from a ServerEvent message. Also converts values to other types if specified.
+             * @param message ServerEvent
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: AICommon.BizAIMetadataSync.ServerEvent, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ServerEvent to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for ServerEvent
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace ServerEvent {
+
+            /** Properties of an AgentOnboardingStarted. */
+            interface IAgentOnboardingStarted {
+
+                /** AgentOnboardingStarted composerBlockDurationSecs */
+                composerBlockDurationSecs?: (number|Long|null);
+            }
+
+            /** Represents an AgentOnboardingStarted. */
+            class AgentOnboardingStarted implements IAgentOnboardingStarted {
+
+                /**
+                 * Constructs a new AgentOnboardingStarted.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted);
+
+                /** AgentOnboardingStarted composerBlockDurationSecs. */
+                public composerBlockDurationSecs?: (number|Long|null);
+
+                /**
+                 * Creates a new AgentOnboardingStarted instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AgentOnboardingStarted instance
+                 */
+                public static create(properties?: AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted): AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted;
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @param message AgentOnboardingStarted message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message, length delimited. Does not implicitly {@link AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @param message AgentOnboardingStarted message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: AICommon.BizAIMetadataSync.ServerEvent.IAgentOnboardingStarted, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted;
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted;
+
+                /**
+                 * Verifies an AgentOnboardingStarted message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an AgentOnboardingStarted message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AgentOnboardingStarted
+                 */
+                public static fromObject(object: { [k: string]: any }): AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted;
+
+                /**
+                 * Creates a plain object from an AgentOnboardingStarted message. Also converts values to other types if specified.
+                 * @param message AgentOnboardingStarted
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AgentOnboardingStarted to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for AgentOnboardingStarted
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** ProtocolEvent enum. */
+            enum ProtocolEvent {
+                UNSPECIFIED = 0,
+                AGENT_CHAT_READY = 1
+            }
+        }
+    }
+
+    /** Properties of a AIProvenance. */
+    interface IAIProvenance {
+
+        /** AIProvenance c2PaMetadata */
+        c2PaMetadata?: (AICommon.AIProvenance.IMetadata|null);
+
+        /** AIProvenance iptcMetadata */
+        iptcMetadata?: (AICommon.AIProvenance.IMetadata|null);
+    }
+
+    /** Represents a AIProvenance. */
+    class AIProvenance implements IAIProvenance {
+
+        /**
+         * Constructs a new AIProvenance.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: AICommon.IAIProvenance);
+
+        /** AIProvenance c2PaMetadata. */
+        public c2PaMetadata?: (AICommon.AIProvenance.IMetadata|null);
+
+        /** AIProvenance iptcMetadata. */
+        public iptcMetadata?: (AICommon.AIProvenance.IMetadata|null);
+
+        /**
+         * Creates a new AIProvenance instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AIProvenance instance
+         */
+        public static create(properties?: AICommon.IAIProvenance): AICommon.AIProvenance;
+
+        /**
+         * Encodes the specified AIProvenance message. Does not implicitly {@link AICommon.AIProvenance.verify|verify} messages.
+         * @param message AIProvenance message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: AICommon.IAIProvenance, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AIProvenance message, length delimited. Does not implicitly {@link AICommon.AIProvenance.verify|verify} messages.
+         * @param message AIProvenance message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: AICommon.IAIProvenance, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a AIProvenance message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AIProvenance
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.AIProvenance;
+
+        /**
+         * Decodes a AIProvenance message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AIProvenance
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.AIProvenance;
+
+        /**
+         * Verifies a AIProvenance message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a AIProvenance message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AIProvenance
+         */
+        public static fromObject(object: { [k: string]: any }): AICommon.AIProvenance;
+
+        /**
+         * Creates a plain object from a AIProvenance message. Also converts values to other types if specified.
+         * @param message AIProvenance
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: AICommon.AIProvenance, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AIProvenance to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AIProvenance
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace AIProvenance {
+
+        /** Properties of a Metadata. */
+        interface IMetadata {
+
+            /** Metadata createdWithGenAi */
+            createdWithGenAi?: (boolean|null);
+
+            /** Metadata editedWithGenAi */
+            editedWithGenAi?: (boolean|null);
+        }
+
+        /** Represents a Metadata. */
+        class Metadata implements IMetadata {
+
+            /**
+             * Constructs a new Metadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: AICommon.AIProvenance.IMetadata);
+
+            /** Metadata createdWithGenAi. */
+            public createdWithGenAi?: (boolean|null);
+
+            /** Metadata editedWithGenAi. */
+            public editedWithGenAi?: (boolean|null);
+
+            /**
+             * Creates a new Metadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Metadata instance
+             */
+            public static create(properties?: AICommon.AIProvenance.IMetadata): AICommon.AIProvenance.Metadata;
+
+            /**
+             * Encodes the specified Metadata message. Does not implicitly {@link AICommon.AIProvenance.Metadata.verify|verify} messages.
+             * @param message Metadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: AICommon.AIProvenance.IMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Metadata message, length delimited. Does not implicitly {@link AICommon.AIProvenance.Metadata.verify|verify} messages.
+             * @param message Metadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: AICommon.AIProvenance.IMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Metadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Metadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.AIProvenance.Metadata;
+
+            /**
+             * Decodes a Metadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Metadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.AIProvenance.Metadata;
+
+            /**
+             * Verifies a Metadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Metadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Metadata
+             */
+            public static fromObject(object: { [k: string]: any }): AICommon.AIProvenance.Metadata;
+
+            /**
+             * Creates a plain object from a Metadata message. Also converts values to other types if specified.
+             * @param message Metadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: AICommon.AIProvenance.Metadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Metadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Metadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+    }
+
     /** Properties of a BotAgentDeepLinkMetadata. */
     interface IBotAgentDeepLinkMetadata {
 
         /** BotAgentDeepLinkMetadata token */
         token?: (string|null);
+
+        /** BotAgentDeepLinkMetadata clientPublicKey */
+        clientPublicKey?: (Uint8Array|null);
     }
 
     /** Represents a BotAgentDeepLinkMetadata. */
@@ -21,6 +548,9 @@ export namespace AICommon {
 
         /** BotAgentDeepLinkMetadata token. */
         public token?: (string|null);
+
+        /** BotAgentDeepLinkMetadata clientPublicKey. */
+        public clientPublicKey?: (Uint8Array|null);
 
         /**
          * Creates a new BotAgentDeepLinkMetadata instance using the specified properties.
@@ -798,7 +1328,7 @@ export namespace AICommon {
     interface IAIRegenerateMetadata {
 
         /** AIRegenerateMetadata messageKey */
-        messageKey?: (Protocol.IMessageKey|null);
+        messageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** AIRegenerateMetadata responseTimestampMs */
         responseTimestampMs?: (number|Long|null);
@@ -814,7 +1344,7 @@ export namespace AICommon {
         constructor(properties?: AICommon.IAIRegenerateMetadata);
 
         /** AIRegenerateMetadata messageKey. */
-        public messageKey?: (Protocol.IMessageKey|null);
+        public messageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** AIRegenerateMetadata responseTimestampMs. */
         public responseTimestampMs?: (number|Long|null);
@@ -1210,7 +1740,7 @@ export namespace AICommon {
     interface IBotFeedbackMessage {
 
         /** BotFeedbackMessage messageKey */
-        messageKey?: (Protocol.IMessageKey|null);
+        messageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** BotFeedbackMessage kind */
         kind?: (AICommon.BotFeedbackMessage.BotFeedbackKind|null);
@@ -1241,7 +1771,7 @@ export namespace AICommon {
         constructor(properties?: AICommon.IBotFeedbackMessage);
 
         /** BotFeedbackMessage messageKey. */
-        public messageKey?: (Protocol.IMessageKey|null);
+        public messageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** BotFeedbackMessage kind. */
         public kind?: (AICommon.BotFeedbackMessage.BotFeedbackKind|null);
@@ -2481,6 +3011,103 @@ export namespace AICommon {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a BotHistoryShareMetadata. */
+    interface IBotHistoryShareMetadata {
+
+        /** BotHistoryShareMetadata participantsMetadata */
+        participantsMetadata?: (AICommon.IBotGroupParticipantMetadata[]|null);
+    }
+
+    /** Represents a BotHistoryShareMetadata. */
+    class BotHistoryShareMetadata implements IBotHistoryShareMetadata {
+
+        /**
+         * Constructs a new BotHistoryShareMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: AICommon.IBotHistoryShareMetadata);
+
+        /** BotHistoryShareMetadata participantsMetadata. */
+        public participantsMetadata: AICommon.IBotGroupParticipantMetadata[];
+
+        /**
+         * Creates a new BotHistoryShareMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotHistoryShareMetadata instance
+         */
+        public static create(properties?: AICommon.IBotHistoryShareMetadata): AICommon.BotHistoryShareMetadata;
+
+        /**
+         * Encodes the specified BotHistoryShareMetadata message. Does not implicitly {@link AICommon.BotHistoryShareMetadata.verify|verify} messages.
+         * @param message BotHistoryShareMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: AICommon.IBotHistoryShareMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotHistoryShareMetadata message, length delimited. Does not implicitly {@link AICommon.BotHistoryShareMetadata.verify|verify} messages.
+         * @param message BotHistoryShareMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: AICommon.IBotHistoryShareMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotHistoryShareMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotHistoryShareMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.BotHistoryShareMetadata;
+
+        /**
+         * Decodes a BotHistoryShareMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotHistoryShareMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.BotHistoryShareMetadata;
+
+        /**
+         * Verifies a BotHistoryShareMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotHistoryShareMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotHistoryShareMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): AICommon.BotHistoryShareMetadata;
+
+        /**
+         * Creates a plain object from a BotHistoryShareMetadata message. Also converts values to other types if specified.
+         * @param message BotHistoryShareMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: AICommon.BotHistoryShareMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotHistoryShareMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotHistoryShareMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a BotGroupMetadata. */
     interface IBotGroupMetadata {
 
@@ -2798,6 +3425,15 @@ export namespace AICommon {
         /** BotMetadata subscriptionUpsellMetadata */
         subscriptionUpsellMetadata?: (AICommon.IAISubscriptionUpsellMetadata|null);
 
+        /** BotMetadata pttPromptMetadata */
+        pttPromptMetadata?: (AICommon.IBotPttPromptMetadata|null);
+
+        /** BotMetadata botHistoryShareMetadata */
+        botHistoryShareMetadata?: (AICommon.IBotHistoryShareMetadata|null);
+
+        /** BotMetadata responseStoppedByUser */
+        responseStoppedByUser?: (boolean|null);
+
         /** BotMetadata internalMetadata */
         internalMetadata?: (Uint8Array|null);
     }
@@ -2931,6 +3567,15 @@ export namespace AICommon {
         /** BotMetadata subscriptionUpsellMetadata. */
         public subscriptionUpsellMetadata?: (AICommon.IAISubscriptionUpsellMetadata|null);
 
+        /** BotMetadata pttPromptMetadata. */
+        public pttPromptMetadata?: (AICommon.IBotPttPromptMetadata|null);
+
+        /** BotMetadata botHistoryShareMetadata. */
+        public botHistoryShareMetadata?: (AICommon.IBotHistoryShareMetadata|null);
+
+        /** BotMetadata responseStoppedByUser. */
+        public responseStoppedByUser?: (boolean|null);
+
         /** BotMetadata internalMetadata. */
         public internalMetadata?: (Uint8Array|null);
 
@@ -3006,6 +3651,103 @@ export namespace AICommon {
 
         /**
          * Gets the default type url for BotMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a BotPttPromptMetadata. */
+    interface IBotPttPromptMetadata {
+
+        /** BotPttPromptMetadata transcript */
+        transcript?: (string|null);
+    }
+
+    /** Represents a BotPttPromptMetadata. */
+    class BotPttPromptMetadata implements IBotPttPromptMetadata {
+
+        /**
+         * Constructs a new BotPttPromptMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: AICommon.IBotPttPromptMetadata);
+
+        /** BotPttPromptMetadata transcript. */
+        public transcript?: (string|null);
+
+        /**
+         * Creates a new BotPttPromptMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotPttPromptMetadata instance
+         */
+        public static create(properties?: AICommon.IBotPttPromptMetadata): AICommon.BotPttPromptMetadata;
+
+        /**
+         * Encodes the specified BotPttPromptMetadata message. Does not implicitly {@link AICommon.BotPttPromptMetadata.verify|verify} messages.
+         * @param message BotPttPromptMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: AICommon.IBotPttPromptMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotPttPromptMetadata message, length delimited. Does not implicitly {@link AICommon.BotPttPromptMetadata.verify|verify} messages.
+         * @param message BotPttPromptMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: AICommon.IBotPttPromptMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotPttPromptMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotPttPromptMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.BotPttPromptMetadata;
+
+        /**
+         * Decodes a BotPttPromptMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotPttPromptMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.BotPttPromptMetadata;
+
+        /**
+         * Verifies a BotPttPromptMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotPttPromptMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotPttPromptMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): AICommon.BotPttPromptMetadata;
+
+        /**
+         * Creates a plain object from a BotPttPromptMetadata message. Also converts values to other types if specified.
+         * @param message BotPttPromptMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: AICommon.BotPttPromptMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotPttPromptMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotPttPromptMetadata
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
@@ -3218,6 +3960,218 @@ export namespace AICommon {
 
         /**
          * Gets the default type url for BotCommandMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a AIMetadataOperation. */
+    interface IAIMetadataOperation {
+
+        /** AIMetadataOperation hatchMetadataSync */
+        hatchMetadataSync?: (AICommon.IHatchMetadataSync|null);
+
+        /** AIMetadataOperation bizAiMetadataSync */
+        bizAiMetadataSync?: (AICommon.IBizAIMetadataSync|null);
+    }
+
+    /** Represents a AIMetadataOperation. */
+    class AIMetadataOperation implements IAIMetadataOperation {
+
+        /**
+         * Constructs a new AIMetadataOperation.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: AICommon.IAIMetadataOperation);
+
+        /** AIMetadataOperation hatchMetadataSync. */
+        public hatchMetadataSync?: (AICommon.IHatchMetadataSync|null);
+
+        /** AIMetadataOperation bizAiMetadataSync. */
+        public bizAiMetadataSync?: (AICommon.IBizAIMetadataSync|null);
+
+        /**
+         * Creates a new AIMetadataOperation instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AIMetadataOperation instance
+         */
+        public static create(properties?: AICommon.IAIMetadataOperation): AICommon.AIMetadataOperation;
+
+        /**
+         * Encodes the specified AIMetadataOperation message. Does not implicitly {@link AICommon.AIMetadataOperation.verify|verify} messages.
+         * @param message AIMetadataOperation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: AICommon.IAIMetadataOperation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AIMetadataOperation message, length delimited. Does not implicitly {@link AICommon.AIMetadataOperation.verify|verify} messages.
+         * @param message AIMetadataOperation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: AICommon.IAIMetadataOperation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a AIMetadataOperation message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AIMetadataOperation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.AIMetadataOperation;
+
+        /**
+         * Decodes a AIMetadataOperation message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AIMetadataOperation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.AIMetadataOperation;
+
+        /**
+         * Verifies a AIMetadataOperation message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a AIMetadataOperation message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AIMetadataOperation
+         */
+        public static fromObject(object: { [k: string]: any }): AICommon.AIMetadataOperation;
+
+        /**
+         * Creates a plain object from a AIMetadataOperation message. Also converts values to other types if specified.
+         * @param message AIMetadataOperation
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: AICommon.AIMetadataOperation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AIMetadataOperation to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AIMetadataOperation
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a HatchMetadataSync. */
+    interface IHatchMetadataSync {
+
+        /** HatchMetadataSync data */
+        data?: (Uint8Array|null);
+
+        /** HatchMetadataSync timestampMs */
+        timestampMs?: (number|Long|null);
+
+        /** HatchMetadataSync requestId */
+        requestId?: (string|null);
+    }
+
+    /** Represents a HatchMetadataSync. */
+    class HatchMetadataSync implements IHatchMetadataSync {
+
+        /**
+         * Constructs a new HatchMetadataSync.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: AICommon.IHatchMetadataSync);
+
+        /** HatchMetadataSync data. */
+        public data?: (Uint8Array|null);
+
+        /** HatchMetadataSync timestampMs. */
+        public timestampMs?: (number|Long|null);
+
+        /** HatchMetadataSync requestId. */
+        public requestId?: (string|null);
+
+        /**
+         * Creates a new HatchMetadataSync instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns HatchMetadataSync instance
+         */
+        public static create(properties?: AICommon.IHatchMetadataSync): AICommon.HatchMetadataSync;
+
+        /**
+         * Encodes the specified HatchMetadataSync message. Does not implicitly {@link AICommon.HatchMetadataSync.verify|verify} messages.
+         * @param message HatchMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: AICommon.IHatchMetadataSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified HatchMetadataSync message, length delimited. Does not implicitly {@link AICommon.HatchMetadataSync.verify|verify} messages.
+         * @param message HatchMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: AICommon.IHatchMetadataSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a HatchMetadataSync message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns HatchMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.HatchMetadataSync;
+
+        /**
+         * Decodes a HatchMetadataSync message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns HatchMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.HatchMetadataSync;
+
+        /**
+         * Verifies a HatchMetadataSync message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a HatchMetadataSync message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns HatchMetadataSync
+         */
+        public static fromObject(object: { [k: string]: any }): AICommon.HatchMetadataSync;
+
+        /**
+         * Creates a plain object from a HatchMetadataSync message. Also converts values to other types if specified.
+         * @param message HatchMetadataSync
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: AICommon.HatchMetadataSync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this HatchMetadataSync to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for HatchMetadataSync
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
@@ -5766,7 +6720,16 @@ export namespace AICommon {
             JSON_PATCH_STREAMING = 58,
             AI_TAB_FORCE_CLIPPY = 59,
             UNIFIED_RESPONSE_EMBEDDED_SCREENS = 60,
-            AI_SUBSCRIPTION_ENABLED = 61
+            AI_SUBSCRIPTION_ENABLED = 61,
+            UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED = 62,
+            UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED = 63,
+            AI_RICH_RESPONSE_MAPS_V2_ENABLED = 64,
+            AI_SUBSCRIPTION_METERING_ENABLED = 65,
+            RICH_RESPONSE_SPORTS_WIDGET_ENABLED = 66,
+            AI_RICH_RESPONSE_ARTIFACTS_ENABLED = 67,
+            AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68,
+            AI_RICH_RESPONSE_REMINDERS_ENABLED = 69,
+            AI_STOP_GENERATION_ENABLED = 70
         }
     }
 
@@ -6508,7 +7471,7 @@ export namespace AICommon {
     interface IBotReminderMetadata {
 
         /** BotReminderMetadata requestMessageKey */
-        requestMessageKey?: (Protocol.IMessageKey|null);
+        requestMessageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** BotReminderMetadata action */
         action?: (AICommon.BotReminderMetadata.ReminderAction|null);
@@ -6533,7 +7496,7 @@ export namespace AICommon {
         constructor(properties?: AICommon.IBotReminderMetadata);
 
         /** BotReminderMetadata requestMessageKey. */
-        public requestMessageKey?: (Protocol.IMessageKey|null);
+        public requestMessageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** BotReminderMetadata action. */
         public action?: (AICommon.BotReminderMetadata.ReminderAction|null);
@@ -7427,6 +8390,9 @@ export namespace AICommon {
 
         /** BotSignatureVerificationUseCaseProof certificateChain */
         certificateChain?: (Uint8Array[]|null);
+
+        /** BotSignatureVerificationUseCaseProof certificateChainSki */
+        certificateChainSki?: (AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI[]|null);
     }
 
     /** Represents a BotSignatureVerificationUseCaseProof. */
@@ -7449,6 +8415,9 @@ export namespace AICommon {
 
         /** BotSignatureVerificationUseCaseProof certificateChain. */
         public certificateChain: Uint8Array[];
+
+        /** BotSignatureVerificationUseCaseProof certificateChainSki. */
+        public certificateChainSki: AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI[];
 
         /**
          * Creates a new BotSignatureVerificationUseCaseProof instance using the specified properties.
@@ -7534,7 +8503,113 @@ export namespace AICommon {
         enum BotSignatureUseCase {
             UNSPECIFIED = 0,
             WA_BOT_MSG = 1,
-            WA_TEE_BOT_MSG = 2
+            WA_TEE_BOT_MSG = 2,
+            P2P_PILLS = 3,
+            WA_WAFFLE = 4,
+            WA_FEATURE_PKI = 5
+        }
+
+        /** Properties of a CertificateSKI. */
+        interface ICertificateSKI {
+
+            /** CertificateSKI useCase */
+            useCase?: (AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+            /** CertificateSKI ski */
+            ski?: (Uint8Array|null);
+        }
+
+        /** Represents a CertificateSKI. */
+        class CertificateSKI implements ICertificateSKI {
+
+            /**
+             * Constructs a new CertificateSKI.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI);
+
+            /** CertificateSKI useCase. */
+            public useCase?: (AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+            /** CertificateSKI ski. */
+            public ski?: (Uint8Array|null);
+
+            /**
+             * Creates a new CertificateSKI instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns CertificateSKI instance
+             */
+            public static create(properties?: AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI): AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Encodes the specified CertificateSKI message. Does not implicitly {@link AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @param message CertificateSKI message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CertificateSKI message, length delimited. Does not implicitly {@link AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @param message CertificateSKI message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: AICommon.BotSignatureVerificationUseCaseProof.ICertificateSKI, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Verifies a CertificateSKI message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CertificateSKI message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CertificateSKI
+             */
+            public static fromObject(object: { [k: string]: any }): AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Creates a plain object from a CertificateSKI message. Also converts values to other types if specified.
+             * @param message CertificateSKI
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CertificateSKI to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for CertificateSKI
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
     }
 
@@ -8404,7 +9479,7 @@ export namespace AICommon {
         searchQuery?: (string|null);
 
         /** BotPluginMetadata parentPluginMessageKey */
-        parentPluginMessageKey?: (Protocol.IMessageKey|null);
+        parentPluginMessageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** BotPluginMetadata deprecatedField */
         deprecatedField?: (AICommon.BotPluginMetadata.PluginType|null);
@@ -8450,7 +9525,7 @@ export namespace AICommon {
         public searchQuery?: (string|null);
 
         /** BotPluginMetadata parentPluginMessageKey. */
-        public parentPluginMessageKey?: (Protocol.IMessageKey|null);
+        public parentPluginMessageKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey|null);
 
         /** BotPluginMetadata deprecatedField. */
         public deprecatedField?: (AICommon.BotPluginMetadata.PluginType|null);
@@ -8641,251 +9716,1734 @@ export namespace AICommon {
         WEB_NAVIGATION_BAR = 47,
         GROUP_MEMBER = 54,
         CHATLIST_SEARCH = 55,
-        NEW_CHAT_LIST = 56
+        NEW_CHAT_LIST = 56,
+        CONTACTS_TAB = 57,
+        NEW_3P_AGENT_CREATION = 58
     }
 }
 
-/** Namespace Protocol. */
-export namespace Protocol {
+/** Namespace SignalLocalStorageProtocol. */
+export namespace SignalLocalStorageProtocol {
 
-    /** Properties of a LimitSharing. */
-    interface ILimitSharing {
+    /** Properties of a SenderKeyRecordStructure. */
+    interface ISenderKeyRecordStructure {
 
-        /** LimitSharing sharingLimited */
-        sharingLimited?: (boolean|null);
-
-        /** LimitSharing trigger */
-        trigger?: (Protocol.LimitSharing.TriggerType|null);
-
-        /** LimitSharing limitSharingSettingTimestamp */
-        limitSharingSettingTimestamp?: (number|Long|null);
-
-        /** LimitSharing initiatedByMe */
-        initiatedByMe?: (boolean|null);
+        /** SenderKeyRecordStructure senderKeyStates */
+        senderKeyStates?: (SignalLocalStorageProtocol.ISenderKeyStateStructure[]|null);
     }
 
-    /** Represents a LimitSharing. */
-    class LimitSharing implements ILimitSharing {
+    /** Represents a SenderKeyRecordStructure. */
+    class SenderKeyRecordStructure implements ISenderKeyRecordStructure {
 
         /**
-         * Constructs a new LimitSharing.
+         * Constructs a new SenderKeyRecordStructure.
          * @param [properties] Properties to set
          */
-        constructor(properties?: Protocol.ILimitSharing);
+        constructor(properties?: SignalLocalStorageProtocol.ISenderKeyRecordStructure);
 
-        /** LimitSharing sharingLimited. */
-        public sharingLimited?: (boolean|null);
-
-        /** LimitSharing trigger. */
-        public trigger?: (Protocol.LimitSharing.TriggerType|null);
-
-        /** LimitSharing limitSharingSettingTimestamp. */
-        public limitSharingSettingTimestamp?: (number|Long|null);
-
-        /** LimitSharing initiatedByMe. */
-        public initiatedByMe?: (boolean|null);
+        /** SenderKeyRecordStructure senderKeyStates. */
+        public senderKeyStates: SignalLocalStorageProtocol.ISenderKeyStateStructure[];
 
         /**
-         * Creates a new LimitSharing instance using the specified properties.
+         * Creates a new SenderKeyRecordStructure instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns LimitSharing instance
+         * @returns SenderKeyRecordStructure instance
          */
-        public static create(properties?: Protocol.ILimitSharing): Protocol.LimitSharing;
+        public static create(properties?: SignalLocalStorageProtocol.ISenderKeyRecordStructure): SignalLocalStorageProtocol.SenderKeyRecordStructure;
 
         /**
-         * Encodes the specified LimitSharing message. Does not implicitly {@link Protocol.LimitSharing.verify|verify} messages.
-         * @param message LimitSharing message or plain object to encode
+         * Encodes the specified SenderKeyRecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyRecordStructure.verify|verify} messages.
+         * @param message SenderKeyRecordStructure message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: Protocol.ILimitSharing, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encode(message: SignalLocalStorageProtocol.ISenderKeyRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Encodes the specified LimitSharing message, length delimited. Does not implicitly {@link Protocol.LimitSharing.verify|verify} messages.
-         * @param message LimitSharing message or plain object to encode
+         * Encodes the specified SenderKeyRecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyRecordStructure.verify|verify} messages.
+         * @param message SenderKeyRecordStructure message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: Protocol.ILimitSharing, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encodeDelimited(message: SignalLocalStorageProtocol.ISenderKeyRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Decodes a LimitSharing message from the specified reader or buffer.
+         * Decodes a SenderKeyRecordStructure message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns LimitSharing
+         * @returns SenderKeyRecordStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): Protocol.LimitSharing;
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SenderKeyRecordStructure;
 
         /**
-         * Decodes a LimitSharing message from the specified reader or buffer, length delimited.
+         * Decodes a SenderKeyRecordStructure message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns LimitSharing
+         * @returns SenderKeyRecordStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): Protocol.LimitSharing;
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SenderKeyRecordStructure;
 
         /**
-         * Verifies a LimitSharing message.
+         * Verifies a SenderKeyRecordStructure message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
 
         /**
-         * Creates a LimitSharing message from a plain object. Also converts values to their respective internal types.
+         * Creates a SenderKeyRecordStructure message from a plain object. Also converts values to their respective internal types.
          * @param object Plain object
-         * @returns LimitSharing
+         * @returns SenderKeyRecordStructure
          */
-        public static fromObject(object: { [k: string]: any }): Protocol.LimitSharing;
+        public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SenderKeyRecordStructure;
 
         /**
-         * Creates a plain object from a LimitSharing message. Also converts values to other types if specified.
-         * @param message LimitSharing
+         * Creates a plain object from a SenderKeyRecordStructure message. Also converts values to other types if specified.
+         * @param message SenderKeyRecordStructure
          * @param [options] Conversion options
          * @returns Plain object
          */
-        public static toObject(message: Protocol.LimitSharing, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: SignalLocalStorageProtocol.SenderKeyRecordStructure, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
         /**
-         * Converts this LimitSharing to JSON.
+         * Converts this SenderKeyRecordStructure to JSON.
          * @returns JSON object
          */
         public toJSON(): { [k: string]: any };
 
         /**
-         * Gets the default type url for LimitSharing
+         * Gets the default type url for SenderKeyRecordStructure
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    namespace LimitSharing {
+    /** Properties of a SenderKeyStateStructure. */
+    interface ISenderKeyStateStructure {
 
-        /** TriggerType enum. */
-        enum TriggerType {
-            UNKNOWN = 0,
-            CHAT_SETTING = 1,
-            BIZ_SUPPORTS_FB_HOSTING = 2,
-            UNKNOWN_GROUP = 3
+        /** SenderKeyStateStructure senderKeyId */
+        senderKeyId?: (number|null);
+
+        /** SenderKeyStateStructure senderChainKey */
+        senderChainKey?: (SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey|null);
+
+        /** SenderKeyStateStructure senderSigningKey */
+        senderSigningKey?: (SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey|null);
+
+        /** SenderKeyStateStructure senderMessageKeys */
+        senderMessageKeys?: (SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey[]|null);
+    }
+
+    /** Represents a SenderKeyStateStructure. */
+    class SenderKeyStateStructure implements ISenderKeyStateStructure {
+
+        /**
+         * Constructs a new SenderKeyStateStructure.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: SignalLocalStorageProtocol.ISenderKeyStateStructure);
+
+        /** SenderKeyStateStructure senderKeyId. */
+        public senderKeyId?: (number|null);
+
+        /** SenderKeyStateStructure senderChainKey. */
+        public senderChainKey?: (SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey|null);
+
+        /** SenderKeyStateStructure senderSigningKey. */
+        public senderSigningKey?: (SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey|null);
+
+        /** SenderKeyStateStructure senderMessageKeys. */
+        public senderMessageKeys: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey[];
+
+        /**
+         * Creates a new SenderKeyStateStructure instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SenderKeyStateStructure instance
+         */
+        public static create(properties?: SignalLocalStorageProtocol.ISenderKeyStateStructure): SignalLocalStorageProtocol.SenderKeyStateStructure;
+
+        /**
+         * Encodes the specified SenderKeyStateStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.verify|verify} messages.
+         * @param message SenderKeyStateStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: SignalLocalStorageProtocol.ISenderKeyStateStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SenderKeyStateStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.verify|verify} messages.
+         * @param message SenderKeyStateStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: SignalLocalStorageProtocol.ISenderKeyStateStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SenderKeyStateStructure message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SenderKeyStateStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SenderKeyStateStructure;
+
+        /**
+         * Decodes a SenderKeyStateStructure message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SenderKeyStateStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SenderKeyStateStructure;
+
+        /**
+         * Verifies a SenderKeyStateStructure message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SenderKeyStateStructure message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SenderKeyStateStructure
+         */
+        public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SenderKeyStateStructure;
+
+        /**
+         * Creates a plain object from a SenderKeyStateStructure message. Also converts values to other types if specified.
+         * @param message SenderKeyStateStructure
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: SignalLocalStorageProtocol.SenderKeyStateStructure, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SenderKeyStateStructure to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for SenderKeyStateStructure
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace SenderKeyStateStructure {
+
+        /** Properties of a SenderChainKey. */
+        interface ISenderChainKey {
+
+            /** SenderChainKey iteration */
+            iteration?: (number|null);
+
+            /** SenderChainKey seed */
+            seed?: (Uint8Array|null);
+        }
+
+        /** Represents a SenderChainKey. */
+        class SenderChainKey implements ISenderChainKey {
+
+            /**
+             * Constructs a new SenderChainKey.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey);
+
+            /** SenderChainKey iteration. */
+            public iteration?: (number|null);
+
+            /** SenderChainKey seed. */
+            public seed?: (Uint8Array|null);
+
+            /**
+             * Creates a new SenderChainKey instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SenderChainKey instance
+             */
+            public static create(properties?: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey;
+
+            /**
+             * Encodes the specified SenderChainKey message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.verify|verify} messages.
+             * @param message SenderChainKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SenderChainKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.verify|verify} messages.
+             * @param message SenderChainKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderChainKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SenderChainKey message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SenderChainKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey;
+
+            /**
+             * Decodes a SenderChainKey message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SenderChainKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey;
+
+            /**
+             * Verifies a SenderChainKey message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SenderChainKey message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SenderChainKey
+             */
+            public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey;
+
+            /**
+             * Creates a plain object from a SenderChainKey message. Also converts values to other types if specified.
+             * @param message SenderChainKey
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SenderChainKey to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SenderChainKey
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a SenderMessageKey. */
+        interface ISenderMessageKey {
+
+            /** SenderMessageKey iteration */
+            iteration?: (number|null);
+
+            /** SenderMessageKey seed */
+            seed?: (Uint8Array|null);
+        }
+
+        /** Represents a SenderMessageKey. */
+        class SenderMessageKey implements ISenderMessageKey {
+
+            /**
+             * Constructs a new SenderMessageKey.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey);
+
+            /** SenderMessageKey iteration. */
+            public iteration?: (number|null);
+
+            /** SenderMessageKey seed. */
+            public seed?: (Uint8Array|null);
+
+            /**
+             * Creates a new SenderMessageKey instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SenderMessageKey instance
+             */
+            public static create(properties?: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey;
+
+            /**
+             * Encodes the specified SenderMessageKey message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.verify|verify} messages.
+             * @param message SenderMessageKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SenderMessageKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.verify|verify} messages.
+             * @param message SenderMessageKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderMessageKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SenderMessageKey message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SenderMessageKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey;
+
+            /**
+             * Decodes a SenderMessageKey message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SenderMessageKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey;
+
+            /**
+             * Verifies a SenderMessageKey message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SenderMessageKey message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SenderMessageKey
+             */
+            public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey;
+
+            /**
+             * Creates a plain object from a SenderMessageKey message. Also converts values to other types if specified.
+             * @param message SenderMessageKey
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SenderMessageKey to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SenderMessageKey
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a SenderSigningKey. */
+        interface ISenderSigningKey {
+
+            /** SenderSigningKey public */
+            "public"?: (Uint8Array|null);
+
+            /** SenderSigningKey private */
+            "private"?: (Uint8Array|null);
+        }
+
+        /** Represents a SenderSigningKey. */
+        class SenderSigningKey implements ISenderSigningKey {
+
+            /**
+             * Constructs a new SenderSigningKey.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey);
+
+            /** SenderSigningKey public. */
+            public public?: (Uint8Array|null);
+
+            /** SenderSigningKey private. */
+            public private?: (Uint8Array|null);
+
+            /**
+             * Creates a new SenderSigningKey instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SenderSigningKey instance
+             */
+            public static create(properties?: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey;
+
+            /**
+             * Encodes the specified SenderSigningKey message. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.verify|verify} messages.
+             * @param message SenderSigningKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SenderSigningKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.verify|verify} messages.
+             * @param message SenderSigningKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: SignalLocalStorageProtocol.SenderKeyStateStructure.ISenderSigningKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SenderSigningKey message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SenderSigningKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey;
+
+            /**
+             * Decodes a SenderSigningKey message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SenderSigningKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey;
+
+            /**
+             * Verifies a SenderSigningKey message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SenderSigningKey message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SenderSigningKey
+             */
+            public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey;
+
+            /**
+             * Creates a plain object from a SenderSigningKey message. Also converts values to other types if specified.
+             * @param message SenderSigningKey
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SenderSigningKey to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SenderSigningKey
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
     }
 
-    /** Properties of a MessageKey. */
-    interface IMessageKey {
+    /** Properties of an IdentityKeyPairStructure. */
+    interface IIdentityKeyPairStructure {
 
-        /** MessageKey remoteJid */
-        remoteJid?: (string|null);
+        /** IdentityKeyPairStructure publicKey */
+        publicKey?: (Uint8Array|null);
 
-        /** MessageKey fromMe */
-        fromMe?: (boolean|null);
-
-        /** MessageKey id */
-        id?: (string|null);
-
-        /** MessageKey participant */
-        participant?: (string|null);
+        /** IdentityKeyPairStructure privateKey */
+        privateKey?: (Uint8Array|null);
     }
 
-    /** Represents a MessageKey. */
-    class MessageKey implements IMessageKey {
+    /** Represents an IdentityKeyPairStructure. */
+    class IdentityKeyPairStructure implements IIdentityKeyPairStructure {
 
         /**
-         * Constructs a new MessageKey.
+         * Constructs a new IdentityKeyPairStructure.
          * @param [properties] Properties to set
          */
-        constructor(properties?: Protocol.IMessageKey);
+        constructor(properties?: SignalLocalStorageProtocol.IIdentityKeyPairStructure);
 
-        /** MessageKey remoteJid. */
-        public remoteJid?: (string|null);
+        /** IdentityKeyPairStructure publicKey. */
+        public publicKey?: (Uint8Array|null);
 
-        /** MessageKey fromMe. */
-        public fromMe?: (boolean|null);
-
-        /** MessageKey id. */
-        public id?: (string|null);
-
-        /** MessageKey participant. */
-        public participant?: (string|null);
+        /** IdentityKeyPairStructure privateKey. */
+        public privateKey?: (Uint8Array|null);
 
         /**
-         * Creates a new MessageKey instance using the specified properties.
+         * Creates a new IdentityKeyPairStructure instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns MessageKey instance
+         * @returns IdentityKeyPairStructure instance
          */
-        public static create(properties?: Protocol.IMessageKey): Protocol.MessageKey;
+        public static create(properties?: SignalLocalStorageProtocol.IIdentityKeyPairStructure): SignalLocalStorageProtocol.IdentityKeyPairStructure;
 
         /**
-         * Encodes the specified MessageKey message. Does not implicitly {@link Protocol.MessageKey.verify|verify} messages.
-         * @param message MessageKey message or plain object to encode
+         * Encodes the specified IdentityKeyPairStructure message. Does not implicitly {@link SignalLocalStorageProtocol.IdentityKeyPairStructure.verify|verify} messages.
+         * @param message IdentityKeyPairStructure message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: Protocol.IMessageKey, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encode(message: SignalLocalStorageProtocol.IIdentityKeyPairStructure, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Encodes the specified MessageKey message, length delimited. Does not implicitly {@link Protocol.MessageKey.verify|verify} messages.
-         * @param message MessageKey message or plain object to encode
+         * Encodes the specified IdentityKeyPairStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.IdentityKeyPairStructure.verify|verify} messages.
+         * @param message IdentityKeyPairStructure message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: Protocol.IMessageKey, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encodeDelimited(message: SignalLocalStorageProtocol.IIdentityKeyPairStructure, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Decodes a MessageKey message from the specified reader or buffer.
+         * Decodes an IdentityKeyPairStructure message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns MessageKey
+         * @returns IdentityKeyPairStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): Protocol.MessageKey;
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.IdentityKeyPairStructure;
 
         /**
-         * Decodes a MessageKey message from the specified reader or buffer, length delimited.
+         * Decodes an IdentityKeyPairStructure message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns MessageKey
+         * @returns IdentityKeyPairStructure
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): Protocol.MessageKey;
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.IdentityKeyPairStructure;
 
         /**
-         * Verifies a MessageKey message.
+         * Verifies an IdentityKeyPairStructure message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
 
         /**
-         * Creates a MessageKey message from a plain object. Also converts values to their respective internal types.
+         * Creates an IdentityKeyPairStructure message from a plain object. Also converts values to their respective internal types.
          * @param object Plain object
-         * @returns MessageKey
+         * @returns IdentityKeyPairStructure
          */
-        public static fromObject(object: { [k: string]: any }): Protocol.MessageKey;
+        public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.IdentityKeyPairStructure;
 
         /**
-         * Creates a plain object from a MessageKey message. Also converts values to other types if specified.
-         * @param message MessageKey
+         * Creates a plain object from an IdentityKeyPairStructure message. Also converts values to other types if specified.
+         * @param message IdentityKeyPairStructure
          * @param [options] Conversion options
          * @returns Plain object
          */
-        public static toObject(message: Protocol.MessageKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: SignalLocalStorageProtocol.IdentityKeyPairStructure, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
         /**
-         * Converts this MessageKey to JSON.
+         * Converts this IdentityKeyPairStructure to JSON.
          * @returns JSON object
          */
         public toJSON(): { [k: string]: any };
 
         /**
-         * Gets the default type url for MessageKey
+         * Gets the default type url for IdentityKeyPairStructure
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a SignedPreKeyRecordStructure. */
+    interface ISignedPreKeyRecordStructure {
+
+        /** SignedPreKeyRecordStructure id */
+        id?: (number|null);
+
+        /** SignedPreKeyRecordStructure publicKey */
+        publicKey?: (Uint8Array|null);
+
+        /** SignedPreKeyRecordStructure privateKey */
+        privateKey?: (Uint8Array|null);
+
+        /** SignedPreKeyRecordStructure signature */
+        signature?: (Uint8Array|null);
+
+        /** SignedPreKeyRecordStructure timestamp */
+        timestamp?: (number|Long|null);
+    }
+
+    /** Represents a SignedPreKeyRecordStructure. */
+    class SignedPreKeyRecordStructure implements ISignedPreKeyRecordStructure {
+
+        /**
+         * Constructs a new SignedPreKeyRecordStructure.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: SignalLocalStorageProtocol.ISignedPreKeyRecordStructure);
+
+        /** SignedPreKeyRecordStructure id. */
+        public id?: (number|null);
+
+        /** SignedPreKeyRecordStructure publicKey. */
+        public publicKey?: (Uint8Array|null);
+
+        /** SignedPreKeyRecordStructure privateKey. */
+        public privateKey?: (Uint8Array|null);
+
+        /** SignedPreKeyRecordStructure signature. */
+        public signature?: (Uint8Array|null);
+
+        /** SignedPreKeyRecordStructure timestamp. */
+        public timestamp?: (number|Long|null);
+
+        /**
+         * Creates a new SignedPreKeyRecordStructure instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SignedPreKeyRecordStructure instance
+         */
+        public static create(properties?: SignalLocalStorageProtocol.ISignedPreKeyRecordStructure): SignalLocalStorageProtocol.SignedPreKeyRecordStructure;
+
+        /**
+         * Encodes the specified SignedPreKeyRecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SignedPreKeyRecordStructure.verify|verify} messages.
+         * @param message SignedPreKeyRecordStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: SignalLocalStorageProtocol.ISignedPreKeyRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SignedPreKeyRecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SignedPreKeyRecordStructure.verify|verify} messages.
+         * @param message SignedPreKeyRecordStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: SignalLocalStorageProtocol.ISignedPreKeyRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SignedPreKeyRecordStructure message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SignedPreKeyRecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SignedPreKeyRecordStructure;
+
+        /**
+         * Decodes a SignedPreKeyRecordStructure message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SignedPreKeyRecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SignedPreKeyRecordStructure;
+
+        /**
+         * Verifies a SignedPreKeyRecordStructure message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SignedPreKeyRecordStructure message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SignedPreKeyRecordStructure
+         */
+        public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SignedPreKeyRecordStructure;
+
+        /**
+         * Creates a plain object from a SignedPreKeyRecordStructure message. Also converts values to other types if specified.
+         * @param message SignedPreKeyRecordStructure
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: SignalLocalStorageProtocol.SignedPreKeyRecordStructure, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SignedPreKeyRecordStructure to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for SignedPreKeyRecordStructure
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a PreKeyRecordStructure. */
+    interface IPreKeyRecordStructure {
+
+        /** PreKeyRecordStructure id */
+        id?: (number|null);
+
+        /** PreKeyRecordStructure publicKey */
+        publicKey?: (Uint8Array|null);
+
+        /** PreKeyRecordStructure privateKey */
+        privateKey?: (Uint8Array|null);
+    }
+
+    /** Represents a PreKeyRecordStructure. */
+    class PreKeyRecordStructure implements IPreKeyRecordStructure {
+
+        /**
+         * Constructs a new PreKeyRecordStructure.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: SignalLocalStorageProtocol.IPreKeyRecordStructure);
+
+        /** PreKeyRecordStructure id. */
+        public id?: (number|null);
+
+        /** PreKeyRecordStructure publicKey. */
+        public publicKey?: (Uint8Array|null);
+
+        /** PreKeyRecordStructure privateKey. */
+        public privateKey?: (Uint8Array|null);
+
+        /**
+         * Creates a new PreKeyRecordStructure instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns PreKeyRecordStructure instance
+         */
+        public static create(properties?: SignalLocalStorageProtocol.IPreKeyRecordStructure): SignalLocalStorageProtocol.PreKeyRecordStructure;
+
+        /**
+         * Encodes the specified PreKeyRecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.PreKeyRecordStructure.verify|verify} messages.
+         * @param message PreKeyRecordStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: SignalLocalStorageProtocol.IPreKeyRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified PreKeyRecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.PreKeyRecordStructure.verify|verify} messages.
+         * @param message PreKeyRecordStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: SignalLocalStorageProtocol.IPreKeyRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a PreKeyRecordStructure message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns PreKeyRecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.PreKeyRecordStructure;
+
+        /**
+         * Decodes a PreKeyRecordStructure message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns PreKeyRecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.PreKeyRecordStructure;
+
+        /**
+         * Verifies a PreKeyRecordStructure message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a PreKeyRecordStructure message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns PreKeyRecordStructure
+         */
+        public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.PreKeyRecordStructure;
+
+        /**
+         * Creates a plain object from a PreKeyRecordStructure message. Also converts values to other types if specified.
+         * @param message PreKeyRecordStructure
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: SignalLocalStorageProtocol.PreKeyRecordStructure, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this PreKeyRecordStructure to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for PreKeyRecordStructure
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a RecordStructure. */
+    interface IRecordStructure {
+
+        /** RecordStructure currentSession */
+        currentSession?: (SignalLocalStorageProtocol.ISessionStructure|null);
+
+        /** RecordStructure previousSessions */
+        previousSessions?: (SignalLocalStorageProtocol.ISessionStructure[]|null);
+    }
+
+    /** Represents a RecordStructure. */
+    class RecordStructure implements IRecordStructure {
+
+        /**
+         * Constructs a new RecordStructure.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: SignalLocalStorageProtocol.IRecordStructure);
+
+        /** RecordStructure currentSession. */
+        public currentSession?: (SignalLocalStorageProtocol.ISessionStructure|null);
+
+        /** RecordStructure previousSessions. */
+        public previousSessions: SignalLocalStorageProtocol.ISessionStructure[];
+
+        /**
+         * Creates a new RecordStructure instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RecordStructure instance
+         */
+        public static create(properties?: SignalLocalStorageProtocol.IRecordStructure): SignalLocalStorageProtocol.RecordStructure;
+
+        /**
+         * Encodes the specified RecordStructure message. Does not implicitly {@link SignalLocalStorageProtocol.RecordStructure.verify|verify} messages.
+         * @param message RecordStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: SignalLocalStorageProtocol.IRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RecordStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.RecordStructure.verify|verify} messages.
+         * @param message RecordStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: SignalLocalStorageProtocol.IRecordStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RecordStructure message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns RecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.RecordStructure;
+
+        /**
+         * Decodes a RecordStructure message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns RecordStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.RecordStructure;
+
+        /**
+         * Verifies a RecordStructure message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RecordStructure message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RecordStructure
+         */
+        public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.RecordStructure;
+
+        /**
+         * Creates a plain object from a RecordStructure message. Also converts values to other types if specified.
+         * @param message RecordStructure
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: SignalLocalStorageProtocol.RecordStructure, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RecordStructure to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for RecordStructure
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a SessionStructure. */
+    interface ISessionStructure {
+
+        /** SessionStructure sessionVersion */
+        sessionVersion?: (number|null);
+
+        /** SessionStructure localIdentityPublic */
+        localIdentityPublic?: (Uint8Array|null);
+
+        /** SessionStructure remoteIdentityPublic */
+        remoteIdentityPublic?: (Uint8Array|null);
+
+        /** SessionStructure rootKey */
+        rootKey?: (Uint8Array|null);
+
+        /** SessionStructure previousCounter */
+        previousCounter?: (number|null);
+
+        /** SessionStructure senderChain */
+        senderChain?: (SignalLocalStorageProtocol.SessionStructure.IChain|null);
+
+        /** SessionStructure receiverChains */
+        receiverChains?: (SignalLocalStorageProtocol.SessionStructure.IChain[]|null);
+
+        /** SessionStructure pendingKeyExchange */
+        pendingKeyExchange?: (SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange|null);
+
+        /** SessionStructure pendingPreKey */
+        pendingPreKey?: (SignalLocalStorageProtocol.SessionStructure.IPendingPreKey|null);
+
+        /** SessionStructure remoteRegistrationId */
+        remoteRegistrationId?: (number|null);
+
+        /** SessionStructure localRegistrationId */
+        localRegistrationId?: (number|null);
+
+        /** SessionStructure needsRefresh */
+        needsRefresh?: (boolean|null);
+
+        /** SessionStructure aliceBaseKey */
+        aliceBaseKey?: (Uint8Array|null);
+    }
+
+    /** Represents a SessionStructure. */
+    class SessionStructure implements ISessionStructure {
+
+        /**
+         * Constructs a new SessionStructure.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: SignalLocalStorageProtocol.ISessionStructure);
+
+        /** SessionStructure sessionVersion. */
+        public sessionVersion?: (number|null);
+
+        /** SessionStructure localIdentityPublic. */
+        public localIdentityPublic?: (Uint8Array|null);
+
+        /** SessionStructure remoteIdentityPublic. */
+        public remoteIdentityPublic?: (Uint8Array|null);
+
+        /** SessionStructure rootKey. */
+        public rootKey?: (Uint8Array|null);
+
+        /** SessionStructure previousCounter. */
+        public previousCounter?: (number|null);
+
+        /** SessionStructure senderChain. */
+        public senderChain?: (SignalLocalStorageProtocol.SessionStructure.IChain|null);
+
+        /** SessionStructure receiverChains. */
+        public receiverChains: SignalLocalStorageProtocol.SessionStructure.IChain[];
+
+        /** SessionStructure pendingKeyExchange. */
+        public pendingKeyExchange?: (SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange|null);
+
+        /** SessionStructure pendingPreKey. */
+        public pendingPreKey?: (SignalLocalStorageProtocol.SessionStructure.IPendingPreKey|null);
+
+        /** SessionStructure remoteRegistrationId. */
+        public remoteRegistrationId?: (number|null);
+
+        /** SessionStructure localRegistrationId. */
+        public localRegistrationId?: (number|null);
+
+        /** SessionStructure needsRefresh. */
+        public needsRefresh?: (boolean|null);
+
+        /** SessionStructure aliceBaseKey. */
+        public aliceBaseKey?: (Uint8Array|null);
+
+        /**
+         * Creates a new SessionStructure instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SessionStructure instance
+         */
+        public static create(properties?: SignalLocalStorageProtocol.ISessionStructure): SignalLocalStorageProtocol.SessionStructure;
+
+        /**
+         * Encodes the specified SessionStructure message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.verify|verify} messages.
+         * @param message SessionStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: SignalLocalStorageProtocol.ISessionStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SessionStructure message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.verify|verify} messages.
+         * @param message SessionStructure message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: SignalLocalStorageProtocol.ISessionStructure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SessionStructure message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SessionStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SessionStructure;
+
+        /**
+         * Decodes a SessionStructure message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SessionStructure
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SessionStructure;
+
+        /**
+         * Verifies a SessionStructure message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SessionStructure message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SessionStructure
+         */
+        public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SessionStructure;
+
+        /**
+         * Creates a plain object from a SessionStructure message. Also converts values to other types if specified.
+         * @param message SessionStructure
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: SignalLocalStorageProtocol.SessionStructure, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SessionStructure to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for SessionStructure
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace SessionStructure {
+
+        /** Properties of a Chain. */
+        interface IChain {
+
+            /** Chain senderRatchetKey */
+            senderRatchetKey?: (Uint8Array|null);
+
+            /** Chain senderRatchetKeyPrivate */
+            senderRatchetKeyPrivate?: (Uint8Array|null);
+
+            /** Chain chainKey */
+            chainKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey|null);
+
+            /** Chain messageKeys */
+            messageKeys?: (SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey[]|null);
+        }
+
+        /** Represents a Chain. */
+        class Chain implements IChain {
+
+            /**
+             * Constructs a new Chain.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: SignalLocalStorageProtocol.SessionStructure.IChain);
+
+            /** Chain senderRatchetKey. */
+            public senderRatchetKey?: (Uint8Array|null);
+
+            /** Chain senderRatchetKeyPrivate. */
+            public senderRatchetKeyPrivate?: (Uint8Array|null);
+
+            /** Chain chainKey. */
+            public chainKey?: (SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey|null);
+
+            /** Chain messageKeys. */
+            public messageKeys: SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey[];
+
+            /**
+             * Creates a new Chain instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Chain instance
+             */
+            public static create(properties?: SignalLocalStorageProtocol.SessionStructure.IChain): SignalLocalStorageProtocol.SessionStructure.Chain;
+
+            /**
+             * Encodes the specified Chain message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.verify|verify} messages.
+             * @param message Chain message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: SignalLocalStorageProtocol.SessionStructure.IChain, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Chain message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.verify|verify} messages.
+             * @param message Chain message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: SignalLocalStorageProtocol.SessionStructure.IChain, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Chain message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Chain
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SessionStructure.Chain;
+
+            /**
+             * Decodes a Chain message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Chain
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SessionStructure.Chain;
+
+            /**
+             * Verifies a Chain message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Chain message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Chain
+             */
+            public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SessionStructure.Chain;
+
+            /**
+             * Creates a plain object from a Chain message. Also converts values to other types if specified.
+             * @param message Chain
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: SignalLocalStorageProtocol.SessionStructure.Chain, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Chain to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Chain
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace Chain {
+
+            /** Properties of a ChainKey. */
+            interface IChainKey {
+
+                /** ChainKey index */
+                index?: (number|null);
+
+                /** ChainKey key */
+                key?: (Uint8Array|null);
+            }
+
+            /** Represents a ChainKey. */
+            class ChainKey implements IChainKey {
+
+                /**
+                 * Constructs a new ChainKey.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey);
+
+                /** ChainKey index. */
+                public index?: (number|null);
+
+                /** ChainKey key. */
+                public key?: (Uint8Array|null);
+
+                /**
+                 * Creates a new ChainKey instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ChainKey instance
+                 */
+                public static create(properties?: SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey): SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey;
+
+                /**
+                 * Encodes the specified ChainKey message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.verify|verify} messages.
+                 * @param message ChainKey message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ChainKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.verify|verify} messages.
+                 * @param message ChainKey message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: SignalLocalStorageProtocol.SessionStructure.Chain.IChainKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ChainKey message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ChainKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey;
+
+                /**
+                 * Decodes a ChainKey message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ChainKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey;
+
+                /**
+                 * Verifies a ChainKey message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ChainKey message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ChainKey
+                 */
+                public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey;
+
+                /**
+                 * Creates a plain object from a ChainKey message. Also converts values to other types if specified.
+                 * @param message ChainKey
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ChainKey to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for ChainKey
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** Properties of a MessageKey. */
+            interface IMessageKey {
+
+                /** MessageKey index */
+                index?: (number|null);
+
+                /** MessageKey cipherKey */
+                cipherKey?: (Uint8Array|null);
+
+                /** MessageKey macKey */
+                macKey?: (Uint8Array|null);
+
+                /** MessageKey iv */
+                iv?: (Uint8Array|null);
+            }
+
+            /** Represents a MessageKey. */
+            class MessageKey implements IMessageKey {
+
+                /**
+                 * Constructs a new MessageKey.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey);
+
+                /** MessageKey index. */
+                public index?: (number|null);
+
+                /** MessageKey cipherKey. */
+                public cipherKey?: (Uint8Array|null);
+
+                /** MessageKey macKey. */
+                public macKey?: (Uint8Array|null);
+
+                /** MessageKey iv. */
+                public iv?: (Uint8Array|null);
+
+                /**
+                 * Creates a new MessageKey instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns MessageKey instance
+                 */
+                public static create(properties?: SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey): SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey;
+
+                /**
+                 * Encodes the specified MessageKey message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify|verify} messages.
+                 * @param message MessageKey message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified MessageKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.verify|verify} messages.
+                 * @param message MessageKey message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: SignalLocalStorageProtocol.SessionStructure.Chain.IMessageKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a MessageKey message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns MessageKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey;
+
+                /**
+                 * Decodes a MessageKey message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns MessageKey
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey;
+
+                /**
+                 * Verifies a MessageKey message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a MessageKey message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns MessageKey
+                 */
+                public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey;
+
+                /**
+                 * Creates a plain object from a MessageKey message. Also converts values to other types if specified.
+                 * @param message MessageKey
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this MessageKey to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for MessageKey
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+        }
+
+        /** Properties of a PendingKeyExchange. */
+        interface IPendingKeyExchange {
+
+            /** PendingKeyExchange sequence */
+            sequence?: (number|null);
+
+            /** PendingKeyExchange localBaseKey */
+            localBaseKey?: (Uint8Array|null);
+
+            /** PendingKeyExchange localBaseKeyPrivate */
+            localBaseKeyPrivate?: (Uint8Array|null);
+
+            /** PendingKeyExchange localRatchetKey */
+            localRatchetKey?: (Uint8Array|null);
+
+            /** PendingKeyExchange localRatchetKeyPrivate */
+            localRatchetKeyPrivate?: (Uint8Array|null);
+
+            /** PendingKeyExchange localIdentityKey */
+            localIdentityKey?: (Uint8Array|null);
+
+            /** PendingKeyExchange localIdentityKeyPrivate */
+            localIdentityKeyPrivate?: (Uint8Array|null);
+        }
+
+        /** Represents a PendingKeyExchange. */
+        class PendingKeyExchange implements IPendingKeyExchange {
+
+            /**
+             * Constructs a new PendingKeyExchange.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange);
+
+            /** PendingKeyExchange sequence. */
+            public sequence?: (number|null);
+
+            /** PendingKeyExchange localBaseKey. */
+            public localBaseKey?: (Uint8Array|null);
+
+            /** PendingKeyExchange localBaseKeyPrivate. */
+            public localBaseKeyPrivate?: (Uint8Array|null);
+
+            /** PendingKeyExchange localRatchetKey. */
+            public localRatchetKey?: (Uint8Array|null);
+
+            /** PendingKeyExchange localRatchetKeyPrivate. */
+            public localRatchetKeyPrivate?: (Uint8Array|null);
+
+            /** PendingKeyExchange localIdentityKey. */
+            public localIdentityKey?: (Uint8Array|null);
+
+            /** PendingKeyExchange localIdentityKeyPrivate. */
+            public localIdentityKeyPrivate?: (Uint8Array|null);
+
+            /**
+             * Creates a new PendingKeyExchange instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PendingKeyExchange instance
+             */
+            public static create(properties?: SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange): SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange;
+
+            /**
+             * Encodes the specified PendingKeyExchange message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.verify|verify} messages.
+             * @param message PendingKeyExchange message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PendingKeyExchange message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.verify|verify} messages.
+             * @param message PendingKeyExchange message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: SignalLocalStorageProtocol.SessionStructure.IPendingKeyExchange, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PendingKeyExchange message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PendingKeyExchange
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange;
+
+            /**
+             * Decodes a PendingKeyExchange message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PendingKeyExchange
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange;
+
+            /**
+             * Verifies a PendingKeyExchange message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PendingKeyExchange message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PendingKeyExchange
+             */
+            public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange;
+
+            /**
+             * Creates a plain object from a PendingKeyExchange message. Also converts values to other types if specified.
+             * @param message PendingKeyExchange
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PendingKeyExchange to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PendingKeyExchange
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a PendingPreKey. */
+        interface IPendingPreKey {
+
+            /** PendingPreKey preKeyId */
+            preKeyId?: (number|null);
+
+            /** PendingPreKey signedPreKeyId */
+            signedPreKeyId?: (number|null);
+
+            /** PendingPreKey baseKey */
+            baseKey?: (Uint8Array|null);
+
+            /** PendingPreKey kyberPreKeyId */
+            kyberPreKeyId?: (number|null);
+
+            /** PendingPreKey kyberCiphertext */
+            kyberCiphertext?: (Uint8Array|null);
+        }
+
+        /** Represents a PendingPreKey. */
+        class PendingPreKey implements IPendingPreKey {
+
+            /**
+             * Constructs a new PendingPreKey.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: SignalLocalStorageProtocol.SessionStructure.IPendingPreKey);
+
+            /** PendingPreKey preKeyId. */
+            public preKeyId?: (number|null);
+
+            /** PendingPreKey signedPreKeyId. */
+            public signedPreKeyId?: (number|null);
+
+            /** PendingPreKey baseKey. */
+            public baseKey?: (Uint8Array|null);
+
+            /** PendingPreKey kyberPreKeyId. */
+            public kyberPreKeyId?: (number|null);
+
+            /** PendingPreKey kyberCiphertext. */
+            public kyberCiphertext?: (Uint8Array|null);
+
+            /**
+             * Creates a new PendingPreKey instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PendingPreKey instance
+             */
+            public static create(properties?: SignalLocalStorageProtocol.SessionStructure.IPendingPreKey): SignalLocalStorageProtocol.SessionStructure.PendingPreKey;
+
+            /**
+             * Encodes the specified PendingPreKey message. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingPreKey.verify|verify} messages.
+             * @param message PendingPreKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: SignalLocalStorageProtocol.SessionStructure.IPendingPreKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PendingPreKey message, length delimited. Does not implicitly {@link SignalLocalStorageProtocol.SessionStructure.PendingPreKey.verify|verify} messages.
+             * @param message PendingPreKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: SignalLocalStorageProtocol.SessionStructure.IPendingPreKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PendingPreKey message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PendingPreKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SignalLocalStorageProtocol.SessionStructure.PendingPreKey;
+
+            /**
+             * Decodes a PendingPreKey message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PendingPreKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SignalLocalStorageProtocol.SessionStructure.PendingPreKey;
+
+            /**
+             * Verifies a PendingPreKey message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PendingPreKey message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PendingPreKey
+             */
+            public static fromObject(object: { [k: string]: any }): SignalLocalStorageProtocol.SessionStructure.PendingPreKey;
+
+            /**
+             * Creates a plain object from a PendingPreKey message. Also converts values to other types if specified.
+             * @param message PendingPreKey
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: SignalLocalStorageProtocol.SessionStructure.PendingPreKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PendingPreKey to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PendingPreKey
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
     }
 }

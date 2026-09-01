@@ -7,6 +7,7 @@ message ClientPairingProps {
     optional bool isSyncdSnapshotRecoveryEnabled = 3;
     optional bool isHsThumbnailSyncEnabled = 4;
     optional bytes subscriptionSyncPayload = 5;
+    optional bool isBotJidDbMigrated = 6;
 }
 
 message EncryptedPairingRequest {
@@ -78,6 +79,7 @@ message DeviceProps {
         optional bool supportHatchHistory = 22;
         repeated string supportedBotChannelFbids = 23;
         optional bool supportInlineContacts = 24;
+        optional bool supportNewsletter = 25;
     }
     enum PlatformType {
         UNKNOWN = 0;
@@ -105,5 +107,6 @@ message DeviceProps {
         VR = 22;
         CLOUD_API = 23;
         SMARTGLASSES = 24;
+        WAIL = 25;
     }
 }
