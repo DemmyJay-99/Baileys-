@@ -113,6 +113,9 @@ export namespace Wa6 {
 
         /** ClientPayload testIsolationId */
         testIsolationId?: (Uint8Array|null);
+
+        /** ClientPayload messageSts */
+        messageSts?: (number|Long|null);
     }
 
     /** Represents a ClientPayload. */
@@ -231,6 +234,9 @@ export namespace Wa6 {
 
         /** ClientPayload testIsolationId. */
         public testIsolationId?: (Uint8Array|null);
+
+        /** ClientPayload messageSts. */
+        public messageSts?: (number|Long|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -1058,7 +1064,9 @@ export namespace Wa6 {
                 TABLET = 1,
                 DESKTOP = 2,
                 WEARABLE = 3,
-                VR = 4
+                VR = 4,
+                SMART_DISPLAY = 5,
+                SMART_SPEAKER = 6
             }
 
             /** DistributionChannel enum. */
@@ -1108,7 +1116,11 @@ export namespace Wa6 {
                 TEST = 34,
                 SMART_GLASSES = 35,
                 BLUE_VR = 36,
-                AR_WRIST = 37
+                AR_WRIST = 37,
+                WAIL = 38,
+                WORK_ANDROID = 39,
+                WORK_IOS = 40,
+                AUTOMOTIVE = 41
             }
 
             /** ReleaseChannel enum. */
@@ -1806,6 +1818,7 @@ export namespace Wa6 {
             HANDSHAKE_PQ_MODE_UNKNOWN = 0,
             XXKEM = 1,
             XXKEM_FS = 2,
+            XXKEM_EPH = 9,
             WA_CLASSICAL = 3,
             WA_PQ = 4,
             IKKEM = 5,
