@@ -20,6 +20,15 @@ export namespace CompanionReg {
 
         /** ClientPairingProps subscriptionSyncPayload */
         subscriptionSyncPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isBotJidDbMigrated */
+        isBotJidDbMigrated?: (boolean|null);
+
+        /** ClientPairingProps companionAddPeerPayload */
+        companionAddPeerPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isCompanionRegistrationFgsEnabled */
+        isCompanionRegistrationFgsEnabled?: (boolean|null);
     }
 
     /** Represents a ClientPairingProps. */
@@ -45,6 +54,15 @@ export namespace CompanionReg {
 
         /** ClientPairingProps subscriptionSyncPayload. */
         public subscriptionSyncPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isBotJidDbMigrated. */
+        public isBotJidDbMigrated?: (boolean|null);
+
+        /** ClientPairingProps companionAddPeerPayload. */
+        public companionAddPeerPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isCompanionRegistrationFgsEnabled. */
+        public isCompanionRegistrationFgsEnabled?: (boolean|null);
 
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
@@ -765,6 +783,9 @@ export namespace CompanionReg {
 
         /** DeviceProps historySyncConfig */
         historySyncConfig?: (CompanionReg.DeviceProps.IHistorySyncConfig|null);
+
+        /** DeviceProps deviceName */
+        deviceName?: (string|null);
     }
 
     /** Represents a DeviceProps. */
@@ -790,6 +811,9 @@ export namespace CompanionReg {
 
         /** DeviceProps historySyncConfig. */
         public historySyncConfig?: (CompanionReg.DeviceProps.IHistorySyncConfig|null);
+
+        /** DeviceProps deviceName. */
+        public deviceName?: (string|null);
 
         /**
          * Creates a new DeviceProps instance using the specified properties.
@@ -1066,6 +1090,15 @@ export namespace CompanionReg {
 
             /** HistorySyncConfig supportInlineContacts */
             supportInlineContacts?: (boolean|null);
+
+            /** HistorySyncConfig supportNewsletter */
+            supportNewsletter?: (boolean|null);
+
+            /** HistorySyncConfig supportUniversalReachChat */
+            supportUniversalReachChat?: (boolean|null);
+
+            /** HistorySyncConfig supportOmittedConversationMetadata */
+            supportOmittedConversationMetadata?: (boolean|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -1148,6 +1181,15 @@ export namespace CompanionReg {
 
             /** HistorySyncConfig supportInlineContacts. */
             public supportInlineContacts?: (boolean|null);
+
+            /** HistorySyncConfig supportNewsletter. */
+            public supportNewsletter?: (boolean|null);
+
+            /** HistorySyncConfig supportUniversalReachChat. */
+            public supportUniversalReachChat?: (boolean|null);
+
+            /** HistorySyncConfig supportOmittedConversationMetadata. */
+            public supportOmittedConversationMetadata?: (boolean|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
@@ -1253,7 +1295,13 @@ export namespace CompanionReg {
             UWP = 21,
             VR = 22,
             CLOUD_API = 23,
-            SMARTGLASSES = 24
+            SMARTGLASSES = 24,
+            WAIL = 25,
+            WASS = 26,
+            BUSINESS_BACK_OFFICE = 27,
+            WAIL_WAI = 28,
+            WAIL_ALEXA = 29,
+            AUTOMOTIVE = 30
         }
     }
 }
