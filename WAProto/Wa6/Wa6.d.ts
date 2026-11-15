@@ -113,6 +113,12 @@ export namespace Wa6 {
 
         /** ClientPayload testIsolationId */
         testIsolationId?: (Uint8Array|null);
+
+        /** ClientPayload messageSts */
+        messageSts?: (number|Long|null);
+
+        /** ClientPayload integrationAttestation */
+        integrationAttestation?: (Wa6.ClientPayload.IIntegrationAttestation|null);
     }
 
     /** Represents a ClientPayload. */
@@ -231,6 +237,12 @@ export namespace Wa6 {
 
         /** ClientPayload testIsolationId. */
         public testIsolationId?: (Uint8Array|null);
+
+        /** ClientPayload messageSts. */
+        public messageSts?: (number|Long|null);
+
+        /** ClientPayload integrationAttestation. */
+        public integrationAttestation?: (Wa6.ClientPayload.IIntegrationAttestation|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -610,6 +622,109 @@ export namespace Wa6 {
             SHARE_EXTENSION = 0,
             SERVICE_EXTENSION = 1,
             INTENTS_EXTENSION = 2
+        }
+
+        /** Properties of an IntegrationAttestation. */
+        interface IIntegrationAttestation {
+
+            /** IntegrationAttestation staticUnbound */
+            staticUnbound?: (string|null);
+
+            /** IntegrationAttestation onlineSigned */
+            onlineSigned?: (string|null);
+        }
+
+        /** Represents an IntegrationAttestation. */
+        class IntegrationAttestation implements IIntegrationAttestation {
+
+            /**
+             * Constructs a new IntegrationAttestation.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: Wa6.ClientPayload.IIntegrationAttestation);
+
+            /** IntegrationAttestation staticUnbound. */
+            public staticUnbound?: (string|null);
+
+            /** IntegrationAttestation onlineSigned. */
+            public onlineSigned?: (string|null);
+
+            /**
+             * Creates a new IntegrationAttestation instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns IntegrationAttestation instance
+             */
+            public static create(properties?: Wa6.ClientPayload.IIntegrationAttestation): Wa6.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Encodes the specified IntegrationAttestation message. Does not implicitly {@link Wa6.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @param message IntegrationAttestation message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: Wa6.ClientPayload.IIntegrationAttestation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified IntegrationAttestation message, length delimited. Does not implicitly {@link Wa6.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @param message IntegrationAttestation message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: Wa6.ClientPayload.IIntegrationAttestation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): Wa6.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): Wa6.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Verifies an IntegrationAttestation message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an IntegrationAttestation message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns IntegrationAttestation
+             */
+            public static fromObject(object: { [k: string]: any }): Wa6.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Creates a plain object from an IntegrationAttestation message. Also converts values to other types if specified.
+             * @param message IntegrationAttestation
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: Wa6.ClientPayload.IntegrationAttestation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this IntegrationAttestation to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for IntegrationAttestation
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         /** Properties of an InteropData. */
@@ -1058,7 +1173,10 @@ export namespace Wa6 {
                 TABLET = 1,
                 DESKTOP = 2,
                 WEARABLE = 3,
-                VR = 4
+                VR = 4,
+                SMART_DISPLAY = 5,
+                SMART_SPEAKER = 6,
+                AGENT = 7
             }
 
             /** DistributionChannel enum. */
@@ -1108,7 +1226,11 @@ export namespace Wa6 {
                 TEST = 34,
                 SMART_GLASSES = 35,
                 BLUE_VR = 36,
-                AR_WRIST = 37
+                AR_WRIST = 37,
+                WAIL = 38,
+                WORK_ANDROID = 39,
+                WORK_IOS = 40,
+                AUTOMOTIVE = 41
             }
 
             /** ReleaseChannel enum. */
@@ -1806,6 +1928,7 @@ export namespace Wa6 {
             HANDSHAKE_PQ_MODE_UNKNOWN = 0,
             XXKEM = 1,
             XXKEM_FS = 2,
+            XXKEM_EPH = 9,
             WA_CLASSICAL = 3,
             WA_PQ = 4,
             IKKEM = 5,

@@ -60,6 +60,8 @@ $root.Wa6 = (function() {
          * @property {number|null} [processingQueueSize] ClientPayload processingQueueSize
          * @property {Array.<string>|null} [pairedPeripherals] ClientPayload pairedPeripherals
          * @property {Uint8Array|null} [testIsolationId] ClientPayload testIsolationId
+         * @property {number|Long|null} [messageSts] ClientPayload messageSts
+         * @property {Wa6.ClientPayload.IIntegrationAttestation|null} [integrationAttestation] ClientPayload integrationAttestation
          */
 
         /**
@@ -367,6 +369,22 @@ $root.Wa6 = (function() {
          */
         ClientPayload.prototype.testIsolationId = null;
 
+        /**
+         * ClientPayload messageSts.
+         * @member {number|Long|null|undefined} messageSts
+         * @memberof Wa6.ClientPayload
+         * @instance
+         */
+        ClientPayload.prototype.messageSts = null;
+
+        /**
+         * ClientPayload integrationAttestation.
+         * @member {Wa6.ClientPayload.IIntegrationAttestation|null|undefined} integrationAttestation
+         * @memberof Wa6.ClientPayload
+         * @instance
+         */
+        ClientPayload.prototype.integrationAttestation = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -574,6 +592,18 @@ $root.Wa6 = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(ClientPayload.prototype, "_messageSts", {
+            get: $util.oneOfGetter($oneOfFields = ["messageSts"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(ClientPayload.prototype, "_integrationAttestation", {
+            get: $util.oneOfGetter($oneOfFields = ["integrationAttestation"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ClientPayload instance using the specified properties.
          * @function create
@@ -675,6 +705,10 @@ $root.Wa6 = (function() {
                     writer.uint32(/* id 47, wireType 2 =*/378).string(message.pairedPeripherals[i]);
             if (message.testIsolationId != null && Object.hasOwnProperty.call(message, "testIsolationId"))
                 writer.uint32(/* id 48, wireType 2 =*/386).bytes(message.testIsolationId);
+            if (message.messageSts != null && Object.hasOwnProperty.call(message, "messageSts"))
+                writer.uint32(/* id 49, wireType 0 =*/392).int64(message.messageSts);
+            if (message.integrationAttestation != null && Object.hasOwnProperty.call(message, "integrationAttestation"))
+                $root.Wa6.ClientPayload.IntegrationAttestation.encode(message.integrationAttestation, writer.uint32(/* id 50, wireType 2 =*/402).fork()).ldelim();
             return writer;
         };
 
@@ -862,6 +896,14 @@ $root.Wa6 = (function() {
                     }
                 case 48: {
                         message.testIsolationId = reader.bytes();
+                        break;
+                    }
+                case 49: {
+                        message.messageSts = reader.int64();
+                        break;
+                    }
+                case 50: {
+                        message.integrationAttestation = $root.Wa6.ClientPayload.IntegrationAttestation.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -1150,6 +1192,19 @@ $root.Wa6 = (function() {
                 properties._testIsolationId = 1;
                 if (!(message.testIsolationId && typeof message.testIsolationId.length === "number" || $util.isString(message.testIsolationId)))
                     return "testIsolationId: buffer expected";
+            }
+            if (message.messageSts != null && message.hasOwnProperty("messageSts")) {
+                properties._messageSts = 1;
+                if (!$util.isInteger(message.messageSts) && !(message.messageSts && $util.isInteger(message.messageSts.low) && $util.isInteger(message.messageSts.high)))
+                    return "messageSts: integer|Long expected";
+            }
+            if (message.integrationAttestation != null && message.hasOwnProperty("integrationAttestation")) {
+                properties._integrationAttestation = 1;
+                {
+                    var error = $root.Wa6.ClientPayload.IntegrationAttestation.verify(message.integrationAttestation);
+                    if (error)
+                        return "integrationAttestation." + error;
+                }
             }
             return null;
         };
@@ -1464,6 +1519,20 @@ $root.Wa6 = (function() {
                     $util.base64.decode(object.testIsolationId, message.testIsolationId = $util.newBuffer($util.base64.length(object.testIsolationId)), 0);
                 else if (object.testIsolationId.length >= 0)
                     message.testIsolationId = object.testIsolationId;
+            if (object.messageSts != null)
+                if ($util.Long)
+                    (message.messageSts = $util.Long.fromValue(object.messageSts)).unsigned = false;
+                else if (typeof object.messageSts === "string")
+                    message.messageSts = parseInt(object.messageSts, 10);
+                else if (typeof object.messageSts === "number")
+                    message.messageSts = object.messageSts;
+                else if (typeof object.messageSts === "object")
+                    message.messageSts = new $util.LongBits(object.messageSts.low >>> 0, object.messageSts.high >>> 0).toNumber();
+            if (object.integrationAttestation != null) {
+                if (typeof object.integrationAttestation !== "object")
+                    throw TypeError(".Wa6.ClientPayload.integrationAttestation: object expected");
+                message.integrationAttestation = $root.Wa6.ClientPayload.IntegrationAttestation.fromObject(object.integrationAttestation);
+            }
             return message;
         };
 
@@ -1669,6 +1738,19 @@ $root.Wa6 = (function() {
                 object.testIsolationId = options.bytes === String ? $util.base64.encode(message.testIsolationId, 0, message.testIsolationId.length) : options.bytes === Array ? Array.prototype.slice.call(message.testIsolationId) : message.testIsolationId;
                 if (options.oneofs)
                     object._testIsolationId = "testIsolationId";
+            }
+            if (message.messageSts != null && message.hasOwnProperty("messageSts")) {
+                if (typeof message.messageSts === "number")
+                    object.messageSts = options.longs === String ? String(message.messageSts) : message.messageSts;
+                else
+                    object.messageSts = options.longs === String ? $util.Long.prototype.toString.call(message.messageSts) : options.longs === Number ? new $util.LongBits(message.messageSts.low >>> 0, message.messageSts.high >>> 0).toNumber() : message.messageSts;
+                if (options.oneofs)
+                    object._messageSts = "messageSts";
+            }
+            if (message.integrationAttestation != null && message.hasOwnProperty("integrationAttestation")) {
+                object.integrationAttestation = $root.Wa6.ClientPayload.IntegrationAttestation.toObject(message.integrationAttestation, options);
+                if (options.oneofs)
+                    object._integrationAttestation = "integrationAttestation";
             }
             return object;
         };
@@ -2592,6 +2674,257 @@ $root.Wa6 = (function() {
             return values;
         })();
 
+        ClientPayload.IntegrationAttestation = (function() {
+
+            /**
+             * Properties of an IntegrationAttestation.
+             * @memberof Wa6.ClientPayload
+             * @interface IIntegrationAttestation
+             * @property {string|null} [staticUnbound] IntegrationAttestation staticUnbound
+             * @property {string|null} [onlineSigned] IntegrationAttestation onlineSigned
+             */
+
+            /**
+             * Constructs a new IntegrationAttestation.
+             * @memberof Wa6.ClientPayload
+             * @classdesc Represents an IntegrationAttestation.
+             * @implements IIntegrationAttestation
+             * @constructor
+             * @param {Wa6.ClientPayload.IIntegrationAttestation=} [properties] Properties to set
+             */
+            function IntegrationAttestation(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * IntegrationAttestation staticUnbound.
+             * @member {string|null|undefined} staticUnbound
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @instance
+             */
+            IntegrationAttestation.prototype.staticUnbound = null;
+
+            /**
+             * IntegrationAttestation onlineSigned.
+             * @member {string|null|undefined} onlineSigned
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @instance
+             */
+            IntegrationAttestation.prototype.onlineSigned = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(IntegrationAttestation.prototype, "_staticUnbound", {
+                get: $util.oneOfGetter($oneOfFields = ["staticUnbound"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(IntegrationAttestation.prototype, "_onlineSigned", {
+                get: $util.oneOfGetter($oneOfFields = ["onlineSigned"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new IntegrationAttestation instance using the specified properties.
+             * @function create
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Wa6.ClientPayload.IIntegrationAttestation=} [properties] Properties to set
+             * @returns {Wa6.ClientPayload.IntegrationAttestation} IntegrationAttestation instance
+             */
+            IntegrationAttestation.create = function create(properties) {
+                return new IntegrationAttestation(properties);
+            };
+
+            /**
+             * Encodes the specified IntegrationAttestation message. Does not implicitly {@link Wa6.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @function encode
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Wa6.ClientPayload.IIntegrationAttestation} message IntegrationAttestation message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IntegrationAttestation.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.staticUnbound != null && Object.hasOwnProperty.call(message, "staticUnbound"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.staticUnbound);
+                if (message.onlineSigned != null && Object.hasOwnProperty.call(message, "onlineSigned"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.onlineSigned);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified IntegrationAttestation message, length delimited. Does not implicitly {@link Wa6.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Wa6.ClientPayload.IIntegrationAttestation} message IntegrationAttestation message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IntegrationAttestation.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer.
+             * @function decode
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {Wa6.ClientPayload.IntegrationAttestation} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IntegrationAttestation.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Wa6.ClientPayload.IntegrationAttestation();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.staticUnbound = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.onlineSigned = reader.string();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {Wa6.ClientPayload.IntegrationAttestation} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IntegrationAttestation.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an IntegrationAttestation message.
+             * @function verify
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            IntegrationAttestation.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.staticUnbound != null && message.hasOwnProperty("staticUnbound")) {
+                    properties._staticUnbound = 1;
+                    if (!$util.isString(message.staticUnbound))
+                        return "staticUnbound: string expected";
+                }
+                if (message.onlineSigned != null && message.hasOwnProperty("onlineSigned")) {
+                    properties._onlineSigned = 1;
+                    if (!$util.isString(message.onlineSigned))
+                        return "onlineSigned: string expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates an IntegrationAttestation message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {Wa6.ClientPayload.IntegrationAttestation} IntegrationAttestation
+             */
+            IntegrationAttestation.fromObject = function fromObject(object) {
+                if (object instanceof $root.Wa6.ClientPayload.IntegrationAttestation)
+                    return object;
+                var message = new $root.Wa6.ClientPayload.IntegrationAttestation();
+                if (object.staticUnbound != null)
+                    message.staticUnbound = String(object.staticUnbound);
+                if (object.onlineSigned != null)
+                    message.onlineSigned = String(object.onlineSigned);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an IntegrationAttestation message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Wa6.ClientPayload.IntegrationAttestation} message IntegrationAttestation
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            IntegrationAttestation.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.staticUnbound != null && message.hasOwnProperty("staticUnbound")) {
+                    object.staticUnbound = message.staticUnbound;
+                    if (options.oneofs)
+                        object._staticUnbound = "staticUnbound";
+                }
+                if (message.onlineSigned != null && message.hasOwnProperty("onlineSigned")) {
+                    object.onlineSigned = message.onlineSigned;
+                    if (options.oneofs)
+                        object._onlineSigned = "onlineSigned";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this IntegrationAttestation to JSON.
+             * @function toJSON
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            IntegrationAttestation.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for IntegrationAttestation
+             * @function getTypeUrl
+             * @memberof Wa6.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            IntegrationAttestation.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/Wa6.ClientPayload.IntegrationAttestation";
+            };
+
+            return IntegrationAttestation;
+        })();
+
         ClientPayload.InteropData = (function() {
 
             /**
@@ -3445,6 +3778,10 @@ $root.Wa6 = (function() {
                     case 35:
                     case 36:
                     case 37:
+                    case 38:
+                    case 39:
+                    case 40:
+                    case 41:
                         break;
                     }
                 }
@@ -3533,6 +3870,9 @@ $root.Wa6 = (function() {
                     case 2:
                     case 3:
                     case 4:
+                    case 5:
+                    case 6:
+                    case 7:
                         break;
                     }
                 }
@@ -3727,6 +4067,22 @@ $root.Wa6 = (function() {
                 case 37:
                     message.platform = 37;
                     break;
+                case "WAIL":
+                case 38:
+                    message.platform = 38;
+                    break;
+                case "WORK_ANDROID":
+                case 39:
+                    message.platform = 39;
+                    break;
+                case "WORK_IOS":
+                case 40:
+                    message.platform = 40;
+                    break;
+                case "AUTOMOTIVE":
+                case 41:
+                    message.platform = 41;
+                    break;
                 }
                 if (object.appVersion != null) {
                     if (typeof object.appVersion !== "object")
@@ -3805,6 +4161,18 @@ $root.Wa6 = (function() {
                 case "VR":
                 case 4:
                     message.deviceType = 4;
+                    break;
+                case "SMART_DISPLAY":
+                case 5:
+                    message.deviceType = 5;
+                    break;
+                case "SMART_SPEAKER":
+                case 6:
+                    message.deviceType = 6;
+                    break;
+                case "AGENT":
+                case 7:
+                    message.deviceType = 7;
                     break;
                 }
                 if (object.deviceModelType != null)
@@ -4322,6 +4690,9 @@ $root.Wa6 = (function() {
              * @property {number} DESKTOP=2 DESKTOP value
              * @property {number} WEARABLE=3 WEARABLE value
              * @property {number} VR=4 VR value
+             * @property {number} SMART_DISPLAY=5 SMART_DISPLAY value
+             * @property {number} SMART_SPEAKER=6 SMART_SPEAKER value
+             * @property {number} AGENT=7 AGENT value
              */
             UserAgent.DeviceType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -4330,6 +4701,9 @@ $root.Wa6 = (function() {
                 values[valuesById[2] = "DESKTOP"] = 2;
                 values[valuesById[3] = "WEARABLE"] = 3;
                 values[valuesById[4] = "VR"] = 4;
+                values[valuesById[5] = "SMART_DISPLAY"] = 5;
+                values[valuesById[6] = "SMART_SPEAKER"] = 6;
+                values[valuesById[7] = "AGENT"] = 7;
                 return values;
             })();
 
@@ -4393,6 +4767,10 @@ $root.Wa6 = (function() {
              * @property {number} SMART_GLASSES=35 SMART_GLASSES value
              * @property {number} BLUE_VR=36 BLUE_VR value
              * @property {number} AR_WRIST=37 AR_WRIST value
+             * @property {number} WAIL=38 WAIL value
+             * @property {number} WORK_ANDROID=39 WORK_ANDROID value
+             * @property {number} WORK_IOS=40 WORK_IOS value
+             * @property {number} AUTOMOTIVE=41 AUTOMOTIVE value
              */
             UserAgent.Platform = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -4434,6 +4812,10 @@ $root.Wa6 = (function() {
                 values[valuesById[35] = "SMART_GLASSES"] = 35;
                 values[valuesById[36] = "BLUE_VR"] = 36;
                 values[valuesById[37] = "AR_WRIST"] = 37;
+                values[valuesById[38] = "WAIL"] = 38;
+                values[valuesById[39] = "WORK_ANDROID"] = 39;
+                values[valuesById[40] = "WORK_IOS"] = 40;
+                values[valuesById[41] = "AUTOMOTIVE"] = 41;
                 return values;
             })();
 
@@ -6503,6 +6885,7 @@ $root.Wa6 = (function() {
                     case 0:
                     case 1:
                     case 2:
+                    case 9:
                     case 3:
                     case 4:
                     case 5:
@@ -6581,6 +6964,10 @@ $root.Wa6 = (function() {
                 case "XXKEM_FS":
                 case 2:
                     message.pqMode = 2;
+                    break;
+                case "XXKEM_EPH":
+                case 9:
+                    message.pqMode = 9;
                     break;
                 case "WA_CLASSICAL":
                 case 3:
@@ -6717,6 +7104,7 @@ $root.Wa6 = (function() {
          * @property {number} HANDSHAKE_PQ_MODE_UNKNOWN=0 HANDSHAKE_PQ_MODE_UNKNOWN value
          * @property {number} XXKEM=1 XXKEM value
          * @property {number} XXKEM_FS=2 XXKEM_FS value
+         * @property {number} XXKEM_EPH=9 XXKEM_EPH value
          * @property {number} WA_CLASSICAL=3 WA_CLASSICAL value
          * @property {number} WA_PQ=4 WA_PQ value
          * @property {number} IKKEM=5 IKKEM value
@@ -6729,6 +7117,7 @@ $root.Wa6 = (function() {
             values[valuesById[0] = "HANDSHAKE_PQ_MODE_UNKNOWN"] = 0;
             values[valuesById[1] = "XXKEM"] = 1;
             values[valuesById[2] = "XXKEM_FS"] = 2;
+            values[valuesById[9] = "XXKEM_EPH"] = 9;
             values[valuesById[3] = "WA_CLASSICAL"] = 3;
             values[valuesById[4] = "WA_PQ"] = 4;
             values[valuesById[5] = "IKKEM"] = 5;
